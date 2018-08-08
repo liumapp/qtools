@@ -61,6 +61,11 @@ public final class Base64FileTool {
         return base64;
     }
 
+    /**
+     * create file from base64
+     * @param base64Content base64 content string
+     * @param savepath new file save path
+     */
     public static void saveBase64File (String base64Content, String savepath) throws IOException {
         FileTool.createFile(new File(savepath));
         FileOutputStream fos = new FileOutputStream(savepath);
