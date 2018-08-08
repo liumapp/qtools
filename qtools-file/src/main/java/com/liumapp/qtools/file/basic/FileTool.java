@@ -51,20 +51,10 @@ public final class FileTool {
         if (file == null) {
             return false;
         }
-        // 如果存在，是文件则返回true，是目录则返回false
         if (file.exists()) {
             return file.isFile();
         }
         return createDir(file.getParentFile()) && file.createNewFile();
-    }
-
-    /**
-     * create a file directory
-     * @param file file object
-     * @return true/false
-     */
-    public static boolean createDir (File file) throws IOException {
-        return file != null && (file.exists() ? file.isDirectory() : file.mkdirs());
     }
 
     /**
@@ -86,12 +76,81 @@ public final class FileTool {
     }
 
     /**
+     * create a file directory
+     * @param file file object
+     * @return true/false
+     */
+    public static boolean createDir (File file) throws IOException {
+        return file != null && (file.exists() ? file.isDirectory() : file.mkdirs());
+    }
+
+    /**
+     * delete dir
+     * @param dirPath string dir path
+     * @return {@code true}: delete success <br> {@code false}: delete failed
+     */
+    public static boolean deleteDir(String dirPath) {
+        return deleteDir(getFileByPath(dirPath));
+    }
+
+    /**
+     * delete dir
+     * @param dir dir folder
+     * @return {@code true}: delete success <br> {@code false}: delete failed
+     */
+    public static boolean deleteDir(File dir) {
+        if (dir == null) {
+            return false;
+        }
+        if (!dir.exists()) {
+            return true;
+        }
+        if (!dir.isDirectory()) {
+            return false;
+        }
+        deleteFilesInDir(dir);
+        return dir.delete();
+    }
+
+    /**
      * get a file object by file savepath
      * @param filePath file savepath
      * @return file object
      */
     public static File getFileByPath(String filePath) {
         return StrTool.isSpace(filePath) ? null : new File(filePath);
+    }
+
+    /**
+     * delete all files in a specified folder
+     * @param dir folder path
+     * @return {@code true}: delete success <br> {@code false}: delete failed
+     */
+    public static boolean deleteFilesInDir(File dir) {
+        if (dir == null) {
+            return false;
+        }
+        if (!dir.exists()) {
+            return true;
+        }
+        if (!dir.isDirectory()) {
+            return false;
+        }
+        File[] files = dir.listFiles();
+        if (files != null && files.length != 0) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    if (!deleteFile(file)) {
+                        return false;
+                    }
+                } else if (file.isDirectory()) {
+                    if (!deleteDir(file)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
 }
