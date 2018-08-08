@@ -113,6 +113,26 @@ public final class FileTool {
     }
 
     /**
+     * is file exists
+     *
+     * @param filePath file save path
+     * @return {@code true}: exists <br> {@code false}: not exists
+     */
+    public static boolean isFileExists(String filePath) {
+        return isFileExists(getFileByPath(filePath));
+    }
+
+    /**
+     * is file exists
+     *
+     * @param file file object
+     * @return {@code true}: exists <br> {@code false}: not exists
+     */
+    public static boolean isFileExists(File file) {
+        return file != null && file.exists();
+    }
+
+    /**
      * get a file object by file savepath
      * @param filePath file savepath
      * @return file object
@@ -120,6 +140,7 @@ public final class FileTool {
     public static File getFileByPath(String filePath) {
         return StrTool.isSpace(filePath) ? null : new File(filePath);
     }
+
 
     /**
      * delete all files in a specified folder
