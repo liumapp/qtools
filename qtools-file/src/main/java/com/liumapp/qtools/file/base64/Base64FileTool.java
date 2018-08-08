@@ -1,5 +1,7 @@
 package com.liumapp.qtools.file.base64;
 
+import com.liumapp.qtools.file.load.LoadFileTool;
+
 import java.io.*;
 import java.util.Base64;
 
@@ -29,8 +31,7 @@ public final class Base64FileTool {
         InputStream in = null;
         try {
             File file = new File(path);
-            in = new FileInputStream(file);
-            byte[] bytes = new byte[in.available()];
+            byte[] bytes = LoadFileTool.loadFile(file);
             base64 = Base64.getEncoder().encodeToString(bytes);
         } finally {
             if (in != null) {
