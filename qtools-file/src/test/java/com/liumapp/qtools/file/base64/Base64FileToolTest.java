@@ -1,5 +1,6 @@
 package com.liumapp.qtools.file.base64;
 
+import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.qtools.file.config.TestConfig;
 import junit.framework.TestCase;
 import org.junit.Assert;
@@ -22,7 +23,9 @@ public class Base64FileToolTest extends TestCase {
     public void testBase64StringToFile () throws IOException {
         String base64File = Base64FileTool.filePathToBase64(TestConfig.savePath + "test.pdf");
         Base64FileTool.saveBase64File(base64File, TestConfig.savePath + "/tt/dd/out.pdf");
-        Assert.assertEquals(true, );
+        Assert.assertEquals(true, FileTool.isFileExists(TestConfig.savePath + "/tt/dd/out.pdf"));
+        FileTool.deleteDir(TestConfig.savePath + "/tt");
+        Assert.assertEquals(false, FileTool.isFileExists(TestConfig.savePath + "/tt/dd/out.pdf"));
     }
 
 }
