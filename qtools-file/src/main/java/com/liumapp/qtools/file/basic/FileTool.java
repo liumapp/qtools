@@ -65,12 +65,12 @@ public final class FileTool {
         return file != null && (file.exists() ? file.isDirectory() : file.mkdirs());
     }
 
-    public static boolean deleteFile (String srcFilePath) {
-        return deleteFile()
-    }
-
-    public static boolean deleteFile (File file) {
-
-    }
+//    public static boolean deleteFile (String srcFilePath) {
+//        return deleteFile()
+//    }
+//
+//    public static boolean deleteFile (File file) {
+//
+//    }
 
 }
