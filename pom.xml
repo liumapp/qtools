@@ -34,6 +34,7 @@
 
   <modules>
     <module>qtools-file</module>
+    <module>qtools-str</module>
   </modules>
 
   <build>
