@@ -14,8 +14,6 @@ import java.io.IOException;
  */
 public class Base64FileToolTest extends TestCase {
 
-
-
     public void testFilePathToBase64 () throws IOException {
         System.out.println(Base64FileTool.filePathToBase64(TestConfig.savePath + "test.pdf"));
     }
