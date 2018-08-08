@@ -1,5 +1,10 @@
 package com.liumapp.qtools.file.basic;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * @author liumapp
  * @file FileTool.java
@@ -16,6 +21,32 @@ public final class FileTool {
         throw new UnsupportedOperationException("not allowed to initialize");
     }
 
+    public static boolean writeStringToNewFile (File file, String content) throws IOException {
+        if (file == null || content == null) {
+            return false;
+        }
+        if (!createFile(file)) {
+            return false;
+        }
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+            bw.write(content);
+            return true;
+        }
+    }
 
+    public static boolean createFile (File file) throws IOException {
+        if (file == null) {
+            return false;
+        }
+        // 如果存在，是文件则返回true，是目录则返回false
+        if (file.exists()) {
+            return file.isFile();
+        }
+        return createDir(file.getParentFile()) && file.createNewFile();
+    }
+
+    public static boolean createDir (File file) throws IOException {
+        return file != null && (file.exists() ? file.isDirectory() : file.mkdirs());
+    }
 
 }
