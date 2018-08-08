@@ -19,4 +19,9 @@ public class Base64FileToolTest extends TestCase {
         System.out.println(Base64FileTool.filePathToBase64(savePath + "test.pdf"));
     }
 
+    public void testBase64StringToFile () throws IOException {
+        String base64File = Base64FileTool.filePathToBase64(savePath + "test.pdf");
+        Base64FileTool.saveBase64File(base64File, savePath + "/tt/dd/out.pdf");
+    }
+
 }

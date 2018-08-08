@@ -1,5 +1,6 @@
 package com.liumapp.qtools.file.base64;
 
+import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.qtools.file.load.LoadFileTool;
 
 import java.io.*;
@@ -58,6 +59,18 @@ public final class Base64FileTool {
             }
         }
         return base64;
+    }
+
+    public static void saveBase64File (String base64Content, String savepath) throws IOException {
+        FileTool.createFile(new File(savepath));
+        FileOutputStream fos = new FileOutputStream(savepath);
+        try {
+            fos.write(Base64.getDecoder().decode(base64Content));
+        } finally {
+            if (fos != null) {
+                fos.close();
+            }
+        }
     }
 
 }
