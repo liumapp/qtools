@@ -1,5 +1,6 @@
 package com.liumapp.qtools.file.base64;
 
+import com.liumapp.qtools.file.config.TestConfig;
 import junit.framework.TestCase;
 
 import java.io.IOException;
@@ -13,15 +14,15 @@ import java.io.IOException;
  */
 public class Base64FileToolTest extends TestCase {
 
-    private String savePath = "/usr/local/tomcat/project/qtools/data/";
+
 
     public void testFilePathToBase64 () throws IOException {
-        System.out.println(Base64FileTool.filePathToBase64(savePath + "test.pdf"));
+        System.out.println(Base64FileTool.filePathToBase64(TestConfig.savePath + "test.pdf"));
     }
 
     public void testBase64StringToFile () throws IOException {
-        String base64File = Base64FileTool.filePathToBase64(savePath + "test.pdf");
-        Base64FileTool.saveBase64File(base64File, savePath + "/tt/dd/out.pdf");
+        String base64File = Base64FileTool.filePathToBase64(TestConfig.savePath + "test.pdf");
+        Base64FileTool.saveBase64File(base64File, TestConfig.savePath + "/tt/dd/out.pdf");
     }
 
 }
