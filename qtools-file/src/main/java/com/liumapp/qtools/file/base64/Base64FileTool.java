@@ -50,8 +50,7 @@ public final class Base64FileTool {
         String base64 = null;
         InputStream in = null;
         try {
-            in = new FileInputStream(file);
-            byte[] bytes = new byte[in.available()];
+            byte[] bytes = LoadFileTool.loadFile(file);
             base64 = Base64.getEncoder().encodeToString(bytes);
         } finally {
             if (in != null) {
