@@ -24,6 +24,11 @@
   <url>http://maven.apache.org</url>
 
   <dependencies>
+    <dependency>
+      <groupId>com.liumapp.qtools.str</groupId>
+      <artifactId>qtools-str</artifactId>
+      <version>v1.0.0</version>
+    </dependency>
   </dependencies>
 
 </project>

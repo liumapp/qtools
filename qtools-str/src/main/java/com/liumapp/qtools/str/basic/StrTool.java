@@ -13,6 +13,13 @@ public class StrTool {
         throw new UnsupportedOperationException("not allowed to initialize");
     }
 
-
+    /**
+     * is null or empty
+     * @param s string
+     * @return boolean true/false
+     */
+    public static boolean isSpace(String s) {
+        return (s == null || s.trim().length() == 0);
+    }
 
 }

@@ -1,5 +1,7 @@
 package com.liumapp.qtools.file.basic;
 
+import com.liumapp.qtools.str.basic.StrTool;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -65,12 +67,31 @@ public final class FileTool {
         return file != null && (file.exists() ? file.isDirectory() : file.mkdirs());
     }
 
-//    public static boolean deleteFile (String srcFilePath) {
-//        return deleteFile()
-//    }
-//
-//    public static boolean deleteFile (File file) {
-//
-//    }
+    /**
+     * delete a file by file path
+     * @param srcFilePath file save path
+     * @return true: deleted success
+     */
+    public static boolean deleteFile (String srcFilePath) {
+        return deleteFile(getFileByPath(srcFilePath));
+    }
+
+    /**
+     * delete a file
+     * @param file file object
+     * @return true : deleted success
+     */
+    public static boolean deleteFile (File file) {
+        return file != null && (!file.exists() || file.isFile() && file.delete());
+    }
+
+    /**
+     * get a file object by file savepath
+     * @param filePath file savepath
+     * @return file object
+     */
+    public static File getFileByPath(String filePath) {
+        return StrTool.isSpace(filePath) ? null : new File(filePath);
+    }
 
 }
