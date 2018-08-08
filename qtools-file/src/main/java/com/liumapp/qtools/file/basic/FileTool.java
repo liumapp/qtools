@@ -21,6 +21,12 @@ public final class FileTool {
         throw new UnsupportedOperationException("not allowed to initialize");
     }
 
+    /**
+     * write string to a new file
+     * @param file File object
+     * @param content String content
+     * @return boolean true write success : false
+     */
     public static boolean writeStringToNewFile (File file, String content) throws IOException {
         if (file == null || content == null) {
             return false;
@@ -34,6 +40,11 @@ public final class FileTool {
         }
     }
 
+    /**
+     * create a file , and the directory needs .
+     * @param file file object
+     * @return true/false
+     */
     public static boolean createFile (File file) throws IOException {
         if (file == null) {
             return false;
@@ -45,6 +56,11 @@ public final class FileTool {
         return createDir(file.getParentFile()) && file.createNewFile();
     }
 
+    /**
+     * create a file directory
+     * @param file file object
+     * @return true/false
+     */
     public static boolean createDir (File file) throws IOException {
         return file != null && (file.exists() ? file.isDirectory() : file.mkdirs());
     }
