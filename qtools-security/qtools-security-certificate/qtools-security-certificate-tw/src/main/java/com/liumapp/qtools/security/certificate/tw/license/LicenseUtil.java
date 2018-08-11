@@ -6,8 +6,6 @@ import com.liumapp.qtools.security.certificate.tw.license.require.LicenseAbstrac
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 /**
@@ -19,8 +17,6 @@ import org.slf4j.LoggerFactory;
  */
 public class LicenseUtil extends LicenseAbstract {
 
-	private static Logger logger = LoggerFactory.getLogger(LicenseUtil.class);
-
 	private boolean isRegisted = false;
 
 	public void registry () throws JSONException, CertApiException {
@@ -29,7 +25,6 @@ public class LicenseUtil extends LicenseAbstract {
 			return;
 		}
 		String keyStorePath = path + ksPath;
-		logger.info("ks path is : " + keyStorePath);
 
 		JSONObject json = new JSONObject();
 		JSONArray trustCA = new JSONArray();
