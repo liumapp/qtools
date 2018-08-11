@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>qtools-security-certificate</artifactId>
+    <groupId>com.liumapp.qtools.security.certificate</groupId>
+    <version>v1.0.0</version>
+  </parent>
+
+  <groupId>com.liumapp.qtools.security.certificate.tw</groupId>
+  <artifactId>qtools-security-certificate-tw</artifactId>
+  <version>v1.0.0</version>
+  <packaging>jar</packaging>
+
+  <developers>
+    <developer>
+      <name>liumapp</name>
+      <email>liumapp.com@gmail.com</email>
+      <url>http://www.liumapp.com</url>
+    </developer>
+  </developers>
+
+  <name>qtools-security-certificate-tw</name>
+  <url>http://maven.apache.org</url>
+
+</project>
