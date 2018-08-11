@@ -9,8 +9,6 @@ package com.liumapp.qtools.security.certificate.tw.constant;
  */
 public class SignConstant {
 
-    public static final String activeInfo = "activeInfo";
-
     public static final String cert_isKMC = "certIsKMC";
 
     public static final String cert_enroll_model = "certEnrollModel";
@@ -51,17 +49,5 @@ public class SignConstant {
      * project path
      */
     public static final String path = "path";
-
-    /**
-     * pfx cert save path
-     */
-    public static final String cert_PfxSavePath = "certPfxSavePath";
-
-    /**
-     * your keystore save path
-     */
-    public static final String save_KeyStorePath = "saveKeyStorePath";
-
-    public static final String save_PicPath = "savePicPath";
 
 }
