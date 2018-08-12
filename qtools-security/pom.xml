@@ -24,6 +24,6 @@
 
 	<modules>
 		<module>qtools-security-certificate</module>
-    <module>qtools-security-encrypt</module>
-  </modules>
+		<module>qtools-security-encrypt</module>
+	</modules>
 </project>
