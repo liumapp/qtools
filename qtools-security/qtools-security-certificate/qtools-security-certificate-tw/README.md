@@ -140,7 +140,6 @@ javax.wsdl_1.6.2.v201012040545.jar包下含有两个group，所以您需要倒�
               <groupId>org.bouncycastle</groupId>
               <artifactId>bcmail-jdk15</artifactId>
               <version>1.46</version>
-              <optional>true</optional>
             </dependency>
             <dependency>
               <groupId>commons-codec</groupId>
