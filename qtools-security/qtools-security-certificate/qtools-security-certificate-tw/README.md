@@ -6,6 +6,12 @@
 
 在libs目录下
 
+* bcmail-jdk15-1.46.jar
+
+    groupId: org.bouncycastle
+    artifactId: bcmail-jdk15
+    version: 1.46
+
 * iTrusJavaCertAPI-2.7.10.jar
 
     groupId: com.itrus
@@ -75,6 +81,10 @@ javax.wsdl_1.6.2.v201012040545.jar包下含有两个group，所以您需要倒�
 ### 1.1.2 上传至Nexus私服
 
 进入libs目录，依次执行以下命令发布jar包：
+
+* bcmail-jdk15-1.46.jar
+
+        mvn deploy:deploy-file -DgroupId=org.bouncycastle -DartifactId=cmail-jdk15 -Dversion=1.46 -Dpackaging=jar -Dfile=./bcmail-jdk15-1.46.jar -Durl=http://www.liumapp.com:8081/repository/liumapp/ -DrepositoryId=liumapp
 
 * iTrusJavaCertAPI-2.7.10.jar
 
