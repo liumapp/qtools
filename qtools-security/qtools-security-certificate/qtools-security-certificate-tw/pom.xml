@@ -36,7 +36,6 @@
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcmail-jdk15</artifactId>
       <version>1.46</version>
-      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>commons-codec</groupId>
