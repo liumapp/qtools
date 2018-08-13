@@ -38,6 +38,7 @@
     <module>qtools-security-all</module>
     <module>qtools-date</module>
     <module>qtools-http</module>
+    <module>qtools-pic</module>
   </modules>
 
   <build>
