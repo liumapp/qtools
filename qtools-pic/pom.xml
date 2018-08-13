@@ -29,5 +29,10 @@
       <artifactId>javase</artifactId>
       <version>3.3.1</version>
     </dependency>
+    <dependency>
+      <groupId>com.liumapp.qtools.str</groupId>
+      <artifactId>qtools-str</artifactId>
+      <version>v1.0.0</version>
+    </dependency>
   </dependencies>
 </project>
