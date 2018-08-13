@@ -1,6 +1,10 @@
 package com.liumapp.qtools.pic;
 
+import com.google.zxing.WriterException;
 import junit.framework.TestCase;
+import org.junit.Test;
+
+import java.io.IOException;
 
 /**
  * @author liumapp
@@ -11,6 +15,11 @@ import junit.framework.TestCase;
  */
 public class QrCodeToolTest extends TestCase {
 
+    private String savePath = "/usr/local/tomcat/project/qtools/data/";
 
+    @Test
+    public void testGenerateQrCode () throws IOException, WriterException {
+        QrCodeTool.encode("http://www.liumapp.com", 150, 150, "jpg", savePath + "qr.jpg");
+    }
 
 }
