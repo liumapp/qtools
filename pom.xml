@@ -35,7 +35,7 @@
   <modules>
     <module>qtools-file</module>
     <module>qtools-str</module>
-    <module>qtools-security</module>
+    <module>qtools-security-all</module>
     <module>qtools-date</module>
     <module>qtools-http</module>
   </modules>

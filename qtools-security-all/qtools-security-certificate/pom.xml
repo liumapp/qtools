@@ -3,13 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<artifactId>qtools</artifactId>
-		<groupId>com.liumapp.qtools</groupId>
+		<groupId>com.liumapp.qtools.security</groupId>
+		<artifactId>qtools-security-all</artifactId>
 		<version>v1.0.0</version>
 	</parent>
 
-	<groupId>com.liumapp.qtools.security</groupId>
-	<artifactId>qtools-security</artifactId>
+	<groupId>com.liumapp.qtools.security.certificate</groupId>
+	<artifactId>qtools-security-certificate</artifactId>
 	<version>v1.0.0</version>
 	<packaging>pom</packaging>
 
@@ -23,7 +23,6 @@
 	</developers>
 
 	<modules>
-		<module>qtools-security-certificate</module>
-		<module>qtools-security-encrypt</module>
+		<module>qtools-security-certificate-tw</module>
 	</modules>
 </project>
