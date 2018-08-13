@@ -3,8 +3,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <artifactId>qtools-security-certificate</artifactId>
     <groupId>com.liumapp.qtools.security.certificate</groupId>
+    <artifactId>qtools-security-certificate-all</artifactId>
     <version>v1.0.0</version>
   </parent>
 

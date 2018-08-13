@@ -23,7 +23,7 @@
 	</developers>
 
 	<modules>
-		<module>qtools-security-certificate</module>
+		<module>qtools-security-certificate-all</module>
 		<module>qtools-security-encrypt</module>
 	</modules>
 </project>
