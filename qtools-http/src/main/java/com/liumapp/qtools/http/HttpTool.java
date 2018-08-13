@@ -42,14 +42,6 @@ public class HttpTool {
 
     /**
      * get
-     *
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @return
-     * @throws Exception
      */
     public static HttpResponse doGet(String host, String path, String method,
                                      Map<String, String> headers,
@@ -67,15 +59,6 @@ public class HttpTool {
 
     /**
      * post form
-     *
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @param bodys
-     * @return
-     * @throws Exception
      */
     public static HttpResponse doPost(String host, String path, String method,
                                       Map<String, String> headers,
@@ -105,15 +88,6 @@ public class HttpTool {
 
     /**
      * Post String
-     *
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @param body
-     * @return
-     * @throws Exception
      */
     public static HttpResponse doPost(String host, String path, String method,
                                       Map<String, String> headers,
@@ -136,15 +110,6 @@ public class HttpTool {
 
     /**
      * Post stream
-     *
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @param body
-     * @return
-     * @throws Exception
      */
     public static HttpResponse doPost(String host, String path, String method,
                                       Map<String, String> headers,
@@ -167,14 +132,6 @@ public class HttpTool {
 
     /**
      * Put String
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @param body
-     * @return
-     * @throws Exception
      */
     public static HttpResponse doPut(String host, String path, String method,
                                      Map<String, String> headers,
@@ -197,14 +154,6 @@ public class HttpTool {
 
     /**
      * Put stream
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @param body
-     * @return
-     * @throws Exception
      */
     public static HttpResponse doPut(String host, String path, String method,
                                      Map<String, String> headers,
@@ -227,14 +176,6 @@ public class HttpTool {
 
     /**
      * Delete
-     *
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @return
-     * @throws Exception
      */
     public static HttpResponse doDelete(String host, String path, String method,
                                         Map<String, String> headers,
