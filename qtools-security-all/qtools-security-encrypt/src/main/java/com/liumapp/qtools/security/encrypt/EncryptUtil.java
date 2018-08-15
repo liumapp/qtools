@@ -23,6 +23,7 @@ public class EncryptUtil {
     private final byte[] DESIV = new byte[] { 0x12, 0x34, 0x56, 120, (byte) 0x90, (byte) 0xab, (byte) 0xcd, (byte) 0xef };// 向量
 
     private AlgorithmParameterSpec iv = null;// 加密算法的参数接口
+
     private Key key = null;
 
     private String charset = "utf-8";

@@ -1,6 +1,7 @@
 package com.liumapp.qtools.str.random;
 
 import java.security.SecureRandom;
+import java.util.UUID;
 
 /**
  * @author liumapp
@@ -78,7 +79,23 @@ public final class StrRandomTool {
         return RANDOM.nextInt(number);
     }
 
+    /**
+     * 获取UUID by jdk
+     */
+    public static String getUuid(boolean is32bit) {
+        String uuid = getUuid().toString();
+        if (is32bit) {
+            return uuid.replace("-", "");
+        }
+        return uuid;
+    }
 
+    /**
+     * 获取原生UUID对象
+     */
+    public static UUID getUuid() {
+        return UUID.randomUUID();
+    }
 
 
 }
