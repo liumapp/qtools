@@ -7,11 +7,11 @@ import java.io.*;
 import java.util.Base64;
 
 /**
- * @author liumapp
- * @file Base64FileTool.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/7
+ * author liumapp
+ * file Base64FileTool.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/7
  */
 public final class Base64FileTool {
 

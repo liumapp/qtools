@@ -4,11 +4,11 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @author liumapp
- * @file DateTool.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/12
+ * author liumapp
+ * file DateTool.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/12
  */
 public class DateTool {
 

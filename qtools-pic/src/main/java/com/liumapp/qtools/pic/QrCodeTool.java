@@ -22,11 +22,11 @@ import java.util.Hashtable;
 import static com.google.zxing.BarcodeFormat.QR_CODE;
 
 /**
- * @author liumapp
- * @file QrCodeTool.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/13
+ * author liumapp
+ * file QrCodeTool.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/13
  */
 public class QrCodeTool {
 

@@ -22,11 +22,11 @@ import static com.google.zxing.BarcodeFormat.QR_CODE;
 
 /**
  * 生成二维码logo扩展类，此类是在zxing的基础上进行扩展的， 用于在二维码上定制自己的logo
- * @author liumapp
- * @file MatrixToImageWriterEx.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/13
+ * author liumapp
+ * file MatrixToImageWriterEx.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/13
  */
 public class MatrixToImageWriterEx {
 

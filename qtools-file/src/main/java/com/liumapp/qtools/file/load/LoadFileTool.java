@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @author liumapp
- * @file LoadFileTool.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/8
+ * author liumapp
+ * file LoadFileTool.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/8
  */
 public final class LoadFileTool {
 

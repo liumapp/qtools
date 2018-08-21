@@ -4,11 +4,11 @@ import java.awt.*;
 
 /**
  * 定制logo属性类
- * @author liumapp
- * @file MatrixToLogoImageConfig.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/13
+ * author liumapp
+ * file MatrixToLogoImageConfig.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/13
  */
 public class MatrixToLogoImageConfig {
 

@@ -4,11 +4,11 @@ import java.io.File;
 import java.nio.charset.Charset;
 
 /**
- * @author liumapp
- * @file StrConstant.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/13
+ * author liumapp
+ * file StrConstant.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/13
  */
 public final class StrConstant {
 

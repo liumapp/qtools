@@ -32,11 +32,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author liumapp
- * @file HttpTool.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/13
+ * author liumapp
+ * file HttpTool.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/13
  */
 public class HttpTool {
 

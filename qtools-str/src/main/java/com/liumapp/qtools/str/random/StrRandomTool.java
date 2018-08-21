@@ -4,11 +4,11 @@ import java.security.SecureRandom;
 import java.util.UUID;
 
 /**
- * @author liumapp
- * @file StrRandomTool.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/13
+ * author liumapp
+ * file StrRandomTool.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/13
  */
 public final class StrRandomTool {
 

@@ -12,11 +12,11 @@ import java.security.Key;
 import java.security.spec.AlgorithmParameterSpec;
 
 /**
- * @author liumapp
- * @file EncryptUtil.java
- * @email liumapp.com@gmail.com
- * @homepage http://www.liumapp.com
- * @date 2018/8/12
+ * author liumapp
+ * file EncryptUtil.java
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/8/12
  */
 public class EncryptUtil {
 
