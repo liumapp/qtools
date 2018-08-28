@@ -29,6 +29,11 @@
       <artifactId>qtools-str</artifactId>
       <version>v1.0.0</version>
     </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.4</version>
+    </dependency>
   </dependencies>
 
 </project>

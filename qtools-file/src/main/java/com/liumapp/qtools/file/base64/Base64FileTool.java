@@ -2,6 +2,7 @@ package com.liumapp.qtools.file.base64;
 
 import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.qtools.file.load.LoadFileTool;
+import org.apache.commons.io.IOUtils;
 
 import java.io.*;
 import java.util.Base64;
@@ -29,16 +30,9 @@ public final class Base64FileTool {
      */
     public static String filePathToBase64 (String path) throws IOException {
         String base64 = null;
-        InputStream in = null;
-        try {
-            File file = new File(path);
-            byte[] bytes = LoadFileTool.loadFile(file);
-            base64 = Base64.getEncoder().encodeToString(bytes);
-        } finally {
-            if (in != null) {
-                in.close();
-            }
-        }
+        File file = new File(path);
+        byte[] bytes = LoadFileTool.loadFile(file);
+        base64 = Base64.getEncoder().encodeToString(bytes);
         return base64;
     }
 
@@ -49,15 +43,19 @@ public final class Base64FileTool {
      */
     public static String FileToBase64 (File file) throws IOException {
         String base64 = null;
-        InputStream in = null;
-        try {
-            byte[] bytes = LoadFileTool.loadFile(file);
-            base64 = Base64.getEncoder().encodeToString(bytes);
-        } finally {
-            if (in != null) {
-                in.close();
-            }
-        }
+        byte[] bytes = LoadFileTool.loadFile(file);
+        base64 = Base64.getEncoder().encodeToString(bytes);
+        return base64;
+    }
+
+    /**
+     * read input stream and convert to base64
+     * @param is input stream
+     * @return base64 content
+     * @throws IOException io exception
+     */
+    public static String InputStreamToBase64 (InputStream is) throws IOException {
+        String base64 = Base64.getEncoder().encodeToString(IOUtils.toByteArray(is));
         return base64;
     }
 
