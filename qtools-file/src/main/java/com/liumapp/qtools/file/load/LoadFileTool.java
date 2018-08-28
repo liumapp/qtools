@@ -50,4 +50,21 @@ public final class LoadFileTool {
         return bytes;
     }
 
+    /**
+     * load input stream from resource path or file path
+     * @param path resource path or absolute path
+     * @return input stream
+     * @throws IOException io exception
+     */
+    public static InputStream loadInputStream(String path) throws IOException {
+        // 从Resource路径获取
+        InputStream inputStream = LoadFileTool.class.getClassLoader().getResourceAsStream(path);
+        if (inputStream == null) {
+            // 从文件路径获取
+            inputStream = new FileInputStream(path);
+        }
+
+        return inputStream;
+    }
+
 }
