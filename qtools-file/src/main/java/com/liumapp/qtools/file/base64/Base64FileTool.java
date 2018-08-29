@@ -54,7 +54,7 @@ public final class Base64FileTool {
      * @return base64 content
      * @throws IOException io exception
      */
-    public static String InputStreamToBase64 (InputStream is) throws IOException {
+    public static String inputStreamToBase64 (InputStream is) throws IOException {
         String base64 = Base64.getEncoder().encodeToString(IOUtils.toByteArray(is));
         return base64;
     }
