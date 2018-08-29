@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 import org.junit.Assert;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * author liumapp
@@ -30,11 +31,19 @@ public class Base64FileToolTest extends TestCase {
     }
 
     public void testInputStreamToBase64 () throws IOException {
-        String base64Content = Base64FileTool.inputStreamToBase64(LoadFileTool.loadInputStream("test.pdf"));
-        Base64FileTool.saveBase64File(base64Content, TestConfig.savePath + "/tt/dd/out.pdf");
-        Assert.assertEquals(true, FileTool.isFileExists(TestConfig.savePath + "/tt/dd/out.pdf"));
-        FileTool.deleteDir(TestConfig.savePath + "/tt");
-        Assert.assertEquals(false, FileTool.isFileExists(TestConfig.savePath + "/tt/dd/out.pdf"));
+        InputStream is = LoadFileTool.loadInputStream("test.pdf");
+        try {
+            String base64Content = Base64FileTool.inputStreamToBase64(is);
+            Base64FileTool.saveBase64File(base64Content, TestConfig.savePath + "/tt/dd/out.pdf");
+            Assert.assertEquals(true, FileTool.isFileExists(TestConfig.savePath + "/tt/dd/out.pdf"));
+            FileTool.deleteDir(TestConfig.savePath + "/tt");
+            Assert.assertEquals(false, FileTool.isFileExists(TestConfig.savePath + "/tt/dd/out.pdf"));
+        } finally {
+            if (is != null) {
+                is.close();
+            }
+        }
+
     }
 
 }
