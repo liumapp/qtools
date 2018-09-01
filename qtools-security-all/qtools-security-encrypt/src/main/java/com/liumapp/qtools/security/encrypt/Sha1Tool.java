@@ -2,6 +2,8 @@ package com.liumapp.qtools.security.encrypt;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -26,6 +28,14 @@ public class Sha1Tool {
      */
     public static String toSHA1(byte[] convertme) {
         return DigestUtils.sha1Hex(convertme);
+    }
+
+    public static String toSHA1(String convertme) {
+        return DigestUtils.sha1Hex(convertme);
+    }
+
+    public static byte[] toSHA1(InputStream is) throws IOException {
+        return DigestUtils.sha1(is);
     }
 
     /**
