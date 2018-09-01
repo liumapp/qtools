@@ -1,5 +1,6 @@
 package com.liumapp.qtools.date;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -25,6 +26,18 @@ public class DateTool {
         date = calendar.getTime();
         return date;
     }
+
+    public static String getDateString (Date date, String pattern) {
+        return new SimpleDateFormat(pattern).format(date);
+    }
+
+    /**
+     *  yyyymmddhh 2018010110
+     */
+    public static String getSimpleDateString (Date date) {
+        return new SimpleDateFormat("yyyymmddhh").format(date);
+    }
+
 
 
 }
