@@ -13,12 +13,12 @@ import java.security.spec.AlgorithmParameterSpec;
 
 /**
  * author liumapp
- * file EncryptTool.java
+ * file EncryptUtil.java
  * email liumapp.com@gmail.com
  * homepage http://www.liumapp.com
  * date 2018/8/12
  */
-public class EncryptTool {
+public class EncryptUtil {
 
     private final byte[] DESIV = new byte[] { 0x12, 0x34, 0x56, 120, (byte) 0x90, (byte) 0xab, (byte) 0xcd, (byte) 0xef };// 向量
 
@@ -31,7 +31,7 @@ public class EncryptTool {
     /**
      * 初始化
      */
-    public EncryptTool(String deSkey, String charset) throws Exception {
+    public EncryptUtil(String deSkey, String charset) throws Exception {
         if (StringUtils.isNotBlank(charset)) {
             this.charset = charset;
         }
@@ -67,7 +67,7 @@ public class EncryptTool {
         try {
             String test = "ershuai";
             String key = "9ba45bfd500642328ec03ad8ef1b6e75";// 自定义密钥
-            EncryptTool des = new EncryptTool(key, "utf-8");
+            EncryptUtil des = new EncryptUtil(key, "utf-8");
             System.out.println("加密前的字符：" + test);
             System.out.println("加密后的字符：" + des.encode(test));
             System.out.println("解密后的字符：" + des.decode(des.encode(test)));
