@@ -1,5 +1,6 @@
 package com.liumapp.qtools.security.encrypt;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -14,7 +15,9 @@ public class Sha1ToolTest {
 
     @Test
     public void testSHA1 () {
-        
+        String result = Sha1Tool.toSHA1("2018010110_W3JySHIhnxdrVuu");
+        System.out.println(result);
+        Assert.assertEquals("e4155a708323d32863a29eb2290e815fdfe8cde0", result);
     }
 
 }
