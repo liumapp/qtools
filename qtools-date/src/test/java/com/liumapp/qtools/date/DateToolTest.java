@@ -1,5 +1,7 @@
 package com.liumapp.qtools.date;
 
+import org.junit.Test;
+
 /**
  * file DateToolTest.java
  * author liumapp
@@ -10,6 +12,9 @@ package com.liumapp.qtools.date;
  */
 public class DateToolTest {
 
-
+    @Test
+    public void testSimpleDate () {
+        
+    }
 
 }
