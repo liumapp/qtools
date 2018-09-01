@@ -1,5 +1,10 @@
 package com.liumapp.qtools.security.encrypt;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  * file Sha1Tool.java
  * author liumapp
@@ -12,6 +17,31 @@ public class Sha1Tool {
 
     private Sha1Tool() {
         throw new UnsupportedOperationException("not allowed to initialize");
+    }
+
+    /**
+     * use apache commons codec to convert
+     * @param convertme byte[]
+     * @return String
+     */
+    public static String toSHA1(byte[] convertme) {
+        return DigestUtils.sha1Hex(convertme);
+    }
+
+    /**
+     * use old method to convert
+     * @param convertme byte[]
+     * @return String
+     */
+    public static String toSHA1Old (byte[] convertme) {
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("SHA-1");
+        }
+        catch(NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return byteArrayToHexString(md.digest(convertme));
     }
 
     public static String byteArrayToHexString(byte[] b) {
