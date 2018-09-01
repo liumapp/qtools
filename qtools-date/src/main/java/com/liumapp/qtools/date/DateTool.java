@@ -32,12 +32,10 @@ public class DateTool {
     }
 
     /**
-     *  yyyymmddhh 2018010110
+     *  yyyyMMddHH 2018090115
      */
     public static String getSimpleDateString (Date date) {
-        return new SimpleDateFormat("yyyymmddhh").format(date);
+        return new SimpleDateFormat("yyyyMMddHH").format(date);
     }
-
-
 
 }
