@@ -37,7 +37,7 @@ public class DateTool {
      *  yyyyMMddHH 2018090115
      */
     public static String getSimpleDateString (Date date) {
-        return new SimpleDateFormat("yyyyMMddHH").format(date);
+        return getDateString(date, "yyyyMMddHH");
     }
 
     /**
