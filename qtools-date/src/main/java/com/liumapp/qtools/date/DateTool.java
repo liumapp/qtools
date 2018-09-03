@@ -56,12 +56,11 @@ public class DateTool {
         return cal.getTime();
     }
 
-    public static Date getLocalTimeFromUTCDate (String utcDate, String pattern) throws ParseException {
-        Date localTime = null ;
+    public static String getBeiJingLocalTimeFromUTC (String utcDate, String pattern) throws ParseException {
         DateFormat format = new SimpleDateFormat(pattern);
-        format.parse(utcDate);
+        Date UTCDate = format.parse(utcDate);
         format.setTimeZone(TimeZone.getTimeZone("GMT-8")) ;
-        localTime = format.getCalendar().getTime() ;
+        String localTime = format.format(UTCDate) ;
         return localTime ;
     }
 

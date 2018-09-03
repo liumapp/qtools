@@ -2,6 +2,7 @@ package com.liumapp.qtools.date;
 
 import org.junit.Test;
 
+import java.text.ParseException;
 import java.util.Date;
 
 /**
@@ -27,8 +28,9 @@ public class DateToolTest {
     }
 
     @Test
-    public void testGetLocalTimeFromUTCDate () {
-        
+    public void testGetLocalTimeFromUTC () throws ParseException {
+        String result = DateTool.getBeiJingLocalTimeFromUTC("2018090108", "yyyyMMddHH");
+        System.out.println(result);
     }
 
 }
