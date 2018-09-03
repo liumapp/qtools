@@ -29,7 +29,7 @@ public class DateToolTest {
 
     @Test
     public void testGetLocalTimeFromUTC () throws ParseException {
-        String result = DateTool.getBeiJingLocalTimeFromUTC("2018090108", "yyyyMMddHH");
+        String result = DateTool.getBeiJingLocalTimeFromUTC(DateTool.getSimpleUTCDateString(), "yyyyMMddHH");
         System.out.println(result);
     }
 
