@@ -55,4 +55,8 @@ public class DateTool {
         return cal.getTime();
     }
 
+    public static Date getLocalTimeFromUTCDate (Date utcDate) {
+
+    }
+
 }
