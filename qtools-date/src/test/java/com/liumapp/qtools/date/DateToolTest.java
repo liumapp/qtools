@@ -26,4 +26,9 @@ public class DateToolTest {
         System.out.println(result);
     }
 
+    @Test
+    public void testGetLocalTimeFromUTCDate () {
+        
+    }
+
 }

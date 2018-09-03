@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * author liumapp
@@ -55,8 +56,13 @@ public class DateTool {
         return cal.getTime();
     }
 
-    public static Date getLocalTimeFromUTCDate (Date utcDate) {
-
+    public static Date getLocalTimeFromUTCDate (String utcDate, String pattern) throws ParseException {
+        Date localTime = null ;
+        DateFormat format = new SimpleDateFormat(pattern);
+        format.parse(utcDate);
+        format.setTimeZone(TimeZone.getTimeZone("GMT-8")) ;
+        localTime = format.getCalendar().getTime() ;
+        return localTime ;
     }
 
 }
