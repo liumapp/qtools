@@ -20,4 +20,10 @@ public class DateToolTest {
         System.out.println(result);
     }
 
+    @Test
+    public void testGetSimpleUTCDate () {
+        String result = DateTool.getSimpleUTCDateString();
+        System.out.println(result);
+    }
+
 }
