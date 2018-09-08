@@ -18,6 +18,7 @@ import static com.liumapp.qtools.data.helper.StringType.*;
  * date 2018/9/8
  */
 final public class RowSetter {
+
     public static void setRow(Row row, Class c, String s, Object k, String format){
 
         if (c.equals(String.class)) row.setColumn(k, string2String(s), c);
