@@ -1,6 +1,7 @@
 package com.liumapp.qtools.data.core;
 
 import com.liumapp.qtools.data.factory.Factory;
+import com.liumapp.qtools.data.factory.RowFactory;
 import com.liumapp.qtools.data.service.Reader;
 import com.liumapp.qtools.data.service.Ready;
 import com.liumapp.qtools.data.service.Transformer;

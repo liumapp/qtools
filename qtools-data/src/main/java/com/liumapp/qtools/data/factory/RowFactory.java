@@ -11,8 +11,10 @@ import com.liumapp.qtools.data.core.Row;
  * date 2018/9/8
  */
 public class RowFactory implements Factory<Row> {
+
     @Override
     public Row newInstance() {
         return new Row();
     }
+
 }
