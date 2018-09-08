@@ -216,7 +216,6 @@ public class JDBCReader implements Reader {
     }
 
     public Connection getConnection() {
-
         return this.connection;
     }
 
