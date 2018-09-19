@@ -1,16 +1,11 @@
 package com.liumapp.qtools.pic;
 
 import java.awt.image.BufferedImage;
-import java.io.BufferedWriter;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.util.Date;
 
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 
 /**
  * file AsciiPicTool.java
