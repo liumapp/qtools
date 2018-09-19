@@ -4,6 +4,7 @@ import com.google.zxing.WriterException;
 import junit.framework.TestCase;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -21,5 +22,13 @@ public class QrCodeToolTest extends TestCase {
     public void testGenerateQrCode () throws IOException, WriterException {
         QrCodeTool.encode("http://www.liumapp.com", 150, 150, "jpg", savePath + "qr.jpg");
     }
+
+    @Test
+    public void testPic2Ascii () throws IOException {
+        String result = AsciiPicTool.pic2SmallAscii(new File(savePath + "me.jpg"));
+        System.out.println(result);
+    }
+
+
 
 }
