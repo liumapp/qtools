@@ -41,7 +41,6 @@
     <module>qtools-date</module>
     <module>qtools-http</module>
     <module>qtools-pic</module>
-    <module>qtools-data</module>
   </modules>
 
   <build>
