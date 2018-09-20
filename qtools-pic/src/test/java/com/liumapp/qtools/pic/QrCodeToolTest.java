@@ -29,6 +29,11 @@ public class QrCodeToolTest extends TestCase {
         System.out.println(result);
     }
 
+    @Test
+    public void testShowMyself () throws IOException {
+        AsciiPicTool.showMyself();
+    }
+
 
 
 }
