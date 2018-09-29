@@ -47,7 +47,8 @@ public class Base64FileToolTest extends TestCase {
 
     public void testCheckBase64 () {
         TestBase64Content testBase64Content = new TestBase64Content();
-        
+        Assert.assertEquals(true, CheckBase64Tool.checkHeader(testBase64Content.getTestBase64WithHeader()));
+        Assert.assertEquals(false, CheckBase64Tool.checkHeader(testBase64Content.getTestBase64WithoutHeader()));
     }
 
 }

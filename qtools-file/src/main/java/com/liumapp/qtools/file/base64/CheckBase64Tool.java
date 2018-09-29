@@ -13,13 +13,9 @@ public class CheckBase64Tool {
     /**
      * is the header info of base64 exists.
      */
-    public static void checkHeader (String base64Content) {
-        try {
-            String[] baseStr = base64Content.split(",");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static Boolean checkHeader (String base64Content) {
+        String[] baseStr = base64Content.split(",");
+        return true;
     }
 
 }
