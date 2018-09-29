@@ -141,6 +141,13 @@ public class FileTool {
         return StrTool.isSpace(filePath) ? null : new File(filePath);
     }
 
+    /**
+     * is a direcotory according to a filepath.
+     */
+    public static boolean isDirectory (String filePath) {
+        File file = new File(filePath);
+        return file.isDirectory();
+    }
 
     /**
      * delete all files in a specified folder

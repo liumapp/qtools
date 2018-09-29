@@ -1,5 +1,6 @@
 package com.liumapp.qtools.file.search;
 
+import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.qtools.file.filter.SimpleFileFilterTool;
 
 import java.io.File;
@@ -74,10 +75,14 @@ public class SearchFileTool {
         return null;
     }
 
+    public static File[] getFileList(String filePath, String str) {
+        FileTool.isFileExists(filePath);
+    }
+
     /**
      * get all the files in an appointed path with begin string
      */
-    public static File[] getFileList(String filePath, String str) {
+    private static File[] getList(String filePath, String str) {
         File file = new File(filePath);
         int j = 0;
         File[] fileArray = file.listFiles(new SimpleFileFilterTool(str));
