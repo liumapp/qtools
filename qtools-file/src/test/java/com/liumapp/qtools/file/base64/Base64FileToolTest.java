@@ -43,7 +43,11 @@ public class Base64FileToolTest extends TestCase {
                 is.close();
             }
         }
+    }
 
+    public void testCheckBase64 () {
+        TestBase64Content testBase64Content = new TestBase64Content();
+        
     }
 
 }

@@ -10,6 +10,16 @@ package com.liumapp.qtools.file.base64;
  */
 public class CheckBase64Tool {
 
+    /**
+     * is the header info of base64 exists.
+     */
+    public static void checkHeader (String base64Content) {
+        try {
+            String[] baseStr = base64Content.split(",");
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
