@@ -100,11 +100,23 @@ public class Base64FileTool {
     }
 
     private static String getHeader (String base64Content) {
-
+        String[] baseStr = base64Content.split(";base64,");
+        return baseStr[0];
     }
 
-    public static String getBase64DataTypeFromHeader () {
+    /**
+     *  return a base64 data type from header if exists
+     */
+    public static String getBase64DataTypeFromHeader (String base64Content) {
+        if (CheckBase64Tool.checkHeader(base64Content))
+            return getDataType(base64Content);
+        return null;
+    }
 
+    private static String getDataType (String base64Content) {
+        String header = getHeader(base64Content);
+        String[] types = header.split(":");
+        return types[1];
     }
 
 
