@@ -18,7 +18,7 @@ public class ArrayTool {
      * remove empty and null elements
      * support strings, files and objects .
      */
-    public Object[] clearArray (Object[] objects) {
+    public static Object[] clearArray (Object[] objects) {
         if (objects instanceof String[])
             return clearStringArray( (String[]) objects);
         else if (objects instanceof File[])
@@ -27,19 +27,19 @@ public class ArrayTool {
             return clearObjectArray(objects);
     }
 
-    private Object[] clearObjectArray (Object[] objectsArray) {
+    private static Object[] clearObjectArray (Object[] objectsArray) {
         return Arrays.stream(objectsArray)
                 .filter(o -> (o != null))
                 .toArray(Object[]::new);
     }
 
-    private String[] clearStringArray (String[] stringArray) {
+    private static String[] clearStringArray (String[] stringArray) {
         return Arrays.stream(stringArray)
                 .filter(s -> (s != null && s.length() > 0))
                 .toArray(String[]::new);
     }
 
-    private File[] clearFileArray (File[] fileArray) {
+    private static File[] clearFileArray (File[] fileArray) {
         return Arrays.stream(fileArray)
                 .filter(f -> (f != null && f.length() > 0))
                 .toArray(File[]::new);
