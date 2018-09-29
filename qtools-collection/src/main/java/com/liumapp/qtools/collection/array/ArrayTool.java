@@ -1,6 +1,7 @@
 package com.liumapp.qtools.collection.array;
 
 import java.io.File;
+import java.util.Arrays;
 
 /**
  * file ArrayTool.java
@@ -27,15 +28,21 @@ public class ArrayTool {
     }
 
     private Object[] clearObjectArray (Object[] objectsArray) {
-
+        return Arrays.stream(objectsArray)
+                .filter(o -> (o != null))
+                .toArray(Object[]::new);
     }
 
     private String[] clearStringArray (String[] stringArray) {
-
+        return Arrays.stream(stringArray)
+                .filter(s -> (s != null && s.length() > 0))
+                .toArray(String[]::new);
     }
 
     private File[] clearFileArray (File[] fileArray) {
-
+        return Arrays.stream(fileArray)
+                .filter(f -> (f != null && f.length() > 0))
+                .toArray(File[]::new);
     }
 
 }
