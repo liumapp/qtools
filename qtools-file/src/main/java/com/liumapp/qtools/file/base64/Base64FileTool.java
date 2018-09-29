@@ -76,5 +76,36 @@ public class Base64FileTool {
         }
     }
 
+    /**
+     * return a base64 content without header
+     */
+    public static String removeBase64Header (String base64Content) {
+        if (CheckBase64Tool.checkHeader(base64Content))
+            return removeHeader(base64Content);
+        return base64Content;
+    }
+
+    private static String removeHeader (String base64Content) {
+        String[] baseStr = base64Content.split(";base64,");
+        return baseStr[1];
+    }
+
+    /**
+     * return a base64 content header if exists
+     */
+    public static String getBase64Header (String base64Content) {
+        if (CheckBase64Tool.checkHeader(base64Content))
+            return getHeader(base64Content);
+        return null;
+    }
+
+    private static String getHeader (String base64Content) {
+
+    }
+
+    public static String getBase64DataTypeFromHeader () {
+
+    }
+
 
 }
