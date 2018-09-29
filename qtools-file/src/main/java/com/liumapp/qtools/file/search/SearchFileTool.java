@@ -19,89 +19,105 @@ public class SearchFileTool {
      * search files in an appointed path with begin string and end string
      */
     public static File[] searchFiles (String searchPath, String beginString, String endString) {
-
+        return getFileList(searchPath, beginString, endString);
     }
 
     /**
      * search files in an appointed path with begin string
      */
-    public static File[] searchFiles (String searchPath, String beginString) {
-
+    public static File[] searchFilesWithBeginString (String searchPath, String beginString) {
+        return getFileList(searchPath, beginString);
     }
 
     /**
      * search files in an appointed path with end string
      */
-    public static File[] searchFiles (String searchPath, String endString) {
-
+    public static File[] searchFilesWithEndString (String searchPath, String endString) {
+        return getFileList(searchPath, "*", endString);
     }
 
     /**
      * does file in an appointed path with begin string and end string exists ?
+     * if exists return file name
      */
-    public static String hasFile (String searchPath, String beginString, String endString) {
-
+    public static String[] hasFile (String searchPath, String beginString, String endString) {
+        File[] fileLists = searchFiles(searchPath, beginString, endString);
+        if (fileLists == null)
+            return null;
+        String[] names = new String[fileLists.length];
+        for (int i = 0; i< fileLists.length; i++) {
+            names[i] = fileLists[i].getName();
+        }
+        return names;
     }
 
     /**
      * does file in an appointed path with begin string exists ?
      */
-    public static String hasFile (String searchPath, String beginString) {
-
+    public static String[] hasFileWithBeginString (String searchPath, String beginString) {
+        File[] fileLists = searchFilesWithBeginString(searchPath, beginString);
+        if (fileLists == null)
+            return null;
+        String[] names = new String[fileLists.length];
+        for (int i = 0; i< fileLists.length; i++) {
+            names[i] = fileLists[i].getName();
+        }
+        return names;
     }
 
     /**
      * does file in an appointed path with end string exists ?
      */
-    public static String hasFile (String searchPath, String endString) {
-
-    }
-
-    /**
-     *查找文件名称结尾为.txt的文件是否存在
-     *filepath  文件路径
-     *filename  文件名包含指定字符如：log_
-     **/
-    public static String getFileName (String filepath, String filename) {
-        File[] fileArray = getFileList(filepath, filename);
-        if (fileArray == null) return null;
-        for (int i = 0; i < fileArray.length; i++) {
-            if ((fileArray[i] != null) && fileArray[i].getName().endsWith(".txt")) {
-                System.out.println("文件存在");
-                return fileArray[i].getName();
-            }
+    public static String[] hasFileWithEndString (String searchPath, String endString) {
+        File[] fileLists = searchFilesWithEndString(searchPath, endString);
+        if (fileLists == null)
+            return null;
+        String[] names = new String[fileLists.length];
+        for (int i = 0; i< fileLists.length; i++) {
+            names[i] = fileLists[i].getName();
         }
-        System.out.println("文件不存在");
-        return null;
-    }
-
-    public static File[] getFileList(String filePath, String str) {
-        FileTool.isFileExists(filePath);
+        return names;
     }
 
     /**
      * get all the files in an appointed path with begin string
      */
-    private static File[] getList(String filePath, String str) {
+    public static File[] getFileList (String filePath, String beginString) {
+        if (FileTool.isDirectory(filePath))
+            return getList(filePath, beginString);
+        return null;
+    }
+
+    /**
+     * get all the files in an appointed path with begin string and end string
+     */
+    public static File[] getFileList (String filePath, String beginString, String endString) {
+        if (FileTool.isDirectory(filePath))
+            return getList(filePath, beginString, endString);
+        return null;
+    }
+
+    private static File[] getList (String filePath, String beginString) {
+        File file = new File(filePath);
+        return file.listFiles(new SimpleFileFilterTool(beginString));
+    }
+
+    private static File[] getList (String filePath, String beginString, String endString) {
         File file = new File(filePath);
         int j = 0;
-        File[] fileArray = file.listFiles(new SimpleFileFilterTool(str));
+        File[] fileArray = file.listFiles(new SimpleFileFilterTool(beginString));
         if (fileArray.length == 0)
             return null;
-        File[] fileArrays = new File[fileArray.length];
+        File[] resultArrays = new File[fileArray.length];
         if (fileArray != null) {
             for (int i = 0; i < fileArray.length; i++) {
-                if (fileArray[i] != null) {
-                    fileArrays[j] = fileArray[i];
+                if (fileArray[i] != null && fileArray[i].getName().endsWith(endString)) {
+                    resultArrays[j] = fileArray[i];
                     j++;
-                    if (j == 2) break;
                 }
             }
         }
-        return fileArrays;
+        return resultArrays;
     }
-
-
-
 
 }
