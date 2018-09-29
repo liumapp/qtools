@@ -62,11 +62,11 @@ public class Base64FileTool {
     /**
      * create file from base64
      * @param base64Content base64 content string
-     * @param savepath new file save path
+     * @param saveFile new file save path
      */
-    public static void saveBase64File (String base64Content, String savepath) throws IOException {
-        FileTool.createFile(new File(savepath));
-        FileOutputStream fos = new FileOutputStream(savepath);
+    public static void saveBase64File (String base64Content, String saveFile) throws IOException {
+        FileTool.createFile(new File(saveFile));
+        FileOutputStream fos = new FileOutputStream(saveFile);
         try {
             fos.write(Base64.getDecoder().decode(base64Content));
         } finally {
@@ -74,6 +74,11 @@ public class Base64FileTool {
                 fos.close();
             }
         }
+    }
+
+    private static void saveFile (String base64ContentWithoutHeader, String saveFile) throws IOException {
+        FileTool.createFile(new File(saveFile));
+
     }
 
     /**

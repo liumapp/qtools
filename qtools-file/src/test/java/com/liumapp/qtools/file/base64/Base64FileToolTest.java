@@ -25,7 +25,9 @@ public class Base64FileToolTest extends TestCase {
     public void testBase64StringToFile () throws IOException {
         String base64File = Base64FileTool.filePathToBase64(TestConfig.savePath + "test.pdf");
         Base64FileTool.saveBase64File(base64File, TestConfig.savePath + "/tt/dd/out.pdf");
+        Base64FileTool.saveBase64File(base64File, TestConfig.savePath + "/tt/ss");
         Assert.assertEquals(true, FileTool.isFileExists(TestConfig.savePath + "/tt/dd/out.pdf"));
+//        Assert.assertEquals(true, FileTool.is);
         FileTool.deleteDir(TestConfig.savePath + "/tt");
         Assert.assertEquals(false, FileTool.isFileExists(TestConfig.savePath + "/tt/dd/out.pdf"));
     }
