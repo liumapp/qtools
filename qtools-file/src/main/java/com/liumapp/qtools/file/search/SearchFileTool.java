@@ -14,13 +14,15 @@ import java.io.File;
  */
 public class SearchFileTool {
 
+//    public static File[] searchFile (String searchPath, String searchPattern, )
+
     /**
      *查找文件名称结尾为.txt的文件是否存在
      *filepath  文件路径
      *filename  文件名包含指定字符如：log_
      **/
     public String getFileName (String filepath, String filename) {
-        File[]fileArray = getFileList(filepath, filename);
+        File[] fileArray = getFileList(filepath, filename);
         if (fileArray == null) return null;
         for (int i = 0; i < fileArray.length; i++) {
             if ((fileArray[i] != null) && fileArray[i].getName().endsWith(".txt")) {
@@ -33,15 +35,15 @@ public class SearchFileTool {
     }
 
     /***获取filepath路径下包含str字符的文件, ***/
-    public static File [] getFileList(String filePath, String str) {
+    public static File[] getFileList(String filePath, String str) {
         File file = new File(filePath);
-        File [] fileArrays = new File[2];
+        File[] fileArrays = new File[2];
         int j = 0;
         //获取该目录下所有文件和目录的绝对路径
-        File [] fileArray = file.listFiles(new FileFilterTool(str));
-        if (fileArray != null){
+        File[] fileArray = file.listFiles(new FileFilterTool(str));
+        if (fileArray != null) {
             for (int i = 0; i < fileArray.length; i++) {
-                if (fileArray[i] != null && fileArray[i].getName().contains(str)){
+                if (fileArray[i] != null && fileArray[i].getName().contains(str)) {
                     fileArrays[j] = fileArray[i];
                     j++;
                     if (j == 2) break;
