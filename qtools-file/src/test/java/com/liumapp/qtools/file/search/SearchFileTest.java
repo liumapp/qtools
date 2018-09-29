@@ -1,5 +1,6 @@
 package com.liumapp.qtools.file.search;
 
+import com.liumapp.qtools.file.config.TestConfig;
 import junit.framework.TestCase;
 
 /**
@@ -12,6 +13,8 @@ import junit.framework.TestCase;
  */
 public class SearchFileTest extends TestCase {
 
-
+    public void testSearchTxt () {
+        SearchFileTool.getFileName(TestConfig.savePath, "test");
+    }
 
 }

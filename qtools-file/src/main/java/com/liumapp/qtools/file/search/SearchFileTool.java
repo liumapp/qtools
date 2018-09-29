@@ -1,6 +1,6 @@
 package com.liumapp.qtools.file.search;
 
-import com.liumapp.qtools.file.filter.FileFilterTool;
+import com.liumapp.qtools.file.filter.SimpleFileFilterTool;
 
 import java.io.File;
 
@@ -14,14 +14,54 @@ import java.io.File;
  */
 public class SearchFileTool {
 
-//    public static File[] searchFile (String searchPath, String searchPattern, )
+    /**
+     * search files in an appointed path with begin string and end string
+     */
+    public static File[] searchFiles (String searchPath, String beginString, String endString) {
+
+    }
+
+    /**
+     * search files in an appointed path with begin string
+     */
+    public static File[] searchFiles (String searchPath, String beginString) {
+
+    }
+
+    /**
+     * search files in an appointed path with end string
+     */
+    public static File[] searchFiles (String searchPath, String endString) {
+
+    }
+
+    /**
+     * does file in an appointed path with begin string and end string exists ?
+     */
+    public static String hasFile (String searchPath, String beginString, String endString) {
+
+    }
+
+    /**
+     * does file in an appointed path with begin string exists ?
+     */
+    public static String hasFile (String searchPath, String beginString) {
+
+    }
+
+    /**
+     * does file in an appointed path with end string exists ?
+     */
+    public static String hasFile (String searchPath, String endString) {
+
+    }
 
     /**
      *查找文件名称结尾为.txt的文件是否存在
      *filepath  文件路径
      *filename  文件名包含指定字符如：log_
      **/
-    public String getFileName (String filepath, String filename) {
+    public static String getFileName (String filepath, String filename) {
         File[] fileArray = getFileList(filepath, filename);
         if (fileArray == null) return null;
         for (int i = 0; i < fileArray.length; i++) {
@@ -34,16 +74,19 @@ public class SearchFileTool {
         return null;
     }
 
-    /***获取filepath路径下包含str字符的文件, ***/
+    /**
+     * get all the files in an appointed path with begin string
+     */
     public static File[] getFileList(String filePath, String str) {
         File file = new File(filePath);
-        File[] fileArrays = new File[2];
         int j = 0;
-        //获取该目录下所有文件和目录的绝对路径
-        File[] fileArray = file.listFiles(new FileFilterTool(str));
+        File[] fileArray = file.listFiles(new SimpleFileFilterTool(str));
+        if (fileArray.length == 0)
+            return null;
+        File[] fileArrays = new File[fileArray.length];
         if (fileArray != null) {
             for (int i = 0; i < fileArray.length; i++) {
-                if (fileArray[i] != null && fileArray[i].getName().contains(str)) {
+                if (fileArray[i] != null) {
                     fileArrays[j] = fileArray[i];
                     j++;
                     if (j == 2) break;
