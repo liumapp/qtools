@@ -1,6 +1,10 @@
 package com.liumapp.qtools.file.search;
 
+import com.liumapp.qtools.file.config.TestConfig;
+import junit.framework.Assert;
 import junit.framework.TestCase;
+
+import java.io.File;
 
 /**
  * file SearchFileTest.java
@@ -13,7 +17,14 @@ import junit.framework.TestCase;
 public class SearchFileTest extends TestCase {
 
     public void testFindFiles () {
+        String[] names = SearchFileTool.hasFile(TestConfig.savePath, "test", ".txt");
+        Assert.assertEquals(2, names.length);
 
+        String[] names2 = SearchFileTool.hasFileWithBeginString(TestConfig.savePath, "test");
+        Assert.assertEquals(3, names2.length);
+
+        String[] names3 = SearchFileTool.hasFileWithEndString(TestConfig.savePath, ".txt");
+        Assert.assertEquals(4, names3.length);
     }
 
     public void testSearchFiles () {
