@@ -14,7 +14,7 @@ import java.util.Base64;
  * homepage http://www.liumapp.com
  * date 2018/8/7
  */
-public final class Base64FileTool {
+public class Base64FileTool {
 
     /**
      * all static method , plz do not initialize the class

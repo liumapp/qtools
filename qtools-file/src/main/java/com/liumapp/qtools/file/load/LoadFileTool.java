@@ -12,7 +12,7 @@ import java.io.InputStream;
  * homepage http://www.liumapp.com
  * date 2018/8/8
  */
-public final class LoadFileTool {
+public class LoadFileTool {
 
     /**
      * all static method , plz do not initialize the class

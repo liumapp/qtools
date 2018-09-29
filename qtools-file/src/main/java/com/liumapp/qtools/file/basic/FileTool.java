@@ -14,7 +14,7 @@ import java.io.IOException;
  * homepage http://www.liumapp.com
  * date 2018/8/7
  */
-public final class FileTool {
+public class FileTool {
 
     /**
      * all static method , plz do not initialize the class
