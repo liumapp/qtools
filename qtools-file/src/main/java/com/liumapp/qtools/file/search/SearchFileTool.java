@@ -1,5 +1,6 @@
 package com.liumapp.qtools.file.search;
 
+import com.liumapp.qtools.collection.array.ArrayTool;
 import com.liumapp.qtools.file.basic.FileTool;
 import com.liumapp.qtools.file.filter.SimpleFileFilterTool;
 
@@ -33,7 +34,7 @@ public class SearchFileTool {
      * search files in an appointed path with end string
      */
     public static File[] searchFilesWithEndString (String searchPath, String endString) {
-        return getFileList(searchPath, "*", endString);
+        return getFileList(searchPath, "", endString);
     }
 
     /**
@@ -117,7 +118,7 @@ public class SearchFileTool {
                 }
             }
         }
-        return resultArrays;
+        return (File[]) ArrayTool.clearArray(resultArrays);
     }
 
 }
