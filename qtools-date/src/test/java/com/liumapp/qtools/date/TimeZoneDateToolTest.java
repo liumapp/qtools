@@ -23,7 +23,7 @@ import java.util.TimeZone;
  */
 public class TimeZoneDateToolTest extends TestCase {
 
-    private static final String DATE_FORMAT = "dd-M-yyyy hh:mm:ss a";
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     public void testDateTime () {
         Date date = new Date();
@@ -32,11 +32,19 @@ public class TimeZoneDateToolTest extends TestCase {
     }
 
     public void testGetLocalTime () {
-        TimeZone tz = TimeZone.getTimeZone("GMT+1");
-        Calendar c = Calendar.getInstance(tz);
-
-        System.out.println(c.get(Calendar.HOUR_OF_DAY)+":"+c.get(Calendar.MINUTE)+":"+c.get(Calendar.SECOND));
-
+        TimeZone newYork = TimeZone.getTimeZone(ZoneId.of("America/New_York"));
+        TimeZone shangHai = TimeZone.getTimeZone(ZoneId.of("Asia/Shanghai"));
+        TimeZone ababa = TimeZone.getTimeZone(ZoneId.of("Africa/Addis_Ababa"));
+        Calendar newYorkCalendar = Calendar.getInstance(newYork);
+        Calendar shangHaiCalendar = Calendar.getInstance(shangHai);
+        Calendar ababaCalendar = Calendar.getInstance(ababa);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_FORMAT);
+        simpleDateFormat.setTimeZone(newYork);
+        System.out.println(simpleDateFormat.format(newYorkCalendar.getTime()));
+        simpleDateFormat.setTimeZone(shangHai);
+        System.out.println(simpleDateFormat.format(shangHaiCalendar.getTime()));
+        simpleDateFormat.setTimeZone(ababa);
+        System.out.println(simpleDateFormat.format(ababaCalendar.getTime()));
     }
 
     /**
