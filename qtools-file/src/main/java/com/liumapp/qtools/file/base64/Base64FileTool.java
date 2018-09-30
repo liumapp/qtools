@@ -65,20 +65,19 @@ public class Base64FileTool {
      * @param saveFile new file save path
      */
     public static void saveBase64File (String base64Content, String saveFile) throws IOException {
+        saveFile(removeBase64Header(base64Content), saveFile);
+    }
+
+    private static void saveFile (String base64ContentWithoutHeader, String saveFile) throws IOException {
         FileTool.createFile(new File(saveFile));
         FileOutputStream fos = new FileOutputStream(saveFile);
         try {
-            fos.write(Base64.getDecoder().decode(base64Content));
+            fos.write(Base64.getDecoder().decode(base64ContentWithoutHeader));
         } finally {
             if (fos != null) {
                 fos.close();
             }
         }
-    }
-
-    private static void saveFile (String base64ContentWithoutHeader, String saveFile) throws IOException {
-        FileTool.createFile(new File(saveFile));
-
     }
 
     /**
