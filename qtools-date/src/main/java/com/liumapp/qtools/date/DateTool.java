@@ -64,8 +64,18 @@ public class DateTool {
         return localTime ;
     }
 
-    public static Date getDateByTimeString (String time) {
-        
+    /**
+     * date string to date
+     */
+    public static Date getDateByTimeString (String dateString, String dateFormatPattern) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormatPattern);
+        Date date = null;
+        try {
+            date = simpleDateFormat.parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 
 }
