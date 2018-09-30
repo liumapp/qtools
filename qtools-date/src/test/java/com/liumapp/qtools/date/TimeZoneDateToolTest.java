@@ -35,12 +35,23 @@ public class TimeZoneDateToolTest extends TestCase {
 
     public void testGetSimpleCustomCurrentTime () {
         System.out.println(
+                TimeZoneDateTool.getSimpleCustomZoneCurrentTime(
+                    TimeZone.getTimeZone(
+                            ZoneId.of("America/Chicago")
+                    )
+                )
+        );
+    }
+
+    public void testGetCustomCurrentTime () {
+        System.out.println(
                 TimeZoneDateTool.getCustomZoneCurrentTime(
                         DATE_FORMAT,
                         TimeZone.getTimeZone(
                                 ZoneId.of("America/Chicago")
                         )
-                ));
+                )
+        );
     }
 
     public void testDateTime () {
