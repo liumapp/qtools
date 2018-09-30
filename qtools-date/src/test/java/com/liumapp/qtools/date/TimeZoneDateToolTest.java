@@ -23,20 +23,25 @@ import java.util.TimeZone;
  */
 public class TimeZoneDateToolTest extends TestCase {
 
-    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss a";
 
     public void testGetSimpleShanghaiCurrentTime () {
         System.out.println(TimeZoneDateTool.getSimpleShangHaiCurrentTime());
     }
 
     public void testGetCustomShanghaiCurrentTime () {
-        System.out.println(TimeZoneDateTool.getShangHaiCurrentTime("yyyy-MM-dd HH:mm:ss a"));
+        System.out.println(TimeZoneDateTool.getShangHaiCurrentTime(DATE_FORMAT));
     }
 
     public void testGetSimpleCustomCurrentTime () {
-        System.out.println();
+        System.out.println(
+                TimeZoneDateTool.getCustomZoneCurrentTime(
+                        DATE_FORMAT,
+                        TimeZone.getTimeZone(
+                                ZoneId.of("America/Chicago")
+                        )
+                ));
     }
-
 
     public void testDateTime () {
         Date date = new Date();
