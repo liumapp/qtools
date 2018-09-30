@@ -34,10 +34,23 @@ public class ArrayToolTest extends TestCase {
         };
         File[] cleanArray = (File[]) ArrayTool.clearArray(testArray);
         Assert.assertEquals(2, cleanArray.length);
+        Assert.assertEquals("me.jpg", cleanArray[0].getName());
+        Assert.assertEquals("qr.jpg", cleanArray[1].getName());
     }
 
     public void testClearObjectArray () {
-        
+        Object[] testArray = {
+                "test1",
+                null,
+                "",
+                new File(TestConfig.savePath + "/me.jpg")
+        };
+        Object[] cleanArray = ArrayTool.clearArray(testArray);
+        File fileObject = (File) cleanArray[2];
+        Assert.assertEquals(3, cleanArray.length);
+        Assert.assertEquals("test1", cleanArray[0]);
+        Assert.assertEquals("", cleanArray[1]);
+        Assert.assertEquals("me.jpg", fileObject.getName());
     }
 
 }
