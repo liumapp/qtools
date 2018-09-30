@@ -23,7 +23,7 @@ import java.util.TimeZone;
  */
 public class TimeZoneDateToolTest extends TestCase {
 
-    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss a";
+    public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss a";
 
     public void testGetSimpleShanghaiCurrentTime () {
         System.out.println(TimeZoneDateTool.getSimpleShangHaiCurrentTime());

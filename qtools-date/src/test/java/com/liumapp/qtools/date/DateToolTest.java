@@ -33,4 +33,16 @@ public class DateToolTest {
         System.out.println(result);
     }
 
+    @Test
+    public void testDateStringToDate () {
+        String dateString = TimeZoneDateTool.getShangHaiCurrentTime(
+                TimeZoneDateToolTest.DATE_FORMAT
+        );
+        System.out.println(dateString);
+        System.out.println(DateTool.getDateByTimeString(
+                dateString,
+                TimeZoneDateToolTest.DATE_FORMAT
+        ));
+    }
+
 }
