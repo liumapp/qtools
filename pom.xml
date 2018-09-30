@@ -42,6 +42,7 @@
     <module>qtools-http</module>
     <module>qtools-pic</module>
     <module>qtools-collection</module>
+    <module>qtools-all</module>
   </modules>
 
   <build>
