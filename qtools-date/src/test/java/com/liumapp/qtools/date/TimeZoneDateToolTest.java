@@ -39,6 +39,13 @@ public class TimeZoneDateToolTest extends TestCase {
 
     }
 
+    public void testGetCurrentTimeByZonedDate () {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        ZoneId shangHaiZoneId = ZoneId.of("Asia/Shanghai");
+        ZonedDateTime shangHaiZonedDateTime = localDateTime.atZone(shangHaiZoneId);
+        
+    }
+
     public void testZonedDateTime () {
 
         String dateInString = "22-1-2015 10:15:55 AM";
