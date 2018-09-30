@@ -1,7 +1,9 @@
 package com.liumapp.qtools.date;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * file TimeZoneDateTool.java
@@ -26,7 +28,7 @@ public class TimeZoneDateTool {
     }
 
     private static Date getTimeZoneDate (SimpleDateFormat formatter) {
-        Date date = new Date ();
+        Date date = new Date();
         return date;
     }
 

@@ -31,6 +31,14 @@ public class TimeZoneDateToolTest extends TestCase {
         System.out.println(date);
     }
 
+    public void testGetLocalTime () {
+        TimeZone tz = TimeZone.getTimeZone("GMT+1");
+        Calendar c = Calendar.getInstance(tz);
+
+        System.out.println(c.get(Calendar.HOUR_OF_DAY)+":"+c.get(Calendar.MINUTE)+":"+c.get(Calendar.SECOND));
+
+    }
+
     public void testZonedDateTime () {
 
         String dateInString = "22-1-2015 10:15:55 AM";
