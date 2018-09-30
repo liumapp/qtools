@@ -39,11 +39,20 @@ public class TimeZoneDateToolTest extends TestCase {
 
     }
 
+    /**
+     * the wrong used way
+     */
     public void testGetCurrentTimeByZonedDate () {
         LocalDateTime localDateTime = LocalDateTime.now();
         ZoneId shangHaiZoneId = ZoneId.of("Asia/Shanghai");
+        ZoneId newYorkZondId = ZoneId.of("America/New_York");
+        ZoneId singaPoreZondId = ZoneId.of("Asia/Singapore");
         ZonedDateTime shangHaiZonedDateTime = localDateTime.atZone(shangHaiZoneId);
-        
+        ZonedDateTime newYorkZonedDateTime = localDateTime.atZone(newYorkZondId);
+        ZonedDateTime singaPoreZonedDateTime = localDateTime.atZone(singaPoreZondId);
+        System.out.println(shangHaiZonedDateTime);
+        System.out.println(newYorkZonedDateTime);
+        System.out.println(singaPoreZonedDateTime);
     }
 
     public void testZonedDateTime () {
