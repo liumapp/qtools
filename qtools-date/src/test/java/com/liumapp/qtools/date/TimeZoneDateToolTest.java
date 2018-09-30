@@ -25,6 +25,12 @@ public class TimeZoneDateToolTest extends TestCase {
 
     private static final String DATE_FORMAT = "dd-M-yyyy hh:mm:ss a";
 
+    public void testDateTime () {
+        Date date = new Date();
+        System.out.println(date.getTime());
+        System.out.println(date);
+    }
+
     public void testZonedDateTime () {
 
         String dateInString = "22-1-2015 10:15:55 AM";

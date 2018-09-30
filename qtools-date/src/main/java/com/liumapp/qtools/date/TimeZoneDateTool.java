@@ -1,5 +1,8 @@
 package com.liumapp.qtools.date;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * file TimeZoneDateTool.java
  * author liumapp
@@ -10,6 +13,21 @@ package com.liumapp.qtools.date;
  */
 public class TimeZoneDateTool {
 
-    
+    private static final String DATE_FORMAT = "yyyy-M-dd HH:mm:ss";
+
+    public static Date getShangHaiDate (String dateFormat) {
+        SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+        return getTimeZoneDate(formatter);
+    }
+
+    public static Date getSimpleShangHaiDate () {
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
+        return getTimeZoneDate(formatter);
+    }
+
+    private static Date getTimeZoneDate (SimpleDateFormat formatter) {
+        Date date = new Date ();
+        return date;
+    }
 
 }
