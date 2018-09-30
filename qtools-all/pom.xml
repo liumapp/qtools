@@ -12,11 +12,6 @@
   <version>v1.2.0</version>
   <packaging>jar</packaging>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.8</java.version>
-  </properties>
-
   <developers>
     <developer>
       <name>liumapp</name>
@@ -30,61 +25,39 @@
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.7</version>
-      <scope>test</scope>
+      <groupId>com.liumapp.qtools.collection</groupId>
+      <artifactId>qtools-collection</artifactId>
+      <version>v1.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.liumapp.qtools.date</groupId>
+      <artifactId>qtools-date</artifactId>
+      <version>v1.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.liumapp.qtools.file</groupId>
+      <artifactId>qtools-file</artifactId>
+      <version>v1.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.liumapp.qtools.http</groupId>
+      <artifactId>qtools-http</artifactId>
+      <version>v1.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.liumapp.qtools.pic</groupId>
+      <artifactId>qtools-pic</artifactId>
+      <version>v1.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.liumapp.qtools.security.encrypt</groupId>
+      <artifactId>qtools-security-encrypt</artifactId>
+      <version>v1.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.liumapp.qtools.str</groupId>
+      <artifactId>qtools-str</artifactId>
+      <version>v1.2.0</version>
     </dependency>
   </dependencies>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <classpathPrefix>${basedir}/lib/</classpathPrefix>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>copy-dependencies</id>
-            <phase>package</phase>
-            <goals>
-              <goal>copy-dependencies</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${basedir}/target/lib</outputDirectory>
-              <overWriteReleases>false</overWriteReleases>
-              <overWriteSnapshots>false</overWriteSnapshots>
-              <overWriteIfNewer>true</overWriteIfNewer>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-          <encoding>UTF-8</encoding>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <configuration>
-          <encoding>UTF-8</encoding>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>
