@@ -64,4 +64,8 @@ public class DateTool {
         return localTime ;
     }
 
+    public static Date getDateByTimeString (String time) {
+        
+    }
+
 }
