@@ -2,6 +2,7 @@ package com.liumapp.qtools.date;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -30,6 +31,12 @@ public class TimeZoneDateTool {
     private static Date getTimeZoneDate (SimpleDateFormat formatter) {
         Date date = new Date();
         return date;
+    }
+
+    private static String getFormatDate (SimpleDateFormat formatter, TimeZone timeZone) {
+        Calendar calendar = Calendar.getInstance(timeZone);
+        formatter.setTimeZone(timeZone);
+        return formatter.format(calendar.getTime());
     }
 
 }
