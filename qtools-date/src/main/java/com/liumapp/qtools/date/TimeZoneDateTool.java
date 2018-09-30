@@ -2,6 +2,7 @@ package com.liumapp.qtools.date;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
@@ -16,21 +17,40 @@ import java.util.TimeZone;
  */
 public class TimeZoneDateTool {
 
-    private static final String DATE_FORMAT = "yyyy-M-dd HH:mm:ss";
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
-    public static Date getShangHaiDate (String dateFormat) {
+    /**
+     * get shang hai current time with custom dateFormat
+     */
+    public static String getShangHaiCurrentTime (String dateFormat) {
         SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
-        return getTimeZoneDate(formatter);
+        TimeZone timeZone = TimeZone.getTimeZone(ZoneId.of("Asia/Shanghai"));
+        return getFormatDate(formatter, timeZone);
     }
 
-    public static Date getSimpleShangHaiDate () {
+    /**
+     * get shang hai current time with dateFormat of yyyy-MM-dd HH:mm:ss
+     */
+    public static String getSimpleShangHaiCurrentTime () {
         SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
-        return getTimeZoneDate(formatter);
+        TimeZone timeZone = TimeZone.getTimeZone(ZoneId.of("Asia/Shanghai"));
+        return getFormatDate(formatter, timeZone);
     }
 
-    private static Date getTimeZoneDate (SimpleDateFormat formatter) {
-        Date date = new Date();
-        return date;
+    /**
+     * get custom zone current time with custom date format
+     */
+    public static String getCustomZoneCurrentTime (String dateFormat, TimeZone timeZone) {
+        SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+        return getFormatDate(formatter, timeZone);
+    }
+
+    /**
+     * get custom zone current time with dateFormat of yyyy-MM-dd HH:mm:ss
+     */
+    public static String getSimpleCustomZoneCurrentTime (TimeZone timeZone) {
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
+        return getFormatDate(formatter, timeZone);
     }
 
     private static String getFormatDate (SimpleDateFormat formatter, TimeZone timeZone) {
