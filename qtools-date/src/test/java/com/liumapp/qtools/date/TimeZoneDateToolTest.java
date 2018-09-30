@@ -25,6 +25,19 @@ public class TimeZoneDateToolTest extends TestCase {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
+    public void testGetSimpleShanghaiCurrentTime () {
+        System.out.println(TimeZoneDateTool.getSimpleShangHaiCurrentTime());
+    }
+
+    public void testGetCustomShanghaiCurrentTime () {
+        System.out.println(TimeZoneDateTool.getShangHaiCurrentTime("yyyy-MM-dd HH:mm:ss a"));
+    }
+
+    public void testGetSimpleCustomCurrentTime () {
+        System.out.println();
+    }
+
+
     public void testDateTime () {
         Date date = new Date();
         System.out.println(date.getTime());
