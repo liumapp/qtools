@@ -43,6 +43,7 @@
     <module>qtools-pic</module>
     <module>qtools-collection</module>
     <module>qtools-all</module>
+    <module>qtools-starter-all</module>
   </modules>
 
   <build>
