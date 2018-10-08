@@ -3,4 +3,4 @@
  * E-mail:liumapp.com@gmail.com
  * home-page:http://www.liumapp.com
  */
-package com.liumapp.qtools.starter;
+package com.liumapp.qtools.starter.springboot;
