@@ -4,12 +4,12 @@
   <parent>
     <artifactId>qtools</artifactId>
     <groupId>com.liumapp.qtools</groupId>
-    <version>v1.2.2</version>
+    <version>v1.2.3</version>
   </parent>
 
   <groupId>com.liumapp.qtools.all</groupId>
   <artifactId>qtools-all</artifactId>
-  <version>v1.2.2</version>
+  <version>v1.2.3</version>
   <packaging>jar</packaging>
 
   <developers>
@@ -27,37 +27,37 @@
     <dependency>
       <groupId>com.liumapp.qtools.collection</groupId>
       <artifactId>qtools-collection</artifactId>
-      <version>v1.2.2</version>
+      <version>v1.2.3</version>
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.date</groupId>
       <artifactId>qtools-date</artifactId>
-      <version>v1.2.2</version>
+      <version>v1.2.3</version>
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.file</groupId>
       <artifactId>qtools-file</artifactId>
-      <version>v1.2.2</version>
+      <version>v1.2.3</version>
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.http</groupId>
       <artifactId>qtools-http</artifactId>
-      <version>v1.2.2</version>
+      <version>v1.2.3</version>
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.pic</groupId>
       <artifactId>qtools-pic</artifactId>
-      <version>v1.2.2</version>
+      <version>v1.2.3</version>
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.security.encrypt</groupId>
       <artifactId>qtools-security-encrypt</artifactId>
-      <version>v1.2.2</version>
+      <version>v1.2.3</version>
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.str</groupId>
       <artifactId>qtools-str</artifactId>
-      <version>v1.2.2</version>
+      <version>v1.2.3</version>
     </dependency>
   </dependencies>
 </project>

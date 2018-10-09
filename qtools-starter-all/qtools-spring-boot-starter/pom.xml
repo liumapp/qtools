@@ -5,12 +5,12 @@
   <parent>
     <groupId>com.liumapp.qtools.starter</groupId>
     <artifactId>qtools-starter-all</artifactId>
-    <version>v1.2.2</version>
+    <version>v1.2.3</version>
   </parent>
 
   <groupId>com.liumapp.qtools.starter.springboot</groupId>
   <artifactId>qtools-spring-boot-starter</artifactId>
-  <version>v1.2.2</version>
+  <version>v1.2.3</version>
   <packaging>jar</packaging>
 
   <developers>
