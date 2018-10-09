@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Random;
 
 /**
  * author liumapp
@@ -55,6 +56,16 @@ public class FileTool {
             return file.isFile();
         }
         return createDir(file.getParentFile()) && file.createNewFile();
+    }
+
+    /**
+     * create a file , and the direcotory needs
+     * @return File object
+     */
+    public static File createFileObject (String savePath, String saveName) throws IOException {
+        File file = new File(savePath + "/" +saveName);
+        createFile(file);
+        return file;
     }
 
     /**
