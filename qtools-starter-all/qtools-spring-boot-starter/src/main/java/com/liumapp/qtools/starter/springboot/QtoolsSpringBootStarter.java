@@ -1,6 +1,7 @@
 package com.liumapp.qtools.starter.springboot;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * file QtoolsSpringBootStarter.java
@@ -10,7 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * homepage http://www.liumapp.com
  * date 2018/10/8
  */
-@SpringBootApplication
+@Configuration
+@ComponentScan(basePackages = {"com.liumapp.qtools.starter.springboot"})
 public class QtoolsSpringBootStarter {
 
 

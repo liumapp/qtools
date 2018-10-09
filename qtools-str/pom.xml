@@ -4,12 +4,12 @@
   <parent>
     <artifactId>qtools</artifactId>
     <groupId>com.liumapp.qtools</groupId>
-    <version>v1.2.1</version>
+    <version>v1.2.2</version>
   </parent>
 
   <groupId>com.liumapp.qtools.str</groupId>
   <artifactId>qtools-str</artifactId>
-  <version>v1.2.1</version>
+  <version>v1.2.2</version>
   <packaging>jar</packaging>
 
   <developers>
