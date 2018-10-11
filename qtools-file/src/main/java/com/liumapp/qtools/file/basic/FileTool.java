@@ -2,10 +2,7 @@ package com.liumapp.qtools.file.basic;
 
 import com.liumapp.qtools.str.basic.StrTool;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Random;
 
 /**
@@ -41,6 +38,21 @@ public class FileTool {
             bw.write(content);
             return true;
         }
+    }
+
+    /**
+     * create a file from input stream to savepath.
+     */
+    public static boolean createFileFromInputStream (InputStream is, String savePath) throws IOException {
+        byte[] buffer = new byte[is.available()];
+        is.read(buffer);
+
+        File targetFile = new File(savePath);
+        OutputStream outStream = new FileOutputStream(targetFile);
+        outStream.write(buffer);
+        outStream.close();
+        is.close();
+        return true;
     }
 
     /**

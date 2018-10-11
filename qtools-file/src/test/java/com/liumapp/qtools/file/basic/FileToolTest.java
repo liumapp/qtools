@@ -29,4 +29,8 @@ public class FileToolTest extends TestCase {
         Assert.assertEquals(false, FileTool.isDirectory(TestConfig.savePath + "/qq"));
     }
 
+    public void testInputSreamToFile () throws IOException {
+        
+    }
+
 }

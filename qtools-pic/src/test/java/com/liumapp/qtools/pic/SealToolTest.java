@@ -24,7 +24,6 @@ public class SealToolTest extends TestCase {
 //        try {
 //            SealTool.generateSealFile("第二次测试某某企业", savePath + "test.jpg");
 //        } catch ()
-
     }
 
 }
