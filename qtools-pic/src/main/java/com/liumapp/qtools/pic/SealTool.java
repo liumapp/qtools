@@ -1,5 +1,7 @@
 package com.liumapp.qtools.pic;
 
+import com.liumapp.qtools.file.basic.FileTool;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.font.FontRenderContext;
@@ -103,13 +105,9 @@ public class SealTool {
         return is;
     }
 
-    public static String generateSealFile (String companyName, String savePath) {
-        String before = "person/sign/";
-        int number = new Random().nextInt(8999)+1000;
-        String key =System.currentTimeMillis()+""+number+".png";
-        key = before+key;
+    public static String generateSealFile (String companyName, String savePath) throws IOException {
         InputStream is = getSealInputStream(companyName);
-        
+        FileTool.createFileFromInputStream(is, savePath);
         return "success";
     }
 
