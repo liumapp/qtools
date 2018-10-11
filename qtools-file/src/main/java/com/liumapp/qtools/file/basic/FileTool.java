@@ -44,9 +44,10 @@ public class FileTool {
      * create a file from input stream to savepath.
      */
     public static boolean createFileFromInputStream (InputStream is, String savePath) throws IOException {
+        if (is == null || savePath == null)
+            return false;
         byte[] buffer = new byte[is.available()];
         is.read(buffer);
-
         File targetFile = new File(savePath);
         createFile(targetFile);
         OutputStream outStream = new FileOutputStream(targetFile);
