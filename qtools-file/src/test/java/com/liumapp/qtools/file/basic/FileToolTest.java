@@ -33,7 +33,10 @@ public class FileToolTest extends TestCase {
 
     public void testInputSreamToFile () throws IOException {
         InputStream is = new FileInputStream(new File(TestConfig.savePath + "/me.jpg"));
-        FileTool.createFileFromInputStream(is, TestConfig.savePath + "/qq/tt/t.jpg");
+        Assert.assertEquals(true, FileTool.createFileFromInputStream(is, TestConfig.savePath + "/qq/tt/t.jpg"));
+        Assert.assertEquals(true, FileTool.isFileExists(TestConfig.savePath + "/qq/tt/t.jpg"));
+        FileTool.deleteDir(TestConfig.savePath + "/qq");
+        Assert.assertEquals(false, FileTool.isDirectory(TestConfig.savePath + "/qq"));
     }
 
 }
