@@ -103,7 +103,7 @@ public class SealTool {
         return is;
     }
 
-    public String generateAndUpload(String companyName) {
+    public static String generateAndUpload(String companyName) {
         String before = "person/sign/";
         int number = new Random().nextInt(8999)+1000;
         String key =System.currentTimeMillis()+""+number+".png";
@@ -111,6 +111,5 @@ public class SealTool {
         InputStream is = getSeal(companyName);
         return "success";
     }
-
 
 }
