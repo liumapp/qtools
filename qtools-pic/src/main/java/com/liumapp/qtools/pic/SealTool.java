@@ -55,10 +55,10 @@ public class SealTool {
 
         /*****************draw string******************/
         int fontSize = 30;
-        Font f = new Font("宋体", Font.PLAIN, fontSize);
+        Font f = new Font(null, Font.PLAIN, fontSize);
         FontRenderContext context = g2d.getFontRenderContext();
         //绘制中间的五角星
-        g2d.setFont(new Font("宋体", Font.BOLD, 150));
+        g2d.setFont(new Font(null, Font.BOLD, 150));
         int CENTERX = canvasWidth/2;//画图所出位置
         int CENTERY = canvasHeight/2;//画图所处位置
         g2d.drawString("★", CENTERX-(120/2)-15, CENTERY+(120/2));
@@ -69,7 +69,7 @@ public class SealTool {
         if (companyName.length() > 18) {
             fontSize = 40;
         }
-        f = new Font("宋体",Font.BOLD,fontSize);
+        f = new Font(null,Font.BOLD,fontSize);
         context = g2d.getFontRenderContext();
         Rectangle2D bounds = f.getStringBounds(companyName,context);
         double msgWidth = bounds.getWidth();
