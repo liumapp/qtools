@@ -22,6 +22,18 @@ public class SuffixTool {
     }
 
     /**
+     * is a specified string own it's suffix
+     */
+    public static boolean checkStringHasSuffix (String filename) {
+        if (filename == null)
+            return false;
+        String[] results = filename.split(".");
+        if (results.length == 1)
+            return false;
+        return true;
+    }
+
+    /**
      * is suffix begin with "."
      */
     public static boolean isSuffix (String suffix) {

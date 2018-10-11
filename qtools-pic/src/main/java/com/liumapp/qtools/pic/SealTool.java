@@ -106,6 +106,11 @@ public class SealTool {
     }
 
     public static String generateSealFile (String companyName, String savePath) throws IOException {
+        if (companyName == null || savePath == null)
+            throw new IOException("company name and save path can not be empty");
+
+
+
         InputStream is = getSealInputStream(companyName);
         FileTool.createFileFromInputStream(is, savePath);
         return "success";
