@@ -48,6 +48,7 @@ public class FileTool {
         is.read(buffer);
 
         File targetFile = new File(savePath);
+        createFile(targetFile);
         OutputStream outStream = new FileOutputStream(targetFile);
         outStream.write(buffer);
         outStream.close();

@@ -6,7 +6,9 @@ import junit.framework.TestCase;
 import org.junit.Assert;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * author liumapp
@@ -30,7 +32,8 @@ public class FileToolTest extends TestCase {
     }
 
     public void testInputSreamToFile () throws IOException {
-        
+        InputStream is = new FileInputStream(new File(TestConfig.savePath + "/me.jpg"));
+        FileTool.createFileFromInputStream(is, TestConfig.savePath + "/qq/tt/t.jpg");
     }
 
 }
