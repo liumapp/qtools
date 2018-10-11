@@ -26,10 +26,10 @@ public class SealTool {
 
     private static final int canvasWidth = 400;
     private static final int canvasHeight = 400;
-    private static final double lineArc = 80*(Math.PI/180);//角度转弧度
+    private static final double lineArc = 80 * (Math.PI/180);//角度转弧度
     private static final String center = "";
 
-    public static InputStream getSeal(String companyName){
+    public static InputStream getSealInputStream (String companyName) {
         BufferedImage bi = new BufferedImage(canvasWidth, canvasHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = bi.createGraphics();
         bi = g2d.getDeviceConfiguration().createCompatibleImage(canvasWidth, canvasHeight, Transparency.TRANSLUCENT);
@@ -103,12 +103,13 @@ public class SealTool {
         return is;
     }
 
-    public static String generateAndUpload(String companyName) {
+    public static String generateSealFile (String companyName, String savePath) {
         String before = "person/sign/";
         int number = new Random().nextInt(8999)+1000;
         String key =System.currentTimeMillis()+""+number+".png";
         key = before+key;
-        InputStream is = getSeal(companyName);
+        InputStream is = getSealInputStream(companyName);
+        
         return "success";
     }
 

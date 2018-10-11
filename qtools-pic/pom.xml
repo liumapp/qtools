@@ -34,5 +34,10 @@
       <artifactId>qtools-str</artifactId>
       <version>v1.2.4</version>
     </dependency>
+    <dependency>
+      <groupId>com.liumapp.qtools.file</groupId>
+      <artifactId>qtools-file</artifactId>
+      <version>v1.2.4</version>
+    </dependency>
   </dependencies>
 </project>
