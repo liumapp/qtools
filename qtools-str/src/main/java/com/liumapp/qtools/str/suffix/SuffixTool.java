@@ -18,8 +18,7 @@ public class SuffixTool {
             return false;
 
         suffix = buildSuffix(suffix);
-        String[] results = filename.split(suffix);
-        return true;
+        return filename.endsWith(suffix);
     }
 
     /**

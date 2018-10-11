@@ -5,6 +5,8 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.junit.Test;
 
+import java.io.IOException;
+
 /**
  * file SealToolTest.java
  * author liumapp
@@ -18,7 +20,7 @@ public class SealToolTest extends TestCase {
     private String savePath = "/usr/local/tomcat/project/qtools/data/";
 
     @Test
-    public void generateCompanySearl () {
+    public void generateCompanySearl () throws IOException {
         SealTool.generateSealFile("测试某某企业", savePath + "test.png");
         Assert.assertEquals(true, FileTool.isFileExists(savePath + "test.png"));
 //        try {
