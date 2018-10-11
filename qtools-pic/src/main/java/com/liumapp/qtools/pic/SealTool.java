@@ -1,6 +1,8 @@
 package com.liumapp.qtools.pic;
 
 import com.liumapp.qtools.file.basic.FileTool;
+import com.liumapp.qtools.str.basic.StrTool;
+import com.liumapp.qtools.str.suffix.SuffixTool;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -105,15 +107,22 @@ public class SealTool {
         return is;
     }
 
-    public static String generateSealFile (String companyName, String savePath) throws IOException {
+    public static boolean generateSealFile (String companyName, String savePath) throws IOException {
         if (companyName == null || savePath == null)
             throw new IOException("company name and save path can not be empty");
 
+        if (companyName.length() > 25) {
+            throw new IOException("company name can not exceed 25 chars");
+        }
 
+        if (SuffixTool.checkStringHasSuffix(savePath) && SuffixTool.checkStringSuffix(savePath, "png")) {
+            InputStream is = getSealInputStream(companyName);
+            FileTool.createFileFromInputStream(is, savePath);
+        } else {
+            throw new IOException("save file must be a png file");
+        }
 
-        InputStream is = getSealInputStream(companyName);
-        FileTool.createFileFromInputStream(is, savePath);
-        return "success";
+        return true;
     }
 
 }
