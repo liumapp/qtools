@@ -28,19 +28,18 @@
       <groupId>com.liumapp.qtools.str</groupId>
       <artifactId>qtools-str</artifactId>
       <version>v1.2.5</version>
-      <scope>compile</scope>
+
     </dependency>
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
       <version>2.4</version>
-      <scope>compile</scope>
+
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.collection</groupId>
       <artifactId>qtools-collection</artifactId>
       <version>v1.2.5</version>
-      <scope>compile</scope>
     </dependency>
   </dependencies>
 

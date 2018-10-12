@@ -28,19 +28,17 @@
       <groupId>com.google.zxing</groupId>
       <artifactId>javase</artifactId>
       <version>3.3.1</version>
-      <scope>compile</scope>
+
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.str</groupId>
       <artifactId>qtools-str</artifactId>
       <version>v1.2.5</version>
-      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>com.liumapp.qtools.file</groupId>
       <artifactId>qtools-file</artifactId>
       <version>v1.2.5</version>
-      <scope>compile</scope>
     </dependency>
   </dependencies>
 </project>
