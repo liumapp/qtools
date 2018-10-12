@@ -19,7 +19,7 @@ public class SealToolTest extends TestCase {
     private String savePath = "/usr/local/tomcat/project/qtools/data/";
 
     public void testGenerateCompanySearl () throws IOException {
-        SealTool.generateSealFile("广东某某网络技术有限公司", savePath + "test.png");
+        SealTool.generateSealFile("浙江葫芦娃网络集团有限公司", savePath + "test.png");
         Assert.assertEquals(true, FileTool.isFileExists(savePath + "test.png"));
 
         try {
