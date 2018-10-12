@@ -1,15 +1,4 @@
-# basic-maven-archetype
-Basic maven archetype for util project .
+# qtools-pic
 
-## how to use
+## 注意事项
 
-
-        mvn archetype:create-from-project
-        
-        cd target
-        
-        cd generated-sources
-        
-        cd archetype
-        
-        mvn install 
