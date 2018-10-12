@@ -30,7 +30,7 @@ public class FileManager {
 
     public void save (MultipartFile file) throws IOException {
         this.fileName = file.getOriginalFilename();
-        File destFile = new File(savePath + file.getOriginalFilename());
+        File destFile = new File(savePath + "/" + file.getOriginalFilename());
         file.transferTo(destFile);
     }
 
