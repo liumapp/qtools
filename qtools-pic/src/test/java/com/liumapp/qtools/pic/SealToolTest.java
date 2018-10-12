@@ -3,6 +3,7 @@ package com.liumapp.qtools.pic;
 import com.liumapp.qtools.file.basic.FileTool;
 import junit.framework.Assert;
 import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.io.IOException;
 
@@ -18,6 +19,7 @@ public class SealToolTest extends TestCase {
 
     private String savePath = "/usr/local/tomcat/project/qtools/data/";
 
+    @Test
     public void testGenerateCompanySearl () throws IOException {
         SealTool.generateSealFile("浙江葫芦娃网络集团有限公司", savePath + "test.png");
         Assert.assertEquals(true, FileTool.isFileExists(savePath + "test.png"));
@@ -35,7 +37,6 @@ public class SealToolTest extends TestCase {
             e.printStackTrace();
             Assert.assertEquals("company name can not exceed 25 chars", e.getMessage());
         }
-
 
     }
 
