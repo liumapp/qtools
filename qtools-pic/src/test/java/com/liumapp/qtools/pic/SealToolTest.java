@@ -21,20 +21,21 @@ public class SealToolTest extends TestCase {
 
     @Test
     public void testGenerateCompanySearl () throws IOException {
+        //生成宋体签章
         SealTool.generateSealFile("浙江葫芦娃网络集团有限公司", savePath + "test.png");
         Assert.assertEquals(true, FileTool.isFileExists(savePath + "test.png"));
+
+
 
         try {
             SealTool.generateSealFile("某某企业2号", savePath + "test.jpg");
         } catch (IOException e) {
-            e.printStackTrace();
             Assert.assertEquals("save file must be a png file", e.getMessage());
         }
 
         try {
             SealTool.generateSealFile("很长很长很长很长很长很长很长很长很长的企业名称呀呀呀呀", savePath + "test.png");
         } catch (IOException e) {
-            e.printStackTrace();
             Assert.assertEquals("company name can not exceed 25 chars", e.getMessage());
         }
 

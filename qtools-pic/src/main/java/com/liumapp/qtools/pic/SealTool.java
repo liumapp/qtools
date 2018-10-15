@@ -70,7 +70,7 @@ public class SealTool {
         if (companyName.length() > 18) {
             fontSize = 40;
         }
-        f = new Font("",Font.BOLD,fontSize);
+        f = new Font(fontName, Font.BOLD,fontSize);
         context = g2d.getFontRenderContext();
         Rectangle2D bounds = f.getStringBounds(companyName,context);
         double msgWidth = bounds.getWidth();
@@ -128,6 +128,20 @@ public class SealTool {
             InputStream is = getSealInputStream(companyName, null);
             FileTool.createFileFromInputStream(is, savePath);
         }
+
+        return true;
+    }
+
+    /**
+     * generate a seal pic with specified font
+     */
+    public static boolean generateSealFileWithSpecifiedFonts (String companyName, String savePath, String fontName) throws IOException {
+        if (checkParams(companyName, savePath)) {
+            InputStream is = getSealInputStream(companyName, fontName);
+            FileTool.createFileFromInputStream(is, savePath);
+        }
+
+        return true;
     }
 
     private static boolean checkParams (String companyName, String savePath) throws IOException {
