@@ -1,7 +1,6 @@
 package com.liumapp.qtools.pic;
 
 import com.liumapp.qtools.file.basic.FileTool;
-import com.liumapp.qtools.str.basic.StrTool;
 import com.liumapp.qtools.str.suffix.SuffixTool;
 
 import javax.imageio.ImageIO;
@@ -15,7 +14,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Random;
 
 /**
  * file SealTool.java
@@ -29,11 +27,14 @@ public class SealTool {
 
 
     private static final int canvasWidth = 400;
+
     private static final int canvasHeight = 400;
+
     private static final double lineArc = 80 * (Math.PI/180);//角度转弧度
+
     private static final String center = "";
 
-    public static InputStream getSealInputStream (String companyName) {
+    public static InputStream getSealInputStream (String companyName, String fontName) {
         BufferedImage bi = new BufferedImage(canvasWidth, canvasHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = bi.createGraphics();
         bi = g2d.getDeviceConfiguration().createCompatibleImage(canvasWidth, canvasHeight, Transparency.TRANSLUCENT);
@@ -55,10 +56,10 @@ public class SealTool {
 
         /*****************draw string******************/
         int fontSize = 30;
-        Font f = new Font("宋体", Font.PLAIN, fontSize);
+        Font f = new Font(fontName, Font.PLAIN, fontSize);
         FontRenderContext context = g2d.getFontRenderContext();
         //绘制中间的五角星
-        g2d.setFont(new Font("宋体", Font.BOLD, 150));
+        g2d.setFont(new Font(fontName, Font.BOLD, 150));
         int CENTERX = canvasWidth/2;//画图所出位置
         int CENTERY = canvasHeight/2;//画图所处位置
         g2d.drawString("★", CENTERX-(120/2)-15, CENTERY+(120/2));
@@ -69,7 +70,7 @@ public class SealTool {
         if (companyName.length() > 18) {
             fontSize = 40;
         }
-        f = new Font("宋体",Font.BOLD,fontSize);
+        f = new Font("",Font.BOLD,fontSize);
         context = g2d.getFontRenderContext();
         Rectangle2D bounds = f.getStringBounds(companyName,context);
         double msgWidth = bounds.getWidth();
@@ -107,7 +108,29 @@ public class SealTool {
         return is;
     }
 
+    /**
+     * generate a seal pic with simsun font .
+     */
     public static boolean generateSealFile (String companyName, String savePath) throws IOException {
+        if (checkParams(companyName, savePath)) {
+            InputStream is = getSealInputStream(companyName, "宋体");
+            FileTool.createFileFromInputStream(is, savePath);
+        }
+
+        return true;
+    }
+
+    /**
+     * generate a seal pic with default font
+     */
+    public static boolean generateDefaultSealFile (String companyName, String savePath) throws IOException {
+        if (checkParams(companyName, savePath)) {
+            InputStream is = getSealInputStream(companyName, null);
+            FileTool.createFileFromInputStream(is, savePath);
+        }
+    }
+
+    private static boolean checkParams (String companyName, String savePath) throws IOException {
         if (companyName == null || savePath == null)
             throw new IOException("company name and save path can not be empty");
 
@@ -116,13 +139,10 @@ public class SealTool {
         }
 
         if (SuffixTool.checkStringHasSuffix(savePath) && SuffixTool.checkStringSuffix(savePath, "png")) {
-            InputStream is = getSealInputStream(companyName);
-            FileTool.createFileFromInputStream(is, savePath);
+            return true;
         } else {
             throw new IOException("save file must be a png file");
         }
-
-        return true;
     }
 
 }
