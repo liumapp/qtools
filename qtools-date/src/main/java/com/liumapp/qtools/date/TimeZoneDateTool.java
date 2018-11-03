@@ -19,6 +19,10 @@ public class TimeZoneDateTool {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
+    public static String getDefaultDateFormat () {
+        return TimeZoneDateTool.DATE_FORMAT;
+    }
+
     /**
      * get shang hai current time with custom dateFormat
      */
