@@ -27,8 +27,29 @@ public class ArrayTool {
             return clearObjectArray(objects);
     }
 
-    public static int[][] searchIndexFromTwoDimensionalIntArray (int[][] array, int value) {
-//        int[][] index = new int[][](1,1);
+    /**
+     * search value in two-dimensional int array
+     * return postion array if founded
+     * else return null
+     */
+    public static int[] searchIndexFromTwoDimensionalIntArray (int[][] array, int value) {
+        int positionX = -1;
+        int positionY =  -1;
+        PARENT_LOOP: for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (array[i][j] == value) {
+                    positionX = i;
+                    positionY = j;
+                    break PARENT_LOOP;
+                }
+            }
+        }
+        if (positionX == -1 || positionY == -1) {
+            return null;
+        } else {
+            int[] result = {positionX, positionY};
+            return result;
+        }
     }
 
     private static Object[] clearObjectArray (Object[] objectsArray) {

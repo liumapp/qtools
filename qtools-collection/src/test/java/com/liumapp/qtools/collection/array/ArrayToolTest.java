@@ -53,4 +53,12 @@ public class ArrayToolTest extends TestCase {
         Assert.assertEquals("me.jpg", fileObject.getName());
     }
 
+    public void testSearchIndexFromTwoDimensionalIntArray () {
+        int[][] array = {{1,2,3,4}, {4,5,6,7,8,9}};
+        int value = 9;
+        int[] position = ArrayTool.searchIndexFromTwoDimensionalIntArray(array, value);
+        assertEquals(1, position[0]);
+        assertEquals(5, position[1]);
+    }
+
 }
