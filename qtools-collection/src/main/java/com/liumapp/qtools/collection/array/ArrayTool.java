@@ -27,6 +27,10 @@ public class ArrayTool {
             return clearObjectArray(objects);
     }
 
+    public static int[][] searchIndexFromTwoDimensionalIntArray (int[][] array, int value) {
+//        int[][] index = new int[][](1,1);
+    }
+
     private static Object[] clearObjectArray (Object[] objectsArray) {
         return Arrays.stream(objectsArray)
                 .filter(o -> (o != null))
@@ -44,5 +48,7 @@ public class ArrayTool {
                 .filter(f -> (f != null && f.length() > 0))
                 .toArray(File[]::new);
     }
+
+
 
 }
