@@ -19,7 +19,11 @@ import java.io.InputStream;
 public class Base64FileToolTest extends TestCase {
 
     public void testFilePathToBase64 () throws IOException {
-        System.out.println(Base64FileTool.filePathToBase64(TestConfig.savePath + "test.pdf"));
+        System.out.println(Base64FileTool.filePathToBase64(TestConfig.savePath + "me.jpg"));
+    }
+
+    public void testJPGToBase64ThanSaveToPNG () throws IOException {
+        Base64FileTool.saveBase64File(Base64FileTool.filePathToBase64(TestConfig.savePath + "me.jpg"), TestConfig.savePath + "/mock/me.png");
     }
 
     public void testBase64StringToFile () throws IOException {

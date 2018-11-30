@@ -28,7 +28,7 @@ public class ArrayTool {
     }
 
     /**
-     * search value in two-dimensional int array
+     * search the first value in two-dimensional int array
      * return postion array if founded
      * else return null
      */
