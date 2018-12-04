@@ -139,21 +139,29 @@ One difference is the fact that here the URLConnection class is used to control 
     connection.setReadTimeout(readTimeout);
              
 
-#### 1.4 Resumable Download
+#### 1.4 恢复下载
 
 Considering internet connections fail from time to time, it’s useful for us to be able to resume a download, instead of downloading the file again from byte zero.
 
+考虑到网络连接偶尔会有中断的情况，而网络中断后恢复下载明显要比重新下载要有效率的多
+
 Let’s rewrite the first example from earlier, to add this functionality.
 
+所以接下来记录如何实现恢复下载的功能
+
 The first thing we should know is that we can read the size of a file from a given URL without actually downloading it by using the HTTP HEAD method:
+
+首先要做的就是先记录下要下载文件的大小，这一步可以直接通过HTTP HEAD来获取:
 
     URL url = new URL(FILE_URL);
     HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
     httpConnection.setRequestMethod("HEAD");
-    long removeFileSize = httpConnection.getContentLengthLong();
+    long remoteFileSize = httpConnection.getContentLengthLong();
     
 Now that we have the total content size of the file, we can check whether our file is partially downloaded. 
 If so, we’ll resume the download from the last byte recorded on disk:
+
+
 
     long existingFileSize = outputFile.length();
     if (existingFileSize < fileLength) {
