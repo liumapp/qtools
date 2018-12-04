@@ -11,6 +11,7 @@ https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=154390047320
 The most basic API we can use to download a file is Java IO.
 We can use the URL class to open a connection to the file we want to download. 
 To effectively read the file, we’ll use the openStream() method to obtain an InputStream:
+
 就下载文件而言，一般最常使用的就是Java IO。直接用URL类就可以跟网络资源建立连接再下载，并通过openStream()方法来获得一个输入流。
 
     BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream());
@@ -26,11 +27,13 @@ When the JVM invokes the read() system call, the program execution context switc
 
 This context switch is expensive from a performance perspective. 
 When we read a large number of bytes, the application performance will be poor, due to a large number of context switches involved.
+
 从性能角度来看，这种上下文切换的成本是高昂的：比如我们在读取一个字节数很高的文件时，大量的上下文切换将会很影响程序性能。
 
-所以这里我们最好使用BufferedInputStream来规避这种情况
+所以这里我们最好使用BufferedInputStream来规避这种情况（具体原理请见下文）
 
-For writing the bytes read from the URL to our local file, we’ll use the write() method from the FileOutputStream class:    
+For writing the bytes read from the URL to our local file, we’ll use the write() method from the FileOutputStream class:
+    
 而要把读取到的URL文件字节写入到本地文件，一般直接用FileOutputSream类的write()方法就可以了：
 
     try (BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream());
@@ -47,6 +50,9 @@ For writing the bytes read from the URL to our local file, we’ll use the write
 When using a BufferedInputStream, the read() method will read as many bytes as we set for the buffer size. 
 In our example, we’re already doing this by reading blocks of 1024 bytes at a time, so BufferedInputStream isn’t necessary.
 
+在使用BufferedInputStream的时候，read()方法会根据我们设置的buffer size一次性读取等量的字节
+
+上面的示例代码里，dataBuffer已经规定了一次性读取1024个字节，所以就不需要再使用BufferedInputStream了
 
 The example above is very verbose, but luckily, as of Java 7, we have the Files class which contains helper methods for handling IO operations. 
 We can use the Files.copy() method to read all the bytes from an InputStream and copy them to a local file:    

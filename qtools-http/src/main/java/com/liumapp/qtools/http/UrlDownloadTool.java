@@ -10,6 +10,8 @@ package com.liumapp.qtools.http;
  */
 public class UrlDownloadTool {
 
+    public static void IODowload () {
 
+    }
 
 }
