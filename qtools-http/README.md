@@ -48,30 +48,25 @@
 
 ### 1.2 使用 NIO
 
-The Java NIO package offers the possibility to transfer bytes between 2 Channels without buffering them into the application memory.
-
-To read the file from our URL, we’ll create a new ReadableByteChannel from the URL stream:
-
-
+首先从URL stream中创建一个ReadableByteChannel来读取网络文件:
 
     ReadableByteChannel readableByteChannel = Channels.newChannel(url.openStream());
     
-The bytes read from the ReadableByteChannel will be transferred to a FileChannel corresponding to the file that will be downloaded:
+通过ReadableByteChannel读取到的字节会流动到一个FileChannel中，然后再关联一个本地文件进行下载操作:
 
     FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME);
     FileChannel fileChannel = fileOutputStream.getChannel();
     
-We’ll use the transferFrom() method from the ReadableByteChannel class to download the bytes from the given URL to our FileChannel:
+最后用transferFrom()方法就可以把ReadableByteChannel获取到的字节写入本地文件:
 
     fileOutputStream.getChannel()
         .transferFrom(readableByteChannel, 0, Long.MAX_VALUE);
         
-The transferTo() and transferFrom() methods are more efficient than simply reading from a stream using a buffer. 
-Depending on the underlying operating system, the data can be transferred directly from the filesystem cache to our file without copying any bytes into the application memory.
+transferTo()或者transferFrom()方法明显比之前的创建缓存区保存字节要有效率的多，因为数据可以直接移动到文件系统而不需要复制任何字节到程序的内存栈中
 
-On Linux and UNIX systems, these methods use the zero-copy technique that reduces the number of context switches between the kernel mode and user mode.                
+尤其是在Linux或者Unix操作系统中，这种方式使用了一种称之为zero-copy的技术，来减少上下文在内核模式和用户模式之间的切换次数
 
-### 1.3 Using Libraries
+### 1.3 使用第三方库
 
 We’ve seen in the examples above how we can download content from a URL just by using the Java core functionality. 
 We also can leverage the functionality of existing libraries to ease our work, when performance tweaks aren’t needed.
