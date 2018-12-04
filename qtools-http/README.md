@@ -4,8 +4,6 @@
 
 使用URL进行文件的下载工具类
 
-https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543900473203&di=5f61d97cc97d9eb509605ef25c6cace8&imgtype=0&src=http%3A%2F%2Fphotocdn.sohu.com%2F20150908%2Fmp31043208_1441704680666_3.png
-
 ### 1.1 使用JavaIO
 
 The most basic API we can use to download a file is Java IO.
@@ -50,9 +48,9 @@ For writing the bytes read from the URL to our local file, we’ll use the write
 When using a BufferedInputStream, the read() method will read as many bytes as we set for the buffer size. 
 In our example, we’re already doing this by reading blocks of 1024 bytes at a time, so BufferedInputStream isn’t necessary.
 
-在使用BufferedInputStream的时候，read()方法会根据我们设置的buffer size一次性读取等量的字节
+在使用BufferedInputStream的时候，read()方法会根据我们设置的buffer size一次性读取等量的字节（不设置的话，jkd1.8里是默认8192个字节）
 
-上面的示例代码里，dataBuffer已经规定了一次性读取1024个字节，所以就不需要再使用BufferedInputStream了
+上面的示例代码里，dataBuffer已经规定了一次性读取1024个字节，所以第二次读取的时候就不需要再使用BufferedInputStream了
 
 The example above is very verbose, but luckily, as of Java 7, we have the Files class which contains helper methods for handling IO operations. 
 We can use the Files.copy() method to read all the bytes from an InputStream and copy them to a local file:    
