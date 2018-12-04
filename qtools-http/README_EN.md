@@ -2,32 +2,22 @@
 
 ## 1. UrlDownloadTool
 
-使用URL进行文件的下载工具类
+### 1.1 Using Java IO
 
-https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543900473203&di=5f61d97cc97d9eb509605ef25c6cace8&imgtype=0&src=http%3A%2F%2Fphotocdn.sohu.com%2F20150908%2Fmp31043208_1441704680666_3.png
-
-### 1.1 使用JavaIO
-
-The most basic API we can use to download a file is Java IO.
+The most basic API we can use to download a file is Java IO. 
 We can use the URL class to open a connection to the file we want to download. 
 To effectively read the file, we’ll use the openStream() method to obtain an InputStream:
-就下载文件而言，一般最常使用的就是Java IO。直接用URL类就可以跟网络资源建立连接再下载，并通过openStream()方法来获得一个输入流。
 
     BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream());
     
 When reading from an InputStream, it’s recommended to wrap it in a BufferedInputStream to increase the performance.
+
 The performance increase comes from buffering. 
 When reading one byte at a time using the read() method, each method call implies a system call to the underlying file system. 
 When the JVM invokes the read() system call, the program execution context switches from user mode to kernel mode and back.
 
-上面的代码，我用到了BufferedInputStream，通过缓存的形式来提升性能：
-
-> 每一次用read()方法读取一个字节，都会调用一次底层文件系统，所以每当JVM调用read()的时候，程序执行上下文都会从用户模式切换到内核模式，执行结束后再切换回来。
-
 This context switch is expensive from a performance perspective. 
 When we read a large number of bytes, the application performance will be poor, due to a large number of context switches involved.
-
-
 
 For writing the bytes read from the URL to our local file, we’ll use the write() method from the FileOutputStream class:    
 
@@ -190,5 +180,10 @@ is that the FileOutputStream is opened with the append parameter set to true:
     OutputStream os = new FileOutputStream(FILE_NAME, true);
     
 After we’ve made this change the rest of the code is identical to the one we’ve seen in section 2.    
+
+
+
+
+
 
 
