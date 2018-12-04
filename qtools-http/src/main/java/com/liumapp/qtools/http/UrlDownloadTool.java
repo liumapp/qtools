@@ -17,7 +17,19 @@ import java.net.URL;
  */
 public class UrlDownloadTool {
 
-    public static void IODowload (String url, String saveFile) throws IOException {
+    /**
+     * download file from url to local file
+     * jkd1.7 or above
+     */
+    public static void IODownload (String url, String saveFile) {
+
+    }
+
+    /**
+     * download file from url to local file
+     * works fine in jdk1.6
+     */
+    public static void IODownloadForJDK6 (String url, String saveFile) throws IOException {
         BufferedInputStream in = new BufferedInputStream(new URL(url).openStream());
         FileOutputStream fileOutputStream = new FileOutputStream(saveFile);
         byte dataBuffer[] = new byte[1024];

@@ -53,7 +53,11 @@ In our example, we’re already doing this by reading blocks of 1024 bytes at a 
 上面的示例代码里，dataBuffer已经规定了一次性读取1024个字节，所以第二次读取的时候就不需要再使用BufferedInputStream了
 
 The example above is very verbose, but luckily, as of Java 7, we have the Files class which contains helper methods for handling IO operations. 
-We can use the Files.copy() method to read all the bytes from an InputStream and copy them to a local file:    
+We can use the Files.copy() method to read all the bytes from an InputStream and copy them to a local file:
+
+上面那个示范代码其实是针对jdk1.6等版本的，jkd1.7以后，实现同样的功能不需要这么啰嗦了
+
+一个Files.copy()方法就可以搞定    
 
     InputStream in = new URL(FILE_URL).openStream();
     Files.copy(in, Paths.get(FILE_NAME), StandardCopyOption.REPLACE_EXISTING);
