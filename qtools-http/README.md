@@ -6,32 +6,18 @@
 
 ### 1.1 使用JavaIO
 
-The most basic API we can use to download a file is Java IO.
-We can use the URL class to open a connection to the file we want to download. 
-To effectively read the file, we’ll use the openStream() method to obtain an InputStream:
-
 就下载文件而言，一般最常使用的就是Java IO。直接用URL类就可以跟网络资源建立连接再下载，并通过openStream()方法来获得一个输入流。
 
     BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream());
     
-When reading from an InputStream, it’s recommended to wrap it in a BufferedInputStream to increase the performance.
-The performance increase comes from buffering. 
-When reading one byte at a time using the read() method, each method call implies a system call to the underlying file system. 
-When the JVM invokes the read() system call, the program execution context switches from user mode to kernel mode and back.
-
 上面的代码，我用到了BufferedInputStream，通过缓存的形式来提升性能：
 
 > 每一次用read()方法读取一个字节时，都会调用一次底层文件系统，所以每当JVM调用read()的时候，程序执行上下文都会从用户模式切换到内核模式，执行结束后再切换回来。
-
-This context switch is expensive from a performance perspective. 
-When we read a large number of bytes, the application performance will be poor, due to a large number of context switches involved.
 
 从性能角度来看，这种上下文切换的成本是高昂的：比如我们在读取一个字节数很高的文件时，大量的上下文切换将会很影响程序性能。
 
 所以这里我们最好使用BufferedInputStream来规避这种情况（具体原理请见下文）
 
-For writing the bytes read from the URL to our local file, we’ll use the write() method from the FileOutputStream class:
-    
 而要把读取到的URL文件字节写入到本地文件，一般直接用FileOutputSream类的write()方法就可以了：
 
     try (BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream());
@@ -45,15 +31,9 @@ For writing the bytes read from the URL to our local file, we’ll use the write
         // handle exception
     }
     
-When using a BufferedInputStream, the read() method will read as many bytes as we set for the buffer size. 
-In our example, we’re already doing this by reading blocks of 1024 bytes at a time, so BufferedInputStream isn’t necessary.
-
 在使用BufferedInputStream的时候，read()方法会根据我们设置的buffer size一次性读取等量的字节（不设置的话，jkd1.8里是默认8192个字节）
 
 上面的示例代码里，dataBuffer已经规定了一次性读取1024个字节，所以第二次读取的时候就不需要再使用BufferedInputStream了
-
-The example above is very verbose, but luckily, as of Java 7, we have the Files class which contains helper methods for handling IO operations. 
-We can use the Files.copy() method to read all the bytes from an InputStream and copy them to a local file:
 
 上面那个示范代码其实是针对jdk1.6等版本的，jkd1.7以后，实现同样的功能不需要这么啰嗦了
 
@@ -62,18 +42,17 @@ We can use the Files.copy() method to read all the bytes from an InputStream and
     InputStream in = new URL(FILE_URL).openStream();
     Files.copy(in, Paths.get(FILE_NAME), StandardCopyOption.REPLACE_EXISTING);
     
-Our code works well but can be improved. 
-Its main drawback is the fact that the bytes are buffered into memory.
+使用Java IO实现网络资源的下载就是这么简单，不过它也有缺点：所有的缓存字节都会直接存储在内存中
 
-Fortunately, Java offers us the NIO package that has methods to transfer bytes directly between 2 Channels without buffering.
+而使用NIO的话，我们就不需要用到缓存，而是直接从两个通道进行字节的流动    
 
-We’ll go into details in the next section.    
-
-### 1.2 Using NIO
+### 1.2 使用 NIO
 
 The Java NIO package offers the possibility to transfer bytes between 2 Channels without buffering them into the application memory.
 
 To read the file from our URL, we’ll create a new ReadableByteChannel from the URL stream:
+
+
 
     ReadableByteChannel readableByteChannel = Channels.newChannel(url.openStream());
     

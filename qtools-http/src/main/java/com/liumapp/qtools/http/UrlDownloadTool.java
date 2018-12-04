@@ -1,11 +1,10 @@
 package com.liumapp.qtools.http;
 
-import java.io.BufferedInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
+import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 /**
  * file UrlDownloadTool.java
@@ -21,8 +20,9 @@ public class UrlDownloadTool {
      * download file from url to local file
      * jkd1.7 or above
      */
-    public static void IODownload (String url, String saveFile) {
-
+    public static void IODownload (String url, String saveFile) throws IOException {
+        InputStream in = new URL(url).openStream();
+        Files.copy(in, Paths.get(saveFile), StandardCopyOption.REPLACE_EXISTING);
     }
 
     /**
