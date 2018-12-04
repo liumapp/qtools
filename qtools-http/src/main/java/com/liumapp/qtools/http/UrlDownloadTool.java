@@ -38,6 +38,8 @@ public class UrlDownloadTool {
 
     }
 
+
+
     /**
      * download file from url to local file
      * jkd1.7 or above

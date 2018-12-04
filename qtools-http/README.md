@@ -65,91 +65,12 @@
 transferTo()或者transferFrom()方法明显比之前的创建缓存区保存字节要有效率的多，因为数据可以直接移动到文件系统而不需要复制任何字节到程序的内存栈中
 
 尤其是在Linux或者Unix操作系统中，这种方式使用了一种称之为zero-copy的技术，来减少上下文在内核模式和用户模式之间的切换次数
-
-### 1.3 使用第三方库
-
-We’ve seen in the examples above how we can download content from a URL just by using the Java core functionality. 
-We also can leverage the functionality of existing libraries to ease our work, when performance tweaks aren’t needed.
-
-For example, in a real-world scenario, we’d need our download code to be asynchronous.
-
-We could wrap all the logic into a Callable, or we could use an existing library for this.
-
-#### 1.3.1 Async HTTP Client
-
-AsyncHttpClient is a popular library for executing asynchronous HTTP requests using the Netty framework. 
-We can use it to execute a GET request to the file URL and get the file content.
-
-First, we need to create an HTTP client:
-
-    AsyncHttpClient client = Dsl.asyncHttpClient();
-    
-The downloaded content will be placed into a FileOutputStream:
-
-    FileOutputStream stream = new FileOutputStream(FILE_NAME);
-    
-Next, we create an HTTP GET request and register an AsyncCompletionHandler handler to process the downloaded content:
-
-    client.prepareGet(FILE_URL).execute(new AsyncCompletionHandler<FileOutputStream>() {
-     
-        @Override
-        public State onBodyPartReceived(HttpResponseBodyPart bodyPart) 
-          throws Exception {
-            stream.getChannel().write(bodyPart.getBodyByteBuffer());
-            return State.CONTINUE;
-        }
-     
-        @Override
-        public FileOutputStream onCompleted(Response response) 
-          throws Exception {
-            return stream;
-        }
-    })        
-
-Notice that we’ve overridden the onBodyPartReceived() method. 
-The default implementation accumulates the HTTP chunks received into an ArrayList. 
-This could lead to high memory consumption, or an OutOfMemory exception when trying to download a large file.
-
-Instead of accumulating each HttpResponseBodyPart into memory, we use a FileChannel to write the bytes to our local file directly. 
-We’ll use the getBodyByteBuffer() method to access the body part content through a ByteBuffer.
-
-ByteBuffers have the advantage that the memory is allocated outside of the JVM heap, so it doesn’t affect out applications memory.
-
-#### 1.3.2 Apache Commons IO
-
-Another highly used library for IO operation is Apache Commons IO. 
-We can see from the Javadoc that there’s a utility class named FileUtils that is used for general file manipulation tasks.
-
-To download a file from a URL, we can use this one-liner:
-
-    FileUtils.copyURLToFile(
-      new URL(FILE_URL), 
-      new File(FILE_NAME), 
-      CONNECT_TIMEOUT, 
-      READ_TIMEOUT);
-      
-From a performance standpoint, this code is the same as the one we’ve exemplified in section 2.
-
-The underlying code uses the same concepts of reading in a loop some bytes from an InputStream and writing them to an OutputStream.
-
-One difference is the fact that here the URLConnection class is used to control the connection timeouts so that the download doesn’t block for a large amount of time:
-
-    URLConnection connection = source.openConnection();
-    connection.setConnectTimeout(connectionTimeout);
-    connection.setReadTimeout(readTimeout);
-             
-
-#### 1.4 恢复下载
-
-Considering internet connections fail from time to time, it’s useful for us to be able to resume a download, instead of downloading the file again from byte zero.
+       
+### 1.3 恢复下载
 
 考虑到网络连接偶尔会有中断的情况，而网络中断后恢复下载明显要比重新下载要有效率的多
 
-Let’s rewrite the first example from earlier, to add this functionality.
-
 所以接下来记录如何实现恢复下载的功能
-
-The first thing we should know is that we can read the size of a file from a given URL without actually downloading it by using the HTTP HEAD method:
 
 首先要做的就是先记录下要下载文件的大小，这一步可以直接通过HTTP HEAD来获取:
 
@@ -158,10 +79,9 @@ The first thing we should know is that we can read the size of a file from a giv
     httpConnection.setRequestMethod("HEAD");
     long remoteFileSize = httpConnection.getContentLengthLong();
     
-Now that we have the total content size of the file, we can check whether our file is partially downloaded. 
-If so, we’ll resume the download from the last byte recorded on disk:
+拿到要下载的文件大小后，就可以对文件是否下载完成进行判断
 
-
+如何没有下载完成，那么第二次下载直接从最新的一个字节开始下载即可:
 
     long existingFileSize = outputFile.length();
     if (existingFileSize < fileLength) {
@@ -171,17 +91,9 @@ If so, we’ll resume the download from the last byte recorded on disk:
         );
     }    
 
-What happens here is that we’ve configured the URLConnection to request the file bytes in a specific range. 
-The range will start from the last downloaded byte and will end at the byte corresponding to the size of the remote file.
-
-Another common way to use the Range header is for downloading a file in chunks by setting different byte ranges. 
-For example, to download 2 KB file, we can use the range 0 – 1024 and 1024 – 2048.
-
-Another subtle difference from the code at section 2. 
-is that the FileOutputStream is opened with the append parameter set to true:
+剩下的事情跟前面介绍的方法一样，唯一要改动的代码就是:
 
     OutputStream os = new FileOutputStream(FILE_NAME, true);
     
-After we’ve made this change the rest of the code is identical to the one we’ve seen in section 2.    
 
 
