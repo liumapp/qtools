@@ -22,17 +22,19 @@ When the JVM invokes the read() system call, the program execution context switc
 
 上面的代码，我用到了BufferedInputStream，通过缓存的形式来提升性能：
 
-> 每一次用read()方法读取一个字节，都会调用一次底层文件系统，所以每当JVM调用read()的时候，程序执行上下文都会从用户模式切换到内核模式，执行结束后再切换回来。
+> 每一次用read()方法读取一个字节时，都会调用一次底层文件系统，所以每当JVM调用read()的时候，程序执行上下文都会从用户模式切换到内核模式，执行结束后再切换回来。
 
 This context switch is expensive from a performance perspective. 
 When we read a large number of bytes, the application performance will be poor, due to a large number of context switches involved.
+从性能角度来看，这种上下文切换的成本是高昂的：比如我们在读取一个字节数很高的文件时，大量的上下文切换将会很影响程序性能。
 
-
+所以这里我们最好使用BufferedInputStream来规避这种情况
 
 For writing the bytes read from the URL to our local file, we’ll use the write() method from the FileOutputStream class:    
+而要把读取到的URL文件字节写入到本地文件，一般直接用FileOutputSream类的write()方法就可以了：
 
     try (BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream());
-      FileOutputStream fileOutputStream new FileOutputStream(FILE_NAME)) {
+      FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME)) {
         byte dataBuffer[] = new byte[1024];
         int bytesRead;
         while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
@@ -44,6 +46,7 @@ For writing the bytes read from the URL to our local file, we’ll use the write
     
 When using a BufferedInputStream, the read() method will read as many bytes as we set for the buffer size. 
 In our example, we’re already doing this by reading blocks of 1024 bytes at a time, so BufferedInputStream isn’t necessary.
+
 
 The example above is very verbose, but luckily, as of Java 7, we have the Files class which contains helper methods for handling IO operations. 
 We can use the Files.copy() method to read all the bytes from an InputStream and copy them to a local file:    
