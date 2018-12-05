@@ -39,4 +39,14 @@ public class FileToolTest extends TestCase {
         Assert.assertEquals(false, FileTool.isDirectory(TestConfig.savePath + "/qq"));
     }
 
+    /**
+     * 检查一个文件的父级目录是否存在
+     * 不存在则创建
+     * 创建失败则返回false
+     *
+     */
+    public void testCheckFilePath () {
+        FileTool.checkFilePath("");
+    }
+
 }

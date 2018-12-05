@@ -22,6 +22,24 @@ public class FileTool {
     }
 
     /**
+     * check the file path
+     * if not found , than create file path
+     * if can not create , than throw Error
+     * @return
+     */
+    public static boolean checkFilePath (String filePath) throws IOException {
+        if (filePath == null) {
+            return false;
+        }
+
+        if (!createFile(new File(filePath))) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * write string to a new file
      * @param file File object
      * @param content String content
