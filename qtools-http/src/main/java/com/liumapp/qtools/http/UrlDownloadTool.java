@@ -35,10 +35,7 @@ public class UrlDownloadTool {
             in.close();
             fileOutputStream.close();
         }
-
     }
-
-
 
     /**
      * download file from url to local file
