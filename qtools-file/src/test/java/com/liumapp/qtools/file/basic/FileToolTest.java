@@ -46,7 +46,7 @@ public class FileToolTest extends TestCase {
      *
      */
     public void testCheckFilePath () throws IOException {
-        if (!FileTool.checkFilePath("/usr/local/tomcat/project/qtools/data/tt/dd/")) {
+        if (!FileTool.checkFilePath("/usr/local/tomcat/project/qtools/data/tt/a")) {
             System.out.println("check file path failed , plz check the permission");
         }
     }
