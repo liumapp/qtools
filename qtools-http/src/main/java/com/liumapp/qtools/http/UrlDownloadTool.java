@@ -1,5 +1,8 @@
 package com.liumapp.qtools.http;
 
+import com.liumapp.qtools.file.basic.FileTool;
+
+import javax.naming.NoPermissionException;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -23,7 +26,11 @@ public class UrlDownloadTool {
     /**
      * download file from url to local file by NIO
      */
-    public static void NIODownload (String url, String savefile) throws IOException {
+    public static void NIODownload (String url, String savefile) throws IOException, NoPermissionException {
+        if (!FileTool.checkFilePath(savefile)) {
+            System.out.println("download failed, plz check your permission");
+            throw new NoPermissionException();
+        }
         InputStream in = new URL(url).openStream();
         ReadableByteChannel readableByteChannel = Channels.newChannel(in);
         FileOutputStream fileOutputStream = new FileOutputStream(savefile);
@@ -41,7 +48,11 @@ public class UrlDownloadTool {
      * download file from url to local file
      * jkd1.7 or above
      */
-    public static void IODownload (String url, String saveFile) throws IOException {
+    public static void IODownload (String url, String saveFile) throws IOException, NoPermissionException {
+        if (!FileTool.checkFilePath(saveFile)) {
+            System.out.println("download failed, plz check your permission");
+            throw new NoPermissionException();
+        }
         InputStream in = new URL(url).openStream();
         try {
             Files.copy(in, Paths.get(saveFile), StandardCopyOption.REPLACE_EXISTING);
@@ -55,7 +66,11 @@ public class UrlDownloadTool {
      * download file from url to local file
      * works fine in jdk1.6
      */
-    public static void IODownloadForJDK6 (String url, String saveFile) throws IOException {
+    public static void IODownloadForJDK6 (String url, String saveFile) throws IOException, NoPermissionException {
+        if (!FileTool.checkFilePath(saveFile)) {
+            System.out.println("download failed, plz check your permission");
+            throw new NoPermissionException();
+        }
         BufferedInputStream in = new BufferedInputStream(new URL(url).openStream());
         FileOutputStream fileOutputStream = new FileOutputStream(saveFile);
         try {
