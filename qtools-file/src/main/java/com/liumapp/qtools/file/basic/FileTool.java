@@ -25,14 +25,14 @@ public class FileTool {
      * check the file path
      * if not found , than create file path
      * if can not create , than throw Error
-     * @return
      */
     public static boolean checkFilePath (String filePath) throws IOException {
         if (filePath == null) {
             return false;
         }
 
-        if (!createFile(new File(filePath))) {
+        if (!createDir(new File(filePath))) {
+            System.out.println("create file path failed , plz check the permission");
             return false;
         }
 
