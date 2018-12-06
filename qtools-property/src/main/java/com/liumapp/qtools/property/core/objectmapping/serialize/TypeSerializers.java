@@ -1,32 +1,9 @@
-/*
- * Configurate
- * Copyright (C) zml and Configurate contributors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.liumapp.qtools.property.core.objectmapping.serialize;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.reflect.TypeToken;
-import ninja.leaping.configurate.ConfigurationNode;
-import ninja.leaping.configurate.SimpleConfigurationNode;
-import ninja.leaping.configurate.Types;
-import ninja.leaping.configurate.objectmapping.InvalidTypeException;
-import ninja.leaping.configurate.objectmapping.ObjectMapper;
-import ninja.leaping.configurate.objectmapping.ObjectMappingException;
-import ninja.leaping.configurate.util.EnumLookup;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
@@ -42,6 +19,12 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 /**
+ * file TypeSerializers.java
+ * author liumapp
+ * github https://github.com/liumapp
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/12/6
  * A number of {@link TypeSerializer}s provided by configurate.
  */
 public class TypeSerializers {
