@@ -1,25 +1,15 @@
-/*
- * Configurate
- * Copyright (C) zml and Configurate contributors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.liumapp.qtools.property.core.transformation;
 
 import java.util.Comparator;
 
-import static ninja.leaping.configurate.transformation.ConfigurationTransformation.WILDCARD_OBJECT;
-
+/**
+ * file NodePathComparator.java
+ * author liumapp
+ * github https://github.com/liumapp
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2018/12/6
+ */
 class NodePathComparator implements Comparator<Object[]> {
 
     @Override
