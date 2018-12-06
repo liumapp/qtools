@@ -2,6 +2,8 @@ package com.liumapp.qtools.property.core.util;
 
 import com.google.common.collect.AbstractIterator;
 import com.google.common.collect.Iterators;
+import com.liumapp.qtools.property.core.ConfigurationNode;
+import com.liumapp.qtools.property.core.transformation.NodePath;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.*;
@@ -16,8 +18,6 @@ import java.util.function.BiConsumer;
  * date 2018/12/6
  * Represents a method for "walking" or traversing a {@link ConfigurationNode configuration}
  * structure.
- */
-
  */
 public abstract class ConfigurationNodeWalker {
 

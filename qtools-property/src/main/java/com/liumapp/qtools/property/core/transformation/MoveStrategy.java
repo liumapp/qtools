@@ -1,6 +1,8 @@
 package com.liumapp.qtools.property.core.transformation;
 
 
+import com.liumapp.qtools.property.core.ConfigurationNode;
+
 /**
  * file MoveStrategy.java
  * author liumapp

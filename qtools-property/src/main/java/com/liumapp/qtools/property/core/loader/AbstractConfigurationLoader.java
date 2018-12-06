@@ -2,10 +2,18 @@ package com.liumapp.qtools.property.core.loader;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
+import com.liumapp.qtools.property.core.ConfigurationNode;
+import com.liumapp.qtools.property.core.ConfigurationOptions;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Writer;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -186,14 +194,10 @@ public abstract class AbstractConfigurationLoader<NodeType extends Configuration
      * @param <T> The builders own type (for chaining using generic types)
      */
     protected static abstract class Builder<T extends Builder> {
-        @NonNull
-        protected HeaderMode headerMode = HeaderMode.PRESERVE;
-        @Nullable
-        protected Callable<BufferedReader> source;
-        @Nullable
-        protected Callable<BufferedWriter> sink;
-        @NonNull
-        protected ConfigurationOptions defaultOptions = ConfigurationOptions.defaults();
+        @NonNull protected HeaderMode headerMode = HeaderMode.PRESERVE;
+        @Nullable protected Callable<BufferedReader> source;
+        @Nullable protected Callable<BufferedWriter> sink;
+        @NonNull protected ConfigurationOptions defaultOptions = ConfigurationOptions.defaults();
 
         protected Builder() {}
 

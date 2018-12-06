@@ -2,6 +2,9 @@ package com.liumapp.qtools.property.core;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.reflect.TypeToken;
+import com.liumapp.qtools.property.core.loader.ConfigurationLoader;
+import com.liumapp.qtools.property.core.objectmapping.ObjectMappingException;
+import com.liumapp.qtools.property.core.objectmapping.serialize.TypeSerializer;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
@@ -39,7 +42,6 @@ import java.util.function.Supplier;
  */
 public interface ConfigurationNode {
     int NUMBER_DEF = 0;
-
     /**
      * Gets the "key" of this node.
      *

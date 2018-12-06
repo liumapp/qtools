@@ -1,6 +1,7 @@
 package com.liumapp.qtools.property.core.transformation;
 
 import com.google.common.collect.Iterators;
+import com.liumapp.qtools.property.core.ConfigurationNode;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Arrays;
@@ -165,10 +166,10 @@ public abstract class ConfigurationTransformation {
     }
 
     /**
-     * Implementation of {@link ninja.leaping.configurate.transformation.NodePath} used by this class.
+     * Implementation of {@link com.liumapp.qtools.property.core.transformation.NodePath} used by this class.
      */
     // TODO Remove usages of this class in favour of the NodePath interface (breaking change for 4.0)
-    public static final class NodePath implements ninja.leaping.configurate.transformation.NodePath {
+    public static final class NodePath implements com.liumapp.qtools.property.core.transformation.NodePath {
         Object[] arr;
 
         NodePath() {

@@ -1,5 +1,6 @@
 package com.liumapp.qtools.property.core.transformation;
 
+import com.liumapp.qtools.property.core.ConfigurationNode;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Arrays;

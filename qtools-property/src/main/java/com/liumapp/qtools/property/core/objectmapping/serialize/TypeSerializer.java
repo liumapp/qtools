@@ -1,6 +1,8 @@
 package com.liumapp.qtools.property.core.objectmapping.serialize;
 
 import com.google.common.reflect.TypeToken;
+import com.liumapp.qtools.property.core.ConfigurationNode;
+import com.liumapp.qtools.property.core.objectmapping.ObjectMappingException;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 

@@ -1,6 +1,7 @@
 package com.liumapp.qtools.property.core.transformation;
 
 import java.util.Comparator;
+import static com.liumapp.qtools.property.core.transformation.ConfigurationTransformation.*;
 
 /**
  * file NodePathComparator.java

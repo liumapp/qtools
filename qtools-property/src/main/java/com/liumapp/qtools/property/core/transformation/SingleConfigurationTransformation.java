@@ -1,5 +1,6 @@
 package com.liumapp.qtools.property.core.transformation;
 
+import com.liumapp.qtools.property.core.ConfigurationNode;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Arrays;
@@ -16,8 +17,6 @@ import java.util.Map;
  * Base implementation of {@link ConfigurationTransformation}.
  *
  * <p>Transformations are executed from deepest in the configuration hierarchy outwards.</p>
- */
-
  */
 class SingleConfigurationTransformation extends ConfigurationTransformation {
     private final MoveStrategy strategy;
