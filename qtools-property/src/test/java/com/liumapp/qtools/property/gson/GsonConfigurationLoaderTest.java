@@ -54,7 +54,7 @@ public class GsonConfigurationLoaderTest {
 
     @Test
     public void testSimpleLoading() throws IOException {
-        URL url = getClass().getResource("/example.json");
+        URL url = getClass().getResource("/gson/example.json");
         final File tmpFile = temporaryFolder.newFile("text1.txt");
         final Path tmpPath = Objects.requireNonNull(tmpFile, "file").toPath();
         ConfigurationLoader<ConfigurationNode> loader = GsonConfigurationLoader.builder()
@@ -95,7 +95,7 @@ public class GsonConfigurationLoaderTest {
 
     @Test
     public void testLoadingFileWithEmptyObject() throws IOException {
-        URL url = getClass().getResource("/emptyObject.json");
+        URL url = getClass().getResource("/gson/emptyObject.json");
         final File tmpFile = temporaryFolder.newFile("text4.txt");
         final Path tmpPath = Objects.requireNonNull(tmpFile, "file").toPath();
         ConfigurationLoader<ConfigurationNode> loader = GsonConfigurationLoader.builder()
