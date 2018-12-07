@@ -8,6 +8,7 @@ import org.junit.rules.TemporaryFolder;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Objects;
 
 /**
  * file AbstractConfigurationLoaderTest.java
@@ -25,7 +26,8 @@ public class AbstractConfigurationLoaderTest {
     @Test
     public void testLoadNonexistantPath () throws IOException {
         File tmpFile = folder.newFile("text5.txt");
-        TestConfigurationLoader loader = TestConfigurationLoader.builder().setFile(tmpFile).build();
+        Path tmpPath = Objects.requireNonNull(tmpFile, "file").toPath();
+        TestConfigurationLoader loader = TestConfigurationLoader.builder().setPath(tmpPath).build();
         loader.load();
     }
 
