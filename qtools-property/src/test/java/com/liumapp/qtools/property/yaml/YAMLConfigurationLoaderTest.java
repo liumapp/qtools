@@ -37,7 +37,6 @@ public class YAMLConfigurationLoaderTest {
         assertEquals("dragon", node.getNode("other", "op-level").getValue());
         assertEquals("dog park", node.getNode("other", "location").getValue());
 
-
         Function<Object, Map<String, List>> f = o -> (HashMap<String, List>)o;
         List<Map<String, List>> fooList = new ArrayList<>(node.getNode("foo").getList(f));
         assertEquals(0, fooList.get(0).get("bar").size());
