@@ -23,6 +23,10 @@ public class Base64FileTool {
         throw new UnsupportedOperationException("not allowed to initialize");
     }
 
+    public static String convertHexByteToBase64 (byte[] data) {
+
+    }
+
     /**
      * read file from file path , and return base64 value
      * @param path file path

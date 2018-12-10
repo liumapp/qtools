@@ -68,4 +68,15 @@ public class BinaryFileTool {
 
     }
 
+    /**
+     * convert binary bytes to hex bytex
+     */
+    public static byte[] convertBinaryByteToHexByte (byte[] data) {
+        StringBuilder sb = new StringBuilder();
+        for (byte b : data) {
+            sb.append(String.format("%02X ", b));
+        }
+        return sb.toString().getBytes();
+    }
+
 }
