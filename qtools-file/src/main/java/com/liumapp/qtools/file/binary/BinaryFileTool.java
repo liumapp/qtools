@@ -28,7 +28,6 @@ public class BinaryFileTool {
                 in = new BufferedInputStream(new FileInputStream(file));
                 int bufSize = 1024;
                 byte[] buffer = new byte[bufSize];
-                boolean var6 = false;
 
                 int len;
                 while(-1 != (len = in.read(buffer, 0, bufSize))) {
