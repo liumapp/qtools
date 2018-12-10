@@ -17,10 +17,6 @@ public class BinaryFileToolTest {
 
     private String dataPath = "/usr/local/tomcat/project/qtools/data/";
 
-    /**
-     *
-     * @throws IOException
-     */
     @Test
     public void testReadFileToBinaryBytes () throws IOException {
         byte[] fileBytes = BinaryFileTool.readFileByBytes(dataPath + "/me.jpg");
@@ -33,6 +29,13 @@ public class BinaryFileToolTest {
         String base64 = Base64FileTool.BinaryBytesToBase64(fileBytes);
         System.out.println(base64);
         System.out.println(base64.length());
+    }
+
+    @Test
+    public void testBase64ToBinaryBytes () throws IOException {
+        String base64 = Base64FileTool.filePathToBase64(dataPath + "/me.jpg");
+        byte[] data = BinaryFileTool.Base64ToBinaryBytes(base64);
+        System.out.println(data.length);
     }
 
 }

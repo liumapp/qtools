@@ -1,6 +1,7 @@
 package com.liumapp.qtools.file.binary;
 
 import java.io.*;
+import java.util.Base64;
 
 /**
  * file BinaryFileTool.java
@@ -63,10 +64,17 @@ public class BinaryFileTool {
             if (out != null) {
                 out.close();
             }
-
         }
-
     }
+
+    /**
+     * convert base64 string to binary bytes
+     */
+    public static byte[] Base64ToBinaryBytes (String base64) {
+        byte[] decode =  Base64.getDecoder().decode(base64);
+        return decode;
+    }
+
 
     /**
      * convert binary bytes to hex bytex
