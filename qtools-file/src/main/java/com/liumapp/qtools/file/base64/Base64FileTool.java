@@ -64,6 +64,14 @@ public class Base64FileTool {
     }
 
     /**
+     * convert binary bytes to base64 string
+     */
+    public static String BinaryBytesToBase64 (byte[] data) {
+        byte[] encoded = Base64.getEncoder().encode(data);
+        return new String(encoded);
+    }
+
+    /**
      * create file from base64
      * @param base64Content base64 content string
      * @param fileSavePath new file save path

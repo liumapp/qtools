@@ -1,5 +1,6 @@
 package com.liumapp.qtools.file.binary;
 
+import com.liumapp.qtools.file.base64.Base64FileTool;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -26,9 +27,12 @@ public class BinaryFileToolTest {
         System.out.println(fileBytes.length);//B
     }
 
+    @Test
     public void testConvertBinaryFileBytesToBase64 () throws IOException {
         byte[] fileBytes = BinaryFileTool.readFileByBytes(dataPath + "/me.jpg");
-        
+        String base64 = Base64FileTool.BinaryBytesToBase64(fileBytes);
+        System.out.println(base64);
+        System.out.println(base64.length());
     }
 
 }
