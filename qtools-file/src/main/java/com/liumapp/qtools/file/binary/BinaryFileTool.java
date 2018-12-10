@@ -3,14 +3,14 @@ package com.liumapp.qtools.file.binary;
 import java.io.*;
 
 /**
- * file BinaruFileTool.java
+ * file BinaryFileTool.java
  * author liumapp
  * github https://github.com/liumapp
  * email liumapp.com@gmail.com
  * homepage http://www.liumapp.com
  * date 2018/12/10
  */
-public class BinaruFileTool {
+public class BinaryFileTool {
 
     /**
      * read a file
