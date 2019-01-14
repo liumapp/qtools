@@ -25,7 +25,6 @@ import java.io.InputStream;
  */
 public class SealTool {
 
-
     private static final int canvasWidth = 400;
 
     private static final int canvasHeight = 400;
@@ -43,18 +42,16 @@ public class SealTool {
         g2d.setPaint(Color.WHITE);
         g2d.fillRect(canvasWidth, canvasWidth, canvasWidth, canvasWidth);
         int circleRadius = Math.min(canvasWidth,canvasHeight)/2;
-        /***********draw circle*************/
+        //draw circle
         g2d.setPaint(Color.red);
         g2d.setStroke(new BasicStroke(10));//设置画笔的粗度（也就是圆的）
         Shape circle = new Arc2D.Double(10,10,circleRadius*2-20,circleRadius*2-20,0,360,Arc2D.OPEN);
         g2d.draw(circle);
-        /************************************/
-        /***************draw line*******************/
+        //draw line
         double halfHeight = circleRadius * (Math.cos(lineArc));
         double halfWidth = circleRadius * (Math.sin(lineArc));
-        /***********************END********************/
 
-        /*****************draw string******************/
+        //draw string
         int fontSize = 30;
         Font f = new Font(fontName, Font.PLAIN, fontSize);
         FontRenderContext context = g2d.getFontRenderContext();
@@ -63,9 +60,8 @@ public class SealTool {
         int CENTERX = canvasWidth/2;//画图所出位置
         int CENTERY = canvasHeight/2;//画图所处位置
         g2d.drawString("★", CENTERX-(120/2)-15, CENTERY+(120/2));
-        /********************END*********************/
 
-        /***************draw string head**************/
+        //draw string head
         fontSize = 50;
         if (companyName.length() > 18) {
             fontSize = 40;
