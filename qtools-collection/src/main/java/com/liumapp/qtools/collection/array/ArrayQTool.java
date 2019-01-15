@@ -29,11 +29,12 @@ public class ArrayQTool {
      */
     public Object[] clearArray () {
         if (this.objects instanceof String[])
-            return clearStringArray( (String[]) this.objects);
+            this.objects = clearStringArray( (String[]) this.objects);
         else if (this.objects instanceof File[])
-            return clearFileArray( (File[]) this.objects);
+            this.objects = clearFileArray( (File[]) this.objects);
         else
-            return clearObjectArray(this.objects);
+            this.objects = clearObjectArray(this.objects);
+        return this.objects;
     }
 
     /**
