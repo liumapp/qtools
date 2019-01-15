@@ -26,6 +26,7 @@ public class ArrayToolTest extends TestCase {
         Assert.assertEquals(3, cleanArray.length);
     }
 
+    //清空File数组中的null值
     public void testClearFileArray () {
         File[] testArray = {
                 new File(TestConfig.savePath + "/me.jpg"),
@@ -39,6 +40,10 @@ public class ArrayToolTest extends TestCase {
         Assert.assertEquals("qr.jpg", cleanArray[1].getName());
     }
 
+    /**
+     * 清空Object数组中的null值
+     * 请注意，这个方法不能清空empty值
+     */
     public void testClearObjectArray () {
         Object[] testArray = {
                 "test1",
@@ -53,6 +58,7 @@ public class ArrayToolTest extends TestCase {
         Assert.assertEquals("", cleanArray[1]);
         Assert.assertEquals("me.jpg", fileObject.getName());
     }
+
 
     public void testSearchIndexFromTwoDimensionalIntArray () {
         int[][] array = {{1,2,3,4}, {4,5,6,7,8,9}};
