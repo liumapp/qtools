@@ -28,13 +28,17 @@ public class ArrayQTool {
      * support strings, files and objects .
      */
     public Object[] clearArray () {
+        this.clearObjects();
+        return this.objects;
+    }
+
+    public void clearObjects () {
         if (this.objects instanceof String[])
             this.objects = clearStringArray( (String[]) this.objects);
         else if (this.objects instanceof File[])
             this.objects = clearFileArray( (File[]) this.objects);
         else
             this.objects = clearObjectArray(this.objects);
-        return this.objects;
     }
 
     /**
