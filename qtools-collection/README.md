@@ -1,15 +1,15 @@
-# basic-maven-archetype
-Basic maven archetype for util project .
+# qtools-collection
 
-## how to use
+操作集合的工具库
 
+## 1. 特点
 
-        mvn archetype:create-from-project
-        
-        cd target
-        
-        cd generated-sources
-        
-        cd archetype
-        
-        mvn install 
+* 除去junit + mockito做单元测试外无其他第三方依赖
+
+* 所有方法均包含测试单元
+
+* 所有方法均包含文档说明
+
+## 2. 功能介绍
+
+### 2.1  

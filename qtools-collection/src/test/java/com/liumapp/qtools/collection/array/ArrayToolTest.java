@@ -16,6 +16,7 @@ import java.io.File;
  */
 public class ArrayToolTest extends TestCase {
 
+    //清空String数组中的null与empty值
     public void testClearStringArray () {
         String[] testArray = {"test1", "test2", null, "", "test3", null};
         String[] cleanArray = (String[]) ArrayTool.clearArray(testArray);
