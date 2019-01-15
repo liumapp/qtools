@@ -25,7 +25,7 @@ public class ArrayQTool {
     /**
      * clear array
      * remove empty and null elements
-     * support strings, files and objects .
+     * support strings, files and objects
      */
     public Object[] clearArray () {
         this.clearObjects();
