@@ -3,7 +3,6 @@ package com.liumapp.qtools.collection.array;
 import com.liumapp.qtools.collection.config.TestConfig;
 import junit.framework.Assert;
 import junit.framework.TestCase;
-
 import java.io.File;
 
 /**

@@ -13,6 +13,10 @@ import java.util.Arrays;
  */
 public class ArrayTool {
 
+    private ArrayTool () {
+        throw new UnsupportedOperationException("can not be initialized");
+    }
+
     /**
      * clear array
      * remove empty and null elements
