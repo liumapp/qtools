@@ -5,4 +5,4 @@ other:
     location: dog park
 
 foo:
-    bar: []
+    bar: ["apple","banana","human","man","woman"]

@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 
 /**
@@ -39,6 +40,17 @@ public class YAMLConfigurationLoaderTest {
 
         Function<Object, Map<String, List>> f = o -> (HashMap<String, List>)o;
         List<Map<String, List>> fooList = new ArrayList<>(node.getNode("foo").getList(f));
-        assertEquals(0, fooList.get(0).get("bar").size());
+        assertEquals(5, fooList.get(0).get("bar").size());
+    }
+
+    @Test
+    public void testOnlyList () throws IOException {
+        URL url = getClass().getResource("/yaml/example.yml");
+        ConfigurationLoader loader = YAMLConfigurationLoader.builder()
+                .setURL(url).build();
+        ConfigurationNode node = loader.load();
+        Function<Object, Map<String, List>> f = o -> (HashMap<String, List>)o;
+        List<Map<String, List>> list = new ArrayList<>(node.getNode("foo", "bar").getList(f));
+        assertEquals(5, list.size());
     }
 }
