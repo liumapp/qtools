@@ -1,0 +1,12 @@
+<server>
+    <id>ossrh</id>
+    <configuration>
+        <httpConfiguration>
+            <all>
+                <connectionTimeout>1200000</connectionTimeout>
+                <readTimeout>1200000</readTimeout>
+                <timeout>1200000</timeout>
+            </all>
+        </httpConfiguration>
+    </configuration>
+</server>
