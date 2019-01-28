@@ -134,7 +134,7 @@
   <scm>
     <connection>scm:git:https://github.com/liumapp/qtools.git</connection>
     <developerConnection>scm:git:https://github.com/liumapp/qtools.git</developerConnection>
-    <url>https://github.com/liumapp/qtools</url>
+    <url>https://github.com/liumapppwd/qtools</url>
     <tag>${project.version}</tag>
   </scm>
 
