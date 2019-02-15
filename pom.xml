@@ -4,7 +4,7 @@
 
   <groupId>com.liumapp.qtools</groupId>
   <artifactId>qtools</artifactId>
-  <version>v1.3.3</version>
+  <version>v1.3.4</version>
   <packaging>pom</packaging>
 
   <properties>
