@@ -53,7 +53,7 @@ public class FileToolTest extends TestCase {
     }
 
     /**
-     * 测试以字节的形式创建大文件
+     * 测试以字节数组的形式创建文件
      */
     public void testWriteFileAsBytes () throws IOException {
         byte[] bytes = new byte[ 1024 * 1024 * 2 ];
