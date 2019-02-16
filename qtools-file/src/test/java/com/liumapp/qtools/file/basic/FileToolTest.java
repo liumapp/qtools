@@ -56,7 +56,7 @@ public class FileToolTest extends TestCase {
      * 测试以字节的形式创建大文件
      */
     public void testWriteFileAsBytes () throws IOException {
-        byte[] bytes = new byte[ 1024 * 1024  * 2 ];
+        byte[] bytes = new byte[ 1024 * 1024 * 2 ];
         File file = new File("test.txt");
         FileTool.writeFileAsBytes(file.getAbsolutePath(), bytes);
         if (FileTool.createFile(file)) {
