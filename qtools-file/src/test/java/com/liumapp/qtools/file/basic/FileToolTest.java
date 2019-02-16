@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
 
 /**
  * author liumapp
@@ -54,8 +55,10 @@ public class FileToolTest extends TestCase {
     /**
      * 测试以字节的形式创建大文件
      */
-    public void testWriteFileAsBytes () {
-        
+    public void testWriteFileAsBytes () throws IOException {
+        byte[] bytes = new byte[200000];
+        FileTool.writeFileAsBytes(new File("test.txt").getAbsolutePath(), bytes);
+
     }
 
 }
