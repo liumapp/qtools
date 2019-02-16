@@ -51,4 +51,11 @@ public class FileToolTest extends TestCase {
         }
     }
 
+    /**
+     * 测试以字节的形式创建大文件
+     */
+    public void testWriteFileAsBytes () {
+        
+    }
+
 }
