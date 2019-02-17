@@ -3,6 +3,7 @@ package com.liumapp.qtools.file.basic;
 import junit.framework.TestCase;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -21,12 +22,18 @@ import java.util.List;
  */
 public class BigFileToolTest extends TestCase {
 
+    /**
+     * 创建一个2.67G大小的文件，用时2s613ms（i7）
+     * @throws IOException
+     */
     @Test
     public void testWriteBigFile () throws IOException {
         String str = "test content for writing long file \n";
-        long number_of_lines = 800_000_000;
-
+        long number_of_lines = 80_000_000;
         BigFileTool.createBigFileWithRepeatRow("testfile.txt", str, number_of_lines);
+        if (FileTool.isFileExists(new File("testfile.txt"))) {
+            FileTool.deleteFile(new File("testfile.txt"));
+        }
     }
 
 }
