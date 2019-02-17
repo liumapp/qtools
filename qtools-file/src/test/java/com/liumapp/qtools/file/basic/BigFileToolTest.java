@@ -23,16 +23,10 @@ public class BigFileToolTest extends TestCase {
 
     @Test
     public void testWriteBigFile () throws IOException {
-        byte[] buffer = "test content for writing long file \n".getBytes();
-        int number_of_lines = 8_000_000;
+        String str = "test content for writing long file \n";
+        long number_of_lines = 800_000_000;
 
-        FileChannel rwChannel = new RandomAccessFile("testfile.txt", "rw").getChannel();
-        ByteBuffer wrBuf = rwChannel.map(FileChannel.MapMode.READ_WRITE, 0, buffer.length * number_of_lines);
-        for (int i = 0; i < number_of_lines; i++)
-        {
-            wrBuf.put(buffer);
-        }
-        rwChannel.close();
+        BigFileTool.createBigFileWithRepeatRow("testfile.txt", str, number_of_lines);
     }
 
 }
