@@ -67,7 +67,6 @@ public class Base64FileTool {
         return new String(encoded);
     }
 
-
     /**
      * create file from base64
      * @param base64Content base64 content string
