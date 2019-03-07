@@ -96,7 +96,7 @@ public class ZipTool {
     }
 
     /**
-     * using password to unzip file into the current folder
+     * using password to zip file into the current folder
      * @param srcPath the file path to zip
      * @param password the password to zip , if don't need, then pass null
      * @return the save path of zip file
@@ -136,7 +136,7 @@ public class ZipTool {
         ZipParameters parameters = new ZipParameters();
         parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);
         parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
-        if (StrTool.isSpace(password)) {
+        if (!StrTool.isSpace(password)) {
             parameters.setEncryptFiles(true);
             parameters.setEncryptionMethod(Zip4jConstants.ENC_METHOD_STANDARD);
             parameters.setPassword(password.toCharArray());
