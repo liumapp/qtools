@@ -129,7 +129,7 @@ public class ZipTool {
      */
     public static String zip(String srcPath, String destPath, boolean isCreateDir, String password) throws ZipException, IOException {
         File srcFile = new File(srcPath);
-        FileTool.checkFilePath(destPath);
+        FileTool.createDestFolder(destPath);
         if (!SuffixTool.checkStringHasSuffix(destPath)) {
             destPath = srcFile.getName() + ".zip";
         }

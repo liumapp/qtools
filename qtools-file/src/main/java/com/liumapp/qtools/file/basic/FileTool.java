@@ -33,17 +33,25 @@ public class FileTool {
 
         File file = new File(filePath);
 
-        if (file.isDirectory()) {
-            createDir(file);
-            return true;
-        }
-
         if ( ! createDir(file.getParentFile())) {
             System.out.println("create file path failed , plz check the permission");
             return false;
         }
 
         return true;
+    }
+
+    public static void createDestFolder (String folderPath) {
+        File destDir = null;
+        if (folderPath.endsWith(File.separator)) {
+            destDir = new File(folderPath);
+        } else {
+            destDir = new File(folderPath.substring(0, folderPath.lastIndexOf(File.separator)));
+        }
+
+        if (!destDir.exists()) {
+            destDir.mkdirs();
+        }
     }
 
     /**

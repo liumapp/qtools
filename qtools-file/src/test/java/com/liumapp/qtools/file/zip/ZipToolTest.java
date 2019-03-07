@@ -26,9 +26,9 @@ public class ZipToolTest {
 
     @Test
     public void zip1() throws ZipException, IOException {
-        ZipTool.zip("../data", "../tmp/", null);
+        ZipTool.zip("../data", "../tmp/data.zip", null);
         Assert.assertEquals(true, FileTool.isFileExists("../tmp/data.zip"));
-        FileTool.deleteFile("../tmp/data.zip");
+        FileTool.deleteFile("../tmp");
     }
 
     @Test
