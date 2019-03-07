@@ -1,11 +1,10 @@
-package com.liumapp.qtools.collection.zip;
+package com.liumapp.qtools.file.zip;
 
+import com.liumapp.qtools.collection.zip.ZipTool;
 import net.lingala.zip4j.exception.ZipException;
 import org.junit.Test;
 
 import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 /**
  * file ZipToolTest.java
