@@ -27,10 +27,7 @@ public class ZipToolTest {
 
     @Test
     public void zip1() {
-    }
 
-    @Test
-    public void zip2() {
     }
 
     @Test
@@ -39,10 +36,6 @@ public class ZipToolTest {
 
     @Test
     public void unzip1() {
-    }
-
-    @Test
-    public void unzip2() {
     }
 
 }
