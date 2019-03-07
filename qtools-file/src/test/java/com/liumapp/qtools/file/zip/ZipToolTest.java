@@ -3,6 +3,7 @@ package com.liumapp.qtools.file.zip;
 import net.lingala.zip4j.exception.ZipException;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -17,7 +18,7 @@ public class ZipToolTest {
 
     @Test
     public void zip() throws ZipException, IOException {
-        ZipTool.zip("./data/", "123");
+        ZipTool.zip("../data", "123");
 
     }
 
