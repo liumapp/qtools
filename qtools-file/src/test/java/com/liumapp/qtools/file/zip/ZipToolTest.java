@@ -28,15 +28,18 @@ public class ZipToolTest {
     public void zip1() throws ZipException, IOException {
         ZipTool.zip("../data", "../tmp/data.zip", null);
         Assert.assertEquals(true, FileTool.isFileExists("../tmp/data.zip"));
-        FileTool.deleteFile("../tmp");
+        FileTool.deleteDir("../tmp");
     }
 
     @Test
-    public void unzip() {
+    public void unzip() throws ZipException, IOException {
+        ZipTool.zip("../data", "../tmp/data.zip", "123456");
+        Assert.assertEquals(true, FileTool.isFileExists("../tmp/data.zip"));
+        ZipTool.unzip("../tmp/data.zip", "../tmp/","123456");
+        Assert.assertEquals(true, FileTool.isFileExists("../tmp/data/"));
+        Assert.assertEquals(true, FileTool.isDirectory("../tmp/data/"));
+        FileTool.deleteDir("../tmp");
     }
 
-    @Test
-    public void unzip1() {
-    }
 
 }

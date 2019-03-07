@@ -42,6 +42,9 @@ public class FileTool {
     }
 
     public static void createDestFolder (String folderPath) {
+        if (StrTool.isSpace(folderPath)) {
+            return;
+        }
         File destDir = null;
         if (folderPath.endsWith(File.separator)) {
             destDir = new File(folderPath);
