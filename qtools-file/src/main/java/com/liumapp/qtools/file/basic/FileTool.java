@@ -33,6 +33,11 @@ public class FileTool {
 
         File file = new File(filePath);
 
+        if (file.isDirectory()) {
+            createDir(file);
+            return true;
+        }
+
         if ( ! createDir(file.getParentFile())) {
             System.out.println("create file path failed , plz check the permission");
             return false;
