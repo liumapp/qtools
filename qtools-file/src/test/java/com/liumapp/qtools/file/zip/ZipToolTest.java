@@ -5,7 +5,6 @@ import net.lingala.zip4j.exception.ZipException;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -26,8 +25,10 @@ public class ZipToolTest {
     }
 
     @Test
-    public void zip1() {
-
+    public void zip1() throws ZipException, IOException {
+        ZipTool.zip("../data", "../tmp/", null);
+        Assert.assertEquals(true, FileTool.isFileExists("../tmp/data.zip"));
+        FileTool.deleteFile("../tmp/data.zip");
     }
 
     @Test
