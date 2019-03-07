@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
 
 /**
  * author liumapp
@@ -48,6 +49,18 @@ public class FileToolTest extends TestCase {
     public void testCheckFilePath () throws IOException {
         if (!FileTool.checkFilePath("/usr/local/tomcat/project/qtools/data/tt/a")) {
             System.out.println("check file path failed , plz check the permission");
+        }
+    }
+
+    /**
+     * 测试以字节数组的形式创建文件
+     */
+    public void testWriteFileAsBytes () throws IOException {
+        byte[] bytes = new byte[ 1024 * 1024 * 2 ];
+        File file = new File("test.txt");
+        FileTool.writeFileAsBytes(file.getAbsolutePath(), bytes);
+        if (FileTool.createFile(file)) {
+            FileTool.deleteFile(file);
         }
     }
 

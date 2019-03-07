@@ -4,12 +4,12 @@
   <parent>
     <artifactId>qtools</artifactId>
     <groupId>com.liumapp.qtools</groupId>
-    <version>v1.3.4</version>
+    <version>v1.3.5</version>
   </parent>
 
   <groupId>com.liumapp.qtools.collection</groupId>
   <artifactId>qtools-collection</artifactId>
-  <version>v1.3.4</version>
+  <version>v1.3.5</version>
   <packaging>jar</packaging>
 
   <developers>
@@ -22,4 +22,12 @@
 
   <name>qtools-collection</name>
   <url>http://maven.apache.org</url>
+
+  <dependencies>
+    <dependency>
+      <groupId>net.lingala.zip4j</groupId>
+      <artifactId>zip4j</artifactId>
+      <version>1.3.2</version>
+    </dependency>
+  </dependencies>
 </project>
