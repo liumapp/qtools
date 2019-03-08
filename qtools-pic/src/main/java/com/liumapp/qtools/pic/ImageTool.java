@@ -56,7 +56,7 @@ public class ImageTool {
      * @param base64
      * @return
      */
-    public String rotate90(String base64) throws IOException {
+    public byte[] rotate90(String base64) throws IOException {
         byte[] bytes = null;
 
         String code = base64.replace(' ', '+');
@@ -69,7 +69,7 @@ public class ImageTool {
         ImageIO.write(bufferedImage, "png", os);//写入流中
         bytes = os.toByteArray();//转换成字节
 
-        return new String(bytes);
+        return bytes;
     }
 
     /**
