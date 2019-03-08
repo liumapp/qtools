@@ -2,7 +2,38 @@
 
 ## 功能
 
+### ImageTool
 
+#### base64格式的图片转BufferedImage
+
+````java
+String picBase64 = Base64FileTool.filePathToBase64("../data/me.jpg");
+BufferedImage image = ImageTool.readBase64Image(picBase64);
+````
+
+#### BufferedImage转base64字符串
+
+````java
+String picBase64 = Base64FileTool.filePathToBase64("../data/me.jpg");
+BufferedImage image = ImageTool.readBase64Image(picBase64);
+String base64 = ImageTool.convertBufferedImageToBase64(image, "png");
+````
+
+#### 对base64格式的图片进行旋转操作
+
+````java
+String picBase64 = Base64FileTool.filePathToBase64("../data/me.jpg");
+picBase64 = ImageTool.rotate90(picBase64);
+Base64FileTool.saveBase64File(picBase64, "./result.jpg");
+````
+
+或者
+
+````java
+String picBase64 = Base64FileTool.filePathToBase64("../data/me.jpg");
+picBase64 = ImageTool.rotate(picBase64, 90);
+Base64FileTool.saveBase64File(picBase64, "./result.jpg");
+````
 
 ## 注意事项
 

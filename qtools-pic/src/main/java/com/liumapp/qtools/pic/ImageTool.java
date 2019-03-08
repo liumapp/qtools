@@ -110,6 +110,12 @@ public class ImageTool {
         return convertBufferedImageToBase64(imageRotated);
     }
 
+    public static String rotate (String base64, double angle) throws IOException {
+        BufferedImage image = readBase64Image(base64);
+        BufferedImage imageRotated = roateImage(image, angle);
+        return convertBufferedImageToBase64(imageRotated);
+    }
+
     /**
      *
      * @param pic1 BufferedImage to rotate

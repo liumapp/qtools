@@ -33,6 +33,16 @@ public class ImageToolTest {
     }
 
     @Test
+    public void rotate () throws IOException {
+        String picBase64 = Base64FileTool.filePathToBase64("../data/me.jpg");
+        picBase64 = ImageTool.rotate(picBase64, 120);
+        Base64FileTool.saveBase64File(picBase64, "./result.jpg");
+        File file = new File("./result.jpg");
+        Assert.assertEquals(true, FileTool.isFileExists(file));
+        FileTool.deleteFile(file);
+    }
+
+    @Test
     public void testLoadPic () throws IOException {
         String picBase64 = Base64FileTool.filePathToBase64("../data/me.jpg");
         BufferedImage image = ImageTool.readBase64Image(picBase64);
