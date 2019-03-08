@@ -2,8 +2,12 @@ package com.liumapp.qtools.pic;
 
 import com.liumapp.qtools.file.base64.Base64FileTool;
 import com.liumapp.qtools.file.basic.FileTool;
+import org.junit.Assert;
 import org.junit.Test;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 import static org.junit.Assert.*;
@@ -21,7 +25,6 @@ public class ImageToolTest {
     @Test
     public void rotate90() throws IOException {
         String picBase64 = Base64FileTool.filePathToBase64("../data/me.jpg");
-
         picBase64 = ImageTool.rotate90(picBase64);
         Base64FileTool.saveBase64File(picBase64, "./result.jpg");
     }
@@ -29,7 +32,10 @@ public class ImageToolTest {
     @Test
     public void testLoadPic () throws IOException {
         String picBase64 = Base64FileTool.filePathToBase64("../data/me.jpg");
-
-
+        BufferedImage image = ImageTool.readBase64Image(picBase64);
+        String base64 = ImageTool.convertBufferedImageToBase64(image, "png");
+        Base64FileTool.saveBase64File(base64, "./result.jpg");
+        Assert.assertEquals(true, FileTool.isFileExists(new File("./result.jpg")));
+        FileTool.deleteFile(new File("./result.jpg"));
     }
 }

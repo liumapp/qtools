@@ -56,36 +56,58 @@ public class ImageTool {
     }
 
     /**
+     * read base64 image to BufferedImage
+     * @param base64Pic the base64 of image
+     * @return BufferedImage object
+     * @throws IOException io exception
+     */
+    public static BufferedImage readBase64Image (String base64Pic) throws IOException {
+        BufferedImage image = null;
+        byte[] imageByte;
+        ByteArrayInputStream bis;
+        imageByte = Base64.getDecoder().decode(base64Pic);
+
+        bis = new ByteArrayInputStream(imageByte);
+        image = ImageIO.read(bis);
+        bis.close();
+
+        return image;
+    }
+
+    public static String convertBufferedImageToBase64 (BufferedImage image) throws IOException {
+        return convertBufferedImageToBase64(image, "png");
+    }
+
+    /**
+     * convert BufferedImage object to base64 string
+     * @param image BufferedImage object
+     * @param format png,jpeg,gif
+     * @return the base64 string
+     * @throws IOException IOException
+     */
+    public static String convertBufferedImageToBase64 (BufferedImage image, String format) throws IOException {
+        String imageString = null;
+        byte[] imageBytes;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+        ImageIO.write(image, format, bos);
+        imageBytes = bos.toByteArray();
+        bos.close();
+
+        imageString = Base64.getEncoder().encodeToString(imageBytes);
+
+        return imageString;
+    }
+
+    /**
      * 图片旋转90度
      * @param base64 pic file base64 to convertion
      * @return String base64 after convertion
      */
     public static String rotate90(String base64) throws IOException {
-        BufferedImage image = null;
-        byte[] imageByte;
-        BASE64Decoder decoder = new BASE64Decoder();
-        imageByte = decoder.decodeBuffer(base64);
-        ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
-        image = ImageIO.read(bis);
-        bis.close();
-//        image = roateImage(image, 270);
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ImageIO.write(image, "png", bos);
-        String result = bos.toString();
-        String result2 = new String(bos.toByteArray(), "UTF-8");
-        return new BASE64Encoder().encode(new String(bos.toByteArray(), "UTF-8").getBytes());
-//        byte[] bytes = null;
-//
-////        String code = base64.replace(' ', '+');
-//        bytes = Base64.getDecoder().decode(base64);
-//        BufferedImage bufferedImage = null;
-//        bufferedImage = ImageIO.read(new ByteArrayInputStream(bytes)); // 读取该图片
-//        //顺时针旋转90度
-////        bufferedImage = roateImage(bufferedImage, 270);
-//        ByteArrayOutputStream os = new ByteArrayOutputStream();
-//        ImageIO.write(bufferedImage, "png", os);//写入流中
-//
-//        return Base64.getEncoder().encodeToString(os.toByteArray());
+        BufferedImage image = readBase64Image(base64);
+        BufferedImage imageRotated = roateImage(image, 90);
+        return convertBufferedImageToBase64(imageRotated);
     }
 
     /**
@@ -124,70 +146,6 @@ public class ImageTool {
             }
         }
         return pic2;
-    }
-
-    /**
-     * 对图片进行旋转
-     *
-     * @param src   被旋转图片
-     * @param angel 旋转角度
-     * @return 旋转后的图片
-     */
-    public static BufferedImage rotate(Image src, int angel) {
-        int src_width = src.getWidth(null);
-        int src_height = src.getHeight(null);
-
-        System.out.println(src_height   +""+ src_width);
-        // 计算旋转后图片的尺寸
-        Rectangle rect_des = calcRotatedSize(new Rectangle(new Dimension(
-                src_width, src_height)), angel);
-        BufferedImage res = null;
-        res = new BufferedImage(rect_des.width, rect_des.height,
-                BufferedImage.TYPE_INT_RGB);
-        Graphics2D g2 = res.createGraphics();
-        res = g2.getDeviceConfiguration().createCompatibleImage(src_height,src_width,Transparency.TRANSLUCENT);
-        g2.dispose();
-        g2 = res.createGraphics();
-        // 进行转换
-        g2.translate((rect_des.width - src_width) / 2,
-                (rect_des.height - src_height) / 2);
-        g2.rotate(Math.toRadians(angel), src_width / 2, src_height / 2);
-
-        g2.drawImage(src, null, null);
-        return res;
-    }
-
-    /**
-     * 计算旋转后的图片
-     *
-     * @param src   被旋转的图片
-     * @param angel 旋转角度
-     * @return 旋转后的图片
-     */
-    public static Rectangle calcRotatedSize(Rectangle src, int angel) {
-        // 如果旋转的角度大于90度做相应的转换
-        if (angel >= 90) {
-            if (angel / 90 % 2 == 1) {
-                int temp = src.height;
-                src.height = src.width;
-                src.width = temp;
-            }
-            angel = angel % 90;
-        }
-
-        double r = Math.sqrt(src.height * src.height + src.width * src.width) / 2;
-        double len = 2 * Math.sin(Math.toRadians(angel) / 2) * r;
-        double angel_alpha = (Math.PI - Math.toRadians(angel)) / 2;
-        double angel_dalta_width = Math.atan((double) src.height / src.width);
-        double angel_dalta_height = Math.atan((double) src.width / src.height);
-
-        int len_dalta_width = (int) (len * Math.cos(Math.PI - angel_alpha
-                - angel_dalta_width));
-        int len_dalta_height = (int) (len * Math.cos(Math.PI - angel_alpha
-                - angel_dalta_height));
-        int des_width = src.width + len_dalta_width * 2;
-        int des_height = src.height + len_dalta_height * 2;
-        return new Rectangle(new Dimension(des_width, des_height));
     }
 
 }
