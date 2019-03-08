@@ -1,11 +1,15 @@
 package com.liumapp.qtools.pic;
 
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
+
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReadParam;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.WritableRaster;
 import java.io.*;
 import java.util.Base64;
 
@@ -53,23 +57,73 @@ public class ImageTool {
 
     /**
      * 图片旋转90度
-     * @param base64
-     * @return
+     * @param base64 pic file base64 to convertion
+     * @return String base64 after convertion
      */
-    public byte[] rotate90(String base64) throws IOException {
-        byte[] bytes = null;
+    public static String rotate90(String base64) throws IOException {
+        BufferedImage image = null;
+        byte[] imageByte;
+        BASE64Decoder decoder = new BASE64Decoder();
+        imageByte = decoder.decodeBuffer(base64);
+        ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+        image = ImageIO.read(bis);
+        bis.close();
+//        image = roateImage(image, 270);
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ImageIO.write(image, "png", bos);
+        String result = bos.toString();
+        String result2 = new String(bos.toByteArray(), "UTF-8");
+        return new BASE64Encoder().encode(new String(bos.toByteArray(), "UTF-8").getBytes());
+//        byte[] bytes = null;
+//
+////        String code = base64.replace(' ', '+');
+//        bytes = Base64.getDecoder().decode(base64);
+//        BufferedImage bufferedImage = null;
+//        bufferedImage = ImageIO.read(new ByteArrayInputStream(bytes)); // 读取该图片
+//        //顺时针旋转90度
+////        bufferedImage = roateImage(bufferedImage, 270);
+//        ByteArrayOutputStream os = new ByteArrayOutputStream();
+//        ImageIO.write(bufferedImage, "png", os);//写入流中
+//
+//        return Base64.getEncoder().encodeToString(os.toByteArray());
+    }
 
-        String code = base64.replace(' ', '+');
-        bytes = Base64.getDecoder().decode(code);
-        BufferedImage bufferedImage = null;
-        bufferedImage = ImageIO.read(new ByteArrayInputStream(bytes)); // 读取该图片
-        //顺时针旋转90度
-        bufferedImage = rotate(bufferedImage, 270);
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
-        ImageIO.write(bufferedImage, "png", os);//写入流中
-        bytes = os.toByteArray();//转换成字节
+    /**
+     *
+     * @param pic1 BufferedImage to rotate
+     * @param angle angle to rotate
+     * @return BufferedImage
+     * @throws IOException IOException
+     */
+    public static BufferedImage roateImage(BufferedImage pic1, double angle) throws IOException {
+        int width = pic1.getWidth(null);
+        int height = pic1.getHeight(null);
 
-        return bytes;
+        angle = Math.toRadians(angle);
+        double sin = Math.sin(angle);
+        double cos = Math.cos(angle);
+        double x0 = 0.5 * (width - 1);     // point to rotate about
+        double y0 = 0.5 * (height - 1);     // center of image
+
+        WritableRaster inRaster = pic1.getRaster();
+        BufferedImage pic2 = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        WritableRaster outRaster = pic2.getRaster();
+        int[] pixel = new int[3];
+
+        // rotation
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                double a = x - x0;
+                double b = y - y0;
+                int xx = (int) (+a * cos - b * sin + x0);
+                int yy = (int) (+a * sin + b * cos + y0);
+
+                if (xx >= 0 && xx < width && yy >= 0 && yy < height) {
+                    outRaster.setPixel(x, y, inRaster.getPixel(xx, yy, pixel));
+                }
+            }
+        }
+        return pic2;
     }
 
     /**
@@ -79,7 +133,7 @@ public class ImageTool {
      * @param angel 旋转角度
      * @return 旋转后的图片
      */
-    private static BufferedImage rotate(Image src, int angel) {
+    public static BufferedImage rotate(Image src, int angel) {
         int src_width = src.getWidth(null);
         int src_height = src.getHeight(null);
 
