@@ -100,7 +100,7 @@ public class ImageTool {
     }
 
     /**
-     * 图片旋转90度
+     * rotate pic 90 angle
      * @param base64 pic file base64 to convertion
      * @return String base64 after convertion
      */

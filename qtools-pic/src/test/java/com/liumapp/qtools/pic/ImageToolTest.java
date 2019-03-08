@@ -27,6 +27,9 @@ public class ImageToolTest {
         String picBase64 = Base64FileTool.filePathToBase64("../data/me.jpg");
         picBase64 = ImageTool.rotate90(picBase64);
         Base64FileTool.saveBase64File(picBase64, "./result.jpg");
+        File file = new File("./result.jpg");
+        Assert.assertEquals(true, FileTool.isFileExists(file));
+        FileTool.deleteFile(file);
     }
 
     @Test

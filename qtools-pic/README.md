@@ -1,5 +1,9 @@
 # qtools-pic
 
+## 功能
+
+
+
 ## 注意事项
 
 * java-1.8/jre/lib/i386/libfontmanager.so: libgcc_s.so.1: 无法打开共享对象文件: 没有那个文件或目录
