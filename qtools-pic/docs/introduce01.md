@@ -4,7 +4,7 @@
 
 答案肯定是不需要的。
 
-首先，我们假设已经拿到了一张图片，他的base64信息存放在一个名为base64Pic对象中。
+首先，我们假设已经拿到了一张图片的base64值，并存放在一个名为base64Pic对象中。
 
 ````java
 String base64Pic;
@@ -15,6 +15,12 @@ String base64Pic;
 ![me.jpg](https://github.com/liumapp/qtools/blob/master/data/me.jpg?raw=true)
 
 现在我们要做的事情就是把它逆时针旋转90度，变成这样：
+
+![result.jpg](https://github.com/liumapp/qtools/blob/master/qtools-pic/docs/result.jpg?raw=true)
+
+
+
+
 
 
 
