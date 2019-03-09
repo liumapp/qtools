@@ -21,38 +21,6 @@ import java.util.Base64;
 public class ImageTool {
 
     /**
-     * 裁剪图片
-     *
-     * @param x
-     * @param y
-     * @param width
-     * @param height
-     * @param srcImage  原始图片
-     * @param distImage 目标图片
-     * @throws IOException
-     */
-    public static void cutImage(int x, int y, int width, int height, InputStream srcImage, File distImage) throws IOException {
-        ImageInputStream iis = null;
-        try {
-            ImageReader reader = ImageIO.getImageReadersByFormatName("jpg").next();//ImageReader声称能够解码指定格式
-            iis = ImageIO.createImageInputStream(srcImage); //获取图片流
-            reader.setInput(iis, true); //将iis标记为true（只向前搜索）意味着包含在输入源中的图像将只按顺序读取
-            ImageReadParam param = reader.getDefaultReadParam(); //指定如何在输入时从 Java Image I/O框架的上下文中的流转换一幅图像或一组图像
-            Rectangle rect = new Rectangle(x, y, width, height); //定义空间中的一个区域
-            param.setSourceRegion(rect); //提供一个 BufferedImage，将其用作解码像素数据的目标。
-            BufferedImage bi = reader.read(0, param); //读取索引imageIndex指定的对象
-            ImageIO.write(bi, "jpg", distImage); //保存新图片
-        } finally {
-            if (srcImage != null) {
-                srcImage.close();
-            }
-            if (iis != null) {
-                iis.close();
-            }
-        }
-    }
-
-    /**
      * read base64 image to BufferedImage
      * @param base64Pic the base64 of image
      * @return BufferedImage object
@@ -107,6 +75,13 @@ public class ImageTool {
         return convertBufferedImageToBase64(imageRotated);
     }
 
+    /**
+     *
+     * @param base64 the base64 value of the pic
+     * @param angle angle to be rotated
+     * @return the base64 of rotated pic
+     * @throws IOException io exception
+     */
     public static String rotate (String base64, double angle) throws IOException {
         BufferedImage image = readBase64Image(base64);
         BufferedImage imageRotated = roateImage(image, angle);
