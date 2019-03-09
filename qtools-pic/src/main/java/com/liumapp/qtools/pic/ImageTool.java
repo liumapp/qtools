@@ -96,7 +96,7 @@ public class ImageTool {
      */
     public static String rotate90(String base64) throws IOException {
         BufferedImage image = readBase64Image(base64);
-        BufferedImage imageRotated = roateImage(image, 90);
+        BufferedImage imageRotated = rotateImage(image, 90);
         return convertBufferedImageToBase64(imageRotated);
     }
 
@@ -109,7 +109,7 @@ public class ImageTool {
      */
     public static String rotate (String base64, double angle) throws IOException {
         BufferedImage image = readBase64Image(base64);
-        BufferedImage imageRotated = roateImage(image, angle);
+        BufferedImage imageRotated = rotateImage(image, angle);
         return convertBufferedImageToBase64(imageRotated);
     }
 
@@ -120,7 +120,7 @@ public class ImageTool {
      * @return BufferedImage
      * @throws IOException IOException
      */
-    public static BufferedImage roateImage(BufferedImage pic1, double angle) throws IOException {
+    public static BufferedImage rotateImage(BufferedImage pic1, double angle) throws IOException {
         int width = pic1.getWidth(null);
         int height = pic1.getHeight(null);
 
