@@ -10,8 +10,15 @@
 String base64Pic;
 ````
 
-图片为：
+图片长这个样子：
 
-瞄一眼它的base64：
+![me.jpg](https://github.com/liumapp/qtools/blob/master/data/me.jpg?raw=true)
+
+现在我们要做的事情就是把它逆时针旋转90度，变成这样：
+
+
+
+
+
 
 
