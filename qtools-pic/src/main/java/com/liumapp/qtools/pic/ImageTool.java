@@ -1,6 +1,10 @@
 package com.liumapp.qtools.pic;
 
 import javax.imageio.ImageIO;
+import javax.imageio.ImageReadParam;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.io.*;
@@ -15,6 +19,31 @@ import java.util.Base64;
  * date 2019/1/14
  */
 public class ImageTool {
+
+    /**
+     * todo
+     * cute the pic
+     */
+    public static void cutImage(int x, int y, int width, int height, InputStream srcImage, File distImage) throws IOException {
+        ImageInputStream iis = null;
+        try {
+            ImageReader reader = ImageIO.getImageReadersByFormatName("png").next();
+            iis = ImageIO.createImageInputStream(srcImage);
+            reader.setInput(iis, true);
+            ImageReadParam param = reader.getDefaultReadParam();
+            Rectangle rect = new Rectangle(x, y, width, height);
+            param.setSourceRegion(rect);
+            BufferedImage bi = reader.read(0, param);
+            ImageIO.write(bi, "png", distImage);
+        } finally {
+            if (srcImage != null) {
+                srcImage.close();
+            }
+            if (iis != null) {
+                iis.close();
+            }
+        }
+    }
 
     /**
      * read base64 image to BufferedImage
@@ -72,7 +101,7 @@ public class ImageTool {
     }
 
     /**
-     *
+     * rotate pic with specified angle
      * @param base64 the base64 value of the pic
      * @param angle angle to be rotated
      * @return the base64 of rotated pic
