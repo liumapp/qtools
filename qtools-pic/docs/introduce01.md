@@ -46,7 +46,7 @@ public static BufferedImage readBase64Image (String base64Pic) throws IOExceptio
 
 
 ````java
-public static BufferedImage roateImage(BufferedImage pic1, double angle) throws IOException {
+public static BufferedImage rotateImage(BufferedImage pic1, double angle) throws IOException {
     int width = pic1.getWidth(null);
     int height = pic1.getHeight(null);
 

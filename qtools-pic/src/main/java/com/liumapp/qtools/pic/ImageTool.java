@@ -123,12 +123,14 @@ public class ImageTool {
     public static BufferedImage rotateImage(BufferedImage pic1, double angle) throws IOException {
         int width = pic1.getWidth(null);
         int height = pic1.getHeight(null);
-
+        //change angle to radians (弧度)
         angle = Math.toRadians(angle);
         double sin = Math.sin(angle);
         double cos = Math.cos(angle);
-        double x0 = 0.5 * (width - 1);     // point to rotate about
-        double y0 = 0.5 * (height - 1);     // center of image
+        // point to rotate about
+        double x0 = 0.5 * (width - 1);
+        // center of image
+        double y0 = 0.5 * (height - 1);
 
         WritableRaster inRaster = pic1.getRaster();
         BufferedImage pic2 = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
