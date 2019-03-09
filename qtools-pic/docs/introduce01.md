@@ -18,6 +18,28 @@ String base64Pic;
 
 ![result.jpg](https://github.com/liumapp/qtools/blob/master/qtools-pic/docs/result.jpg?raw=true)
 
+首先需要解析图片的Base64值，把它变成awt包下的一个BufferedImage实例。
+
+因为BufferedImage可以通过一个字节输入流来创建，所以我们首先要解码图片的base64。
+
+当然，常见的解码方式除了jdk自带的Base64之外，也可以使用sun公司提供的。
+
+完成解码后，将获取图片的字节数组，通过一个字节输入流来读取它，并再通过ImageIO来创建最终的BufferedImage
+
+````java
+public static BufferedImage readBase64Image (String base64Pic) throws IOException {
+    BufferedImage image = null;
+    byte[] imageByte;
+    ByteArrayInputStream bis;
+    imageByte = Base64.getDecoder().decode(base64Pic);
+
+    bis = new ByteArrayInputStream(imageByte);
+    image = ImageIO.read(bis);
+    bis.close();
+
+    return image;
+}
+````
 
 
 
