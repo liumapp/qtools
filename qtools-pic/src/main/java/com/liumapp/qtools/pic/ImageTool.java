@@ -1,8 +1,5 @@
 package com.liumapp.qtools.pic;
 
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
-
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReadParam;
 import javax.imageio.ImageReader;
