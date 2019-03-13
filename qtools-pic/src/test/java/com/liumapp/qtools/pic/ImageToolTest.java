@@ -51,4 +51,5 @@ public class ImageToolTest {
         Assert.assertEquals(true, FileTool.isFileExists(new File("./result.jpg")));
         FileTool.deleteFile(new File("./result.jpg"));
     }
+
 }
