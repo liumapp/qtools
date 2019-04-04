@@ -2,6 +2,7 @@ package com.liumapp.qtools.pic;
 
 import com.liumapp.qtools.file.base64.Base64FileTool;
 import com.liumapp.qtools.file.basic.FileTool;
+import com.liumapp.qtools.str.basic.StrTool;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -38,6 +39,16 @@ public class ImageToolTest {
         picBase64 = ImageTool.rotate(picBase64, 120);
         Base64FileTool.saveBase64File(picBase64, "./result.jpg");
         File file = new File("./result.jpg");
+        Assert.assertEquals(true, FileTool.isFileExists(file));
+        FileTool.deleteFile(file);
+    }
+
+    @Test
+    public void rotateFromBase64 () throws IOException {
+        String picBase64 = Base64FileTool.filePathToBase64("../data/download.png");
+        picBase64 = ImageTool.rotate(picBase64, 135);
+        Base64FileTool.saveBase64File(picBase64, "./result2.png");
+        File file = new File("./result2.png");
         Assert.assertEquals(true, FileTool.isFileExists(file));
         FileTool.deleteFile(file);
     }

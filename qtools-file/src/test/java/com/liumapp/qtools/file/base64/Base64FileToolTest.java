@@ -8,6 +8,9 @@ import org.junit.Assert;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Base64;
 
 /**
  * author liumapp
@@ -24,6 +27,15 @@ public class Base64FileToolTest extends TestCase {
 
     public void testJPGToBase64ThanSaveToPNG () throws IOException {
         Base64FileTool.saveBase64File(Base64FileTool.filePathToBase64(TestConfig.savePath + "me.jpg"), TestConfig.savePath + "/mock/me.png");
+    }
+
+    public void testReadBase64FromFile () throws IOException {
+        String results = FileTool.readFileAsString(TestConfig.savePath + "base64.txt");
+        Base64FileTool.saveBase64File(results, TestConfig.savePath + "base64.png");
+    }
+
+    public void testNIOFilePath () throws IOException {
+        System.out.println(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(TestConfig.savePath + "me.jpg"))));
     }
 
     public void testBase64StringToFile () throws IOException {

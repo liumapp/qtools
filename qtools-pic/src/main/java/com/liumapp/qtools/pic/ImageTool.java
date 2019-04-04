@@ -135,7 +135,7 @@ public class ImageTool {
         WritableRaster inRaster = pic1.getRaster();
         BufferedImage pic2 = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         WritableRaster outRaster = pic2.getRaster();
-        int[] pixel = new int[3];
+        int[] pixel = new int[4];
 
         // rotation
         for (int x = 0; x < width; x++) {
