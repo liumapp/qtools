@@ -94,6 +94,26 @@ public class FileTool {
     }
 
     /**
+     * read file contens from input stream
+     * @param is input stream
+     * @return file contents string
+     * @throws IOException common io exception
+     */
+    public static String readFileFromInputStream (InputStream is) throws IOException {
+        if (is == null )
+            return "";
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        String line;
+        StringBuilder sb = new StringBuilder();
+        while ((line = reader.readLine()) != null)
+        {
+            sb.append(line + "\n");
+        }
+        reader.close();
+        return sb.toString();
+    }
+
+    /**
      * create a file , and the directory needs .
      * @param file file object
      * @return true/false

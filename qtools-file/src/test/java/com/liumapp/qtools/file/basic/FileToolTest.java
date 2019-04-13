@@ -22,12 +22,12 @@ public class FileToolTest extends TestCase {
 
     public void testWriteStringToFile () throws IOException {
         String str = "sdfsdffqwfasdfawefsadfsdf{dfefd}";
-        FileTool.writeStringToNewFile(new File(TestConfig.savePath + "test.txt"), str);
+        FileTool.writeStringToNewFile(new File("../data/test.txt"), str);
     }
 
     public void testCreateFileObject () throws IOException {
-        FileTool.createFileObject(TestConfig.savePath + "/qq/tt/", "aaa");
-        Assert.assertEquals(true, FileTool.isFileExists(TestConfig.savePath + "/qq/tt/aaa"));
+        FileTool.createFileObject("../data/qq/tt/", "aaa");
+        Assert.assertEquals(true, FileTool.isFileExists("../data/qq/tt/aaa"));
         FileTool.deleteDir(TestConfig.savePath + "/qq");
         Assert.assertEquals(false, FileTool.isDirectory(TestConfig.savePath + "/qq"));
     }
@@ -62,6 +62,10 @@ public class FileToolTest extends TestCase {
         if (FileTool.createFile(file)) {
             FileTool.deleteFile(file);
         }
+    }
+
+    public void testReadFileContentsFromInputStream () throws IOException {
+
     }
 
 }
