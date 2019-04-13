@@ -63,7 +63,10 @@ public class FileToolTest extends TestCase {
     }
 
     public void testReadFileContentsFromInputStream () throws IOException {
-
+        File file = new File("../data/test.txt");
+        InputStream is = new FileInputStream(file);
+        String contents = FileTool.readFileFromInputStream(is);
+        assertEquals("sdfsdffqwfasdfawefsadfsdf{dfefd}\n", contents);
     }
 
 }
