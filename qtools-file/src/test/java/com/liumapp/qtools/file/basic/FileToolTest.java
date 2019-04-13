@@ -28,16 +28,16 @@ public class FileToolTest extends TestCase {
     public void testCreateFileObject () throws IOException {
         FileTool.createFileObject("../data/qq/tt/", "aaa");
         Assert.assertEquals(true, FileTool.isFileExists("../data/qq/tt/aaa"));
-        FileTool.deleteDir(TestConfig.savePath + "/qq");
-        Assert.assertEquals(false, FileTool.isDirectory(TestConfig.savePath + "/qq"));
+        FileTool.deleteDir("../data/qq");
+        Assert.assertEquals(false, FileTool.isDirectory("../data/qq"));
     }
 
     public void testInputSreamToFile () throws IOException {
-        InputStream is = new FileInputStream(new File(TestConfig.savePath + "/me.jpg"));
-        Assert.assertEquals(true, FileTool.createFileFromInputStream(is, TestConfig.savePath + "/qq/tt/t.jpg"));
-        Assert.assertEquals(true, FileTool.isFileExists(TestConfig.savePath + "/qq/tt/t.jpg"));
-        FileTool.deleteDir(TestConfig.savePath + "/qq");
-        Assert.assertEquals(false, FileTool.isDirectory(TestConfig.savePath + "/qq"));
+        InputStream is = new FileInputStream(new File("../data/me.jpg"));
+        Assert.assertEquals(true, FileTool.createFileFromInputStream(is, "../data/qq/tt/t.jpg"));
+        Assert.assertEquals(true, FileTool.isFileExists("../data/qq/tt/t.jpg"));
+        FileTool.deleteDir("../data/qq");
+        Assert.assertEquals(false, FileTool.isDirectory("../data/qq"));
     }
 
     /**
