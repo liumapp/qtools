@@ -1,7 +1,6 @@
 package com.liumapp.qtools.file.base64;
 
 import com.liumapp.qtools.file.basic.FileTool;
-import com.liumapp.qtools.file.config.TestConfig;
 import com.liumapp.qtools.file.load.LoadFileTool;
 import junit.framework.TestCase;
 import org.junit.Assert;
@@ -22,38 +21,38 @@ import java.util.Base64;
 public class Base64FileToolTest extends TestCase {
 
     public void testFilePathToBase64 () throws IOException {
-        System.out.println(Base64FileTool.filePathToBase64(TestConfig.savePath + "me.jpg"));
+        System.out.println(Base64FileTool.filePathToBase64("../data/me.jpg"));
     }
 
     public void testJPGToBase64ThanSaveToPNG () throws IOException {
-        Base64FileTool.saveBase64File(Base64FileTool.filePathToBase64(TestConfig.savePath + "me.jpg"), TestConfig.savePath + "/mock/me.png");
+        Base64FileTool.saveBase64File(Base64FileTool.filePathToBase64("../data/me.jpg"), "../data/mock/me.png");
     }
 
     public void testReadBase64FromFile () throws IOException {
-        String results = FileTool.readFileAsString(TestConfig.savePath + "base64.txt");
-        Base64FileTool.saveBase64File(results, TestConfig.savePath + "base64.png");
+        String results = FileTool.readFileAsString("../data/base64.txt");
+        Base64FileTool.saveBase64File(results, "../data/base64.png");
     }
 
     public void testNIOFilePath () throws IOException {
-        System.out.println(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(TestConfig.savePath + "me.jpg"))));
+        System.out.println(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get("../data/me.jpg"))));
     }
 
     public void testBase64StringToFile () throws IOException {
-        String base64File = Base64FileTool.filePathToBase64(TestConfig.savePath + "test.pdf");
-        Base64FileTool.saveBase64File(base64File, TestConfig.savePath + "/tt/dd/out.pdf");
-        Assert.assertEquals(true, FileTool.isFileExists(TestConfig.savePath + "/tt/dd/out.pdf"));
-        FileTool.deleteDir(TestConfig.savePath + "/tt");
-        Assert.assertEquals(false, FileTool.isFileExists(TestConfig.savePath + "/tt/dd/out.pdf"));
+        String base64File = Base64FileTool.filePathToBase64("../data/test.pdf");
+        Base64FileTool.saveBase64File(base64File, "../data/tt/dd/out.pdf");
+        Assert.assertEquals(true, FileTool.isFileExists("../data/tt/dd/out.pdf"));
+        FileTool.deleteDir("../data/tt");
+        Assert.assertEquals(false, FileTool.isFileExists("../data/tt/dd/out.pdf"));
     }
 
     public void testInputStreamToBase64 () throws IOException {
         InputStream is = LoadFileTool.loadInputStream("test.pdf");
         try {
             String base64Content = Base64FileTool.inputStreamToBase64(is);
-            Base64FileTool.saveBase64File(base64Content, TestConfig.savePath + "/tt/dd/out.pdf");
-            Assert.assertEquals(true, FileTool.isFileExists(TestConfig.savePath + "/tt/dd/out.pdf"));
-            FileTool.deleteDir(TestConfig.savePath + "/tt");
-            Assert.assertEquals(false, FileTool.isFileExists(TestConfig.savePath + "/tt/dd/out.pdf"));
+            Base64FileTool.saveBase64File(base64Content, "../data/tt/dd/out.pdf");
+            Assert.assertEquals(true, FileTool.isFileExists("../data/tt/dd/out.pdf"));
+            FileTool.deleteDir("../data/tt");
+            Assert.assertEquals(false, FileTool.isFileExists("../data/tt/dd/out.pdf"));
         } finally {
             if (is != null) {
                 is.close();

@@ -1,7 +1,5 @@
 package com.liumapp.qtools.file.basic;
 
-import com.liumapp.qtools.file.config.TestConfig;
-import junit.framework.Test;
 import junit.framework.TestCase;
 import org.junit.Assert;
 
