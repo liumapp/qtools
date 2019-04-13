@@ -28,11 +28,6 @@ public class Base64FileToolTest extends TestCase {
         Base64FileTool.saveBase64File(Base64FileTool.filePathToBase64("../data/me.jpg"), "../data/mock/me.png");
     }
 
-    public void testReadBase64FromFile () throws IOException {
-        String results = FileTool.readFileAsString("../data/base64.txt");
-        Base64FileTool.saveBase64File(results, "../data/base64.png");
-    }
-
     public void testNIOFilePath () throws IOException {
         System.out.println(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get("../data/me.jpg"))));
     }
