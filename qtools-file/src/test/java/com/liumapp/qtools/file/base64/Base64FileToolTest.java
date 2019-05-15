@@ -75,9 +75,9 @@ public class Base64FileToolTest extends TestCase {
     public void testBase64ToByteArrayInputStreamAndThenByteArrayToBase64 () throws IOException {
         String fileBase64 = Base64FileTool.FileToBase64(new File("../data/test.pdf"));
         ByteArrayInputStream inputStream = Base64FileTool.decodeBase64ToInputStream(fileBase64);
-//        String destBase64 = Base64FileTool.ByteArrayToBase64(FileTool.(inputStream).getBytes());
-//        Base64FileTool.saveBase64File(destBase64, "../data/test_2.pdf");
-//        Assert.assertEquals(true, FileTool.isFileExists("../data/test_2.pdf"));
+        String destBase64 = Base64FileTool.ByteArrayToBase64(FileTool.readBytesFromInputStream(inputStream));
+        Base64FileTool.saveBase64File(destBase64, "../data/test_2.pdf");
+        Assert.assertEquals(true, FileTool.isFileExists("../data/test_2.pdf"));
     }
 
 }
