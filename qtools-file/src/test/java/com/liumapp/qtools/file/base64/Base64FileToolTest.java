@@ -5,6 +5,7 @@ import com.liumapp.qtools.file.load.LoadFileTool;
 import junit.framework.TestCase;
 import org.junit.Assert;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -59,6 +60,15 @@ public class Base64FileToolTest extends TestCase {
         TestBase64Content testBase64Content = new TestBase64Content();
         Assert.assertEquals(true, CheckBase64Tool.checkHeader(testBase64Content.getTestBase64WithHeader()));
         Assert.assertEquals(false, CheckBase64Tool.checkHeader(testBase64Content.getTestBase64WithoutHeader()));
+    }
+
+    public void testBase64ToByteArrayOutputStreamAndThenByteArrayToBase64 () throws IOException {
+        String fileBase64 = Base64FileTool.FileToBase64(new File("../data/test.pdf"));
+        byte[] bytes = Base64FileTool.decodeBase64ToStream(fileBase64).toByteArray();
+        System.out.println(bytes.length);
+        String destBase64 = Base64FileTool.ByteArrayToBase64(bytes);
+        Base64FileTool.saveBase64File(destBase64, "../data/test_1.pdf");
+        Assert.assertEquals(true, FileTool.isFileExists("../data/test_1.pdf"));
     }
 
 }
