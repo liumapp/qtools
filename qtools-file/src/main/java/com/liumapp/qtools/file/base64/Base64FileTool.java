@@ -49,6 +49,13 @@ public class Base64FileTool {
     }
 
     /**
+     * byte array to base64
+     */
+    public static String ByteArrayToBase64 (byte[] bytes) {
+        
+    }
+
+    /**
      * read input stream and convert to base64
      * @param is input stream
      * @return base64 content
@@ -74,6 +81,15 @@ public class Base64FileTool {
      */
     public static void saveBase64File (String base64Content, String fileSavePath) throws IOException {
         saveFile(removeBase64Header(base64Content), fileSavePath);
+    }
+
+    /**
+     * decode base64 to byte array output stream
+     */
+    public static ByteArrayOutputStream decodeBase64ToStream (String base64Content) throws IOException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        byteArrayOutputStream.write(Base64.getDecoder().decode(removeBase64Header(base64Content)));
+        return byteArrayOutputStream;
     }
 
     private static void saveFile (String base64ContentWithoutHeader, String fileSavePath) throws IOException {
