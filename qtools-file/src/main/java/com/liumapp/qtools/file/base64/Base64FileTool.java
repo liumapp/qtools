@@ -87,10 +87,17 @@ public class Base64FileTool {
     /**
      * decode base64 to byte array output stream
      */
-    public static ByteArrayOutputStream decodeBase64ToStream(String base64Content) throws IOException {
+    public static ByteArrayOutputStream decodeBase64ToOutputStream(String base64Content) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         byteArrayOutputStream.write(Base64.getDecoder().decode(removeBase64Header(base64Content)));
         return byteArrayOutputStream;
+    }
+
+    public static ByteArrayInputStream decodeBase64ToInputStream (String base64Content) throws IOException {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(
+                Base64.getDecoder().decode(removeBase64Header(base64Content))
+        );
+        return byteArrayInputStream;
     }
 
     private static void saveFile (String base64ContentWithoutHeader, String fileSavePath) throws IOException {
