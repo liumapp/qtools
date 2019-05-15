@@ -64,7 +64,7 @@ public class Base64FileToolTest extends TestCase {
 
     public void testBase64ToByteArrayOutputStreamAndThenByteArrayToBase64 () throws IOException {
         String fileBase64 = Base64FileTool.FileToBase64(new File("../data/test.pdf"));
-        byte[] bytes = Base64FileTool.decodeBase64ToStream(fileBase64).toByteArray();
+        byte[] bytes = Base64FileTool.decodeBase64ToOutputStream(fileBase64).toByteArray();
         System.out.println(bytes.length);
         String destBase64 = Base64FileTool.ByteArrayToBase64(bytes);
         Base64FileTool.saveBase64File(destBase64, "../data/test_1.pdf");
