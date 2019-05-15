@@ -52,7 +52,8 @@ public class Base64FileTool {
      * byte array to base64
      */
     public static String ByteArrayToBase64 (byte[] bytes) {
-        
+        String base64 = Base64.getEncoder().encodeToString(bytes);
+        return base64;
     }
 
     /**
