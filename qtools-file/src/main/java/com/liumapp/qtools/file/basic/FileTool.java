@@ -114,6 +114,17 @@ public class FileTool {
     }
 
     /**
+     * ready byte array from input stream
+     */
+    public static byte[] readBytesFromInputStream (InputStream is) throws IOException {
+        if (is == null)
+            return null;
+        byte[] result = new byte[is.available()];
+        is.read(result);
+        return result;
+    }
+
+    /**
      * create a file , and the directory needs .
      * @param file file object
      * @return true/false
