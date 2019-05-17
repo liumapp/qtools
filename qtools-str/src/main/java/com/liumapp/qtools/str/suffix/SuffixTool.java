@@ -25,8 +25,7 @@ public class SuffixTool {
         if (name == null) return "";
         String result = name;
         if (checkStringHasSuffix(name)) {
-            String[] tmp = name.split(".");
-            result = tmp[0];
+            result = name.substring(0, name.lastIndexOf('.'));
         }
         return result;
     }
