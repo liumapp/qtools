@@ -24,4 +24,10 @@ public class SuffixToolTest extends TestCase {
 
     }
 
+    public void testDeleteSuffix () {
+        String name = "../data/test.pdf";
+        String result = SuffixTool.deleteSuffix(name);
+        assertEquals("../data/test", result);
+    }
+
 }

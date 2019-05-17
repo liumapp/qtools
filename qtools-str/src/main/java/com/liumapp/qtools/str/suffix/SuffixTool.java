@@ -21,6 +21,16 @@ public class SuffixTool {
         return filename.endsWith(suffix);
     }
 
+    public static String deleteSuffix (String name) {
+        if (name == null) return "";
+        String result = name;
+        if (checkStringHasSuffix(name)) {
+            String[] tmp = name.split(".");
+            result = tmp[0];
+        }
+        return result;
+    }
+
     /**
      * is a specified string own it's suffix
      */
