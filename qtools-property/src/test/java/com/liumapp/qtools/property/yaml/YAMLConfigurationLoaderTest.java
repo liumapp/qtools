@@ -49,5 +49,6 @@ public class YAMLConfigurationLoaderTest {
         List<String> list = new ArrayList<>(node.getNode("foo", "bar").getList(f));
         List<String> list2 = new ArrayList<>(node.getNode("foo", "menu").getList(f));
         assertEquals(5, list.size());
+        assertEquals(2, list2.size());
     }
 }
