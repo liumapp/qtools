@@ -6,3 +6,6 @@ other:
 
 foo:
     bar: ["apple","banana","human","man","woman"]
+    menu:
+      - "80"
+      - "90"

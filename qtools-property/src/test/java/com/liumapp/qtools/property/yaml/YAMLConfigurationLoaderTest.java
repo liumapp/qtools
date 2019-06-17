@@ -7,10 +7,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 
 import static org.junit.Assert.assertEquals;
@@ -50,6 +47,7 @@ public class YAMLConfigurationLoaderTest {
         ConfigurationNode node = loader.load();
         Function<Object, String> f = o -> (String) o ;
         List<String> list = new ArrayList<>(node.getNode("foo", "bar").getList(f));
+        List<String> list2 = new ArrayList<>(node.getNode("foo", "menu").getList(f));
         assertEquals(5, list.size());
     }
 }
