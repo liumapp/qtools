@@ -20,7 +20,7 @@ public class QrCodeToolTest extends TestCase {
 
     @Test
     public void testGenerateQrCode () throws IOException, WriterException {
-        QrCodeTool.encode("http://www.liumapp.com", 150, 150, "jpg", savePath + "qr.jpg");
+        QrCodeTool.encode("https://www.liumapp.com", 150, 150, "jpg", savePath + "qr.jpg");
     }
 
     @Test

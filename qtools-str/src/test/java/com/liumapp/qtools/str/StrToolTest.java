@@ -4,6 +4,9 @@ import com.liumapp.qtools.str.basic.StrTool;
 import junit.framework.TestCase;
 import org.apache.http.NameValuePair;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -24,6 +27,14 @@ public class StrToolTest extends TestCase {
         map.put("age", "24");
         ArrayList<NameValuePair> result =  StrTool.covertParams2NVPS(map);
         System.out.println(result.toString());
+    }
+
+    public void testSpecialStr () throws UnsupportedEncodingException {
+        String s1 = URLEncoder.encode("${s}", "UTF-8");
+        System.out.println(s1);
+
+        String s2 = URLDecoder.decode(s1, "UTF-8");
+        System.out.println(s2);
     }
 
 }
