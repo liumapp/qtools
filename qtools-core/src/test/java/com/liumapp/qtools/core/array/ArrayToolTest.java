@@ -1,18 +1,12 @@
-package com.liumapp.qtools.collection.array;
+package com.liumapp.qtools.core.array;
 
 import junit.framework.Assert;
 import org.junit.Test;
 
 import java.io.File;
 
-/**
- * file ArrayToolTest.java
- * author liumapp
- * github https://github.com/liumapp
- * email liumapp.com@gmail.com
- * homepage http://www.liumapp.com
- * date 2018/9/29
- */
+import static org.junit.Assert.*;
+
 public class ArrayToolTest {
 
     //清空String数组中的null与empty值
@@ -71,4 +65,10 @@ public class ArrayToolTest {
         Assert.assertEquals(5, position[1]);
     }
 
+    @Test
+    public void convertStringsToString() {
+        String[] array = {"aaa" , "bbb" , "ccc", "ddd"};
+        String str = ArrayTool.convertStringsToString(array);
+        assertEquals("'aaa','bbb','ccc','ddd'", str);
+    }
 }
