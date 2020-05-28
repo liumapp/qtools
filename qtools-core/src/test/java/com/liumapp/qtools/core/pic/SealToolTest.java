@@ -1,6 +1,6 @@
 package com.liumapp.qtools.core.pic;
 
-import com.liumapp.qtools.file.basic.FileTool;
+import com.liumapp.qtools.core.file.FileTool;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.junit.Test;
