@@ -1,6 +1,5 @@
-package com.liumapp.qtools.str;
+package com.liumapp.qtools.core.string;
 
-import com.liumapp.qtools.str.random.StrRandomTool;
 import junit.framework.TestCase;
 
 /**

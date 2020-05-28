@@ -1,6 +1,5 @@
-package com.liumapp.qtools.str;
+package com.liumapp.qtools.core.string;
 
-import com.liumapp.qtools.str.basic.StrTool;
 import junit.framework.TestCase;
 import org.apache.http.NameValuePair;
 

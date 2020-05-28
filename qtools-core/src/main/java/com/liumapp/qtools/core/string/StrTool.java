@@ -1,4 +1,4 @@
-package com.liumapp.qtools.str.basic;
+package com.liumapp.qtools.core.string;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class StrTool {
 
-    private StrTool () {
+    private StrTool() {
         throw new UnsupportedOperationException("not allowed to initialize");
     }
 

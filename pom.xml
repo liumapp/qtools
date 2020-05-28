@@ -41,9 +41,7 @@
 
   <modules>
     <module>qtools-file</module>
-    <module>qtools-str</module>
     <module>qtools-security-all</module>
-    <module>qtools-date</module>
     <module>qtools-http</module>
     <module>qtools-pic</module>
     <module>qtools-starter-all</module>

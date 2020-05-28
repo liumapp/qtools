@@ -1,4 +1,4 @@
-package com.liumapp.qtools.str.suffix;
+package com.liumapp.qtools.core.string;
 
 /**
  * file SuffixTool.java

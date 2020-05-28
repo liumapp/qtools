@@ -1,4 +1,4 @@
-package com.liumapp.qtools.str.random;
+package com.liumapp.qtools.core.string;
 
 import java.security.SecureRandom;
 import java.util.UUID;
@@ -12,7 +12,7 @@ import java.util.UUID;
  */
 public final class StrRandomTool {
 
-    private StrRandomTool () {
+    private StrRandomTool() {
         throw new UnsupportedOperationException("not allowed to initialize");
     }
 

@@ -1,6 +1,5 @@
-package com.liumapp.qtools.str;
+package com.liumapp.qtools.core.string;
 
-import com.liumapp.qtools.str.suffix.SuffixTool;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
