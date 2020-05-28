@@ -1,4 +1,4 @@
-package com.liumapp.qtools.pic;
+package com.liumapp.qtools.core.pic;
 
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
@@ -6,8 +6,6 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.QRCodeWriter;
-import com.liumapp.qtools.pic.config.MatrixToLogoImageConfig;
-import com.liumapp.qtools.pic.logo.MatrixToImageWriterEx;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

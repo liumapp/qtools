@@ -1,4 +1,4 @@
-package com.liumapp.qtools.pic;
+package com.liumapp.qtools.core.pic;
 
 import com.google.zxing.WriterException;
 import junit.framework.TestCase;

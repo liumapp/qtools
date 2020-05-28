@@ -1,4 +1,4 @@
-package com.liumapp.qtools.pic.config;
+package com.liumapp.qtools.core.pic;
 
 import java.awt.*;
 

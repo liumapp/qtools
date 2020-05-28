@@ -1,7 +1,7 @@
-package com.liumapp.qtools.pic;
+package com.liumapp.qtools.core.pic;
 
-import com.liumapp.qtools.file.basic.FileTool;
-import com.liumapp.qtools.str.suffix.SuffixTool;
+import com.liumapp.qtools.core.file.FileTool;
+import com.liumapp.qtools.core.string.SuffixTool;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

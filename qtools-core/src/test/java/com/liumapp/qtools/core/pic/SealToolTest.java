@@ -1,4 +1,4 @@
-package com.liumapp.qtools.pic;
+package com.liumapp.qtools.core.pic;
 
 import com.liumapp.qtools.file.basic.FileTool;
 import junit.framework.Assert;

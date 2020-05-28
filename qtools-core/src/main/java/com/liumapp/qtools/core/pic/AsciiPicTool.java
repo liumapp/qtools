@@ -1,11 +1,9 @@
-package com.liumapp.qtools.pic;
-
-import java.awt.image.BufferedImage;
-
-import java.io.File;
-import java.io.IOException;
+package com.liumapp.qtools.core.pic;
 
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * file AsciiPicTool.java

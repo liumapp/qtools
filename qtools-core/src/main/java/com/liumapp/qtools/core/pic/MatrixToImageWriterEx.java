@@ -1,4 +1,4 @@
-package com.liumapp.qtools.pic.logo;
+package com.liumapp.qtools.core.pic;
 
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -7,8 +7,6 @@ import com.google.zxing.client.j2se.MatrixToImageConfig;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.liumapp.qtools.pic.config.MatrixToLogoImageConfig;
-import com.liumapp.qtools.str.constant.StrConstant;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -43,7 +41,7 @@ public class MatrixToImageWriterEx {
     public static BitMatrix createQRCode(String content, int width, int height) {
         Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
         // 设置字符编码
-        hints.put(EncodeHintType.CHARACTER_SET, StrConstant.DEFAULT_CHARSET_NAME);
+        hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
         // 指定纠错等级
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
         BitMatrix matrix = null;

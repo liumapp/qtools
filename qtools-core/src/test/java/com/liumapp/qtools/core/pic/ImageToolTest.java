@@ -1,17 +1,13 @@
-package com.liumapp.qtools.pic;
+package com.liumapp.qtools.core.pic;
 
-import com.liumapp.qtools.file.base64.Base64FileTool;
-import com.liumapp.qtools.file.basic.FileTool;
-import com.liumapp.qtools.str.basic.StrTool;
+import com.liumapp.qtools.core.file.Base64FileTool;
+import com.liumapp.qtools.core.file.FileTool;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 /**
  * file ImageToolTest.java
