@@ -40,8 +40,6 @@
   </dependencies>
 
   <modules>
-    <module>qtools-file</module>
-    <module>qtools-http</module>
     <module>qtools-pic</module>
     <module>qtools-core</module>
     <module>qtools-desktop</module>
