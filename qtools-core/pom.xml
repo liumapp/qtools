@@ -7,20 +7,24 @@
     <artifactId>qtools-parent</artifactId>
     <version>v2.0.0</version>
   </parent>
+
   <groupId>com.liumapp.qtools.core</groupId>
   <artifactId>qtools-core</artifactId>
   <version>v2.0.0</version>
+
   <name>qtools-core</name>
   <url>http://maven.apache.org</url>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+
+  <developers>
+    <developer>
+      <name>liumapp</name>
+      <email>liumapp.com@gmail.com</email>
+      <url>http://www.liumapp.com</url>
+    </developer>
+  </developers>
+
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+
   </dependencies>
+
 </project>
