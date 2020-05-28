@@ -2,19 +2,28 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.liumapp.qtools</groupId>
-    <artifactId>qtools-parent</artifactId>
-    <version>v2.0.0</version>
-  </parent>
+
   <groupId>com.liumapp.qtools.desktop</groupId>
   <artifactId>qtools-desktop</artifactId>
   <version>v2.0.0</version>
-  <name>qtools-desktop</name>
-  <url>http://maven.apache.org</url>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
   </properties>
+
+  <name>qtools-desktop</name>
+  <url>http://maven.apache.org</url>
+
+  <developers>
+    <developer>
+      <name>liumapp</name>
+      <email>liumapp.com@gmail.com</email>
+      <url>http://www.liumapp.com</url>
+    </developer>
+  </developers>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -23,4 +32,5 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
 </project>
