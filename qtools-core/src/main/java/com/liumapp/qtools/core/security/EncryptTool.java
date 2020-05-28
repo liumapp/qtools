@@ -1,4 +1,4 @@
-package com.liumapp.qtools.security.encrypt;
+package com.liumapp.qtools.core.security;
 
 import org.apache.commons.lang.StringUtils;
 import sun.misc.BASE64Decoder;
@@ -18,7 +18,7 @@ import java.security.spec.AlgorithmParameterSpec;
  * homepage http://www.liumapp.com
  * date 2018/8/12
  */
-public class EncryptUtil {
+public class EncryptTool {
 
     private final byte[] DESIV = new byte[] { 0x12, 0x34, 0x56, 120, (byte) 0x90, (byte) 0xab, (byte) 0xcd, (byte) 0xef };// 向量
 
@@ -31,7 +31,7 @@ public class EncryptUtil {
     /**
      * 初始化
      */
-    public EncryptUtil(String deSkey, String charset) throws Exception {
+    public EncryptTool(String deSkey, String charset) throws Exception {
         if (StringUtils.isNotBlank(charset)) {
             this.charset = charset;
         }
@@ -67,7 +67,7 @@ public class EncryptUtil {
         try {
             String test = "ershuai";
             String key = "9ba45bfd500642328ec03ad8ef1b6e75";// 自定义密钥
-            EncryptUtil des = new EncryptUtil(key, "utf-8");
+            EncryptTool des = new EncryptTool(key, "utf-8");
             System.out.println("加密前的字符：" + test);
             System.out.println("加密后的字符：" + des.encode(test));
             System.out.println("解密后的字符：" + des.decode(des.encode(test)));

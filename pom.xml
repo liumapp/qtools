@@ -41,7 +41,6 @@
 
   <modules>
     <module>qtools-file</module>
-    <module>qtools-security-all</module>
     <module>qtools-http</module>
     <module>qtools-pic</module>
     <module>qtools-core</module>

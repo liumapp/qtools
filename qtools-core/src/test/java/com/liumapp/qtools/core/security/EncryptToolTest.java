@@ -1,4 +1,4 @@
-package com.liumapp.qtools.security.encrypt;
+package com.liumapp.qtools.core.security;
 
 import org.junit.Test;
 
@@ -10,11 +10,11 @@ import org.junit.Test;
  * homepage http://www.liumapp.com
  * date 2018/12/4
  */
-public class EncryptUtilTest {
+public class EncryptToolTest {
 
     @Test
     public void testEncrptyAndDecode () throws Exception {
-        EncryptUtil encryptUtil = new EncryptUtil("idfjiefjoiwejfwefjiejfi", null);
+        EncryptTool encryptUtil = new EncryptTool("idfjiefjoiwejfwefjiejfi", null);
         String phoneAndCompanyId = "15757125631_3";
         String result = encryptUtil.encode(phoneAndCompanyId);
         System.out.println("this is encoded string : " + result);

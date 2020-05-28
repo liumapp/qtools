@@ -1,4 +1,4 @@
-package com.liumapp.qtools.security.encrypt;
+package com.liumapp.qtools.core.security;
 
 import org.junit.Assert;
 import org.junit.Test;
