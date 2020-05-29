@@ -26,7 +26,7 @@ public class QtoolsDesktopMain {
     public static void main (String[] args) {
         try {
             JDialog.setDefaultLookAndFeelDecorated(true);
-            UIManager.setLookAndFeel (new MaterialLookAndFeel (new MaterialLiteTheme()));
+            UIManager.setLookAndFeel (new MaterialLookAndFeel (new JMarsDarkTheme()));
         }
         catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace ();
