@@ -59,7 +59,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>mdlaf.MaterialLookAndFeel</mainClass>
+              <mainClass>com.liumapp.qtools.desktop.QtoolsDesktopMain</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
