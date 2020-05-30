@@ -9,6 +9,7 @@
 
   <name>qtools-core</name>
   <url>http://maven.apache.org</url>
+  <description>qtools core module</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

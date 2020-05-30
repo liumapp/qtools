@@ -34,8 +34,8 @@ public class QtoolsDesktopMain {
 
         // basic instantiation of JFrame with various components, including a
         // JMenuBar with some menus and items, as well as a button
-        JFrame frame = new JFrame ("Material Design UI for Swing by atharva washimkar");
-        frame.setMinimumSize (new Dimension (600, 400));
+        JFrame frame = new JFrame ("qtools-desktop");
+        frame.setMinimumSize (new Dimension (1277, 837));
 
         //Test for fix the issue https://github.com/vincenzopalazzo/material-ui-swing/projects/1#card-21599924
         //frame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
