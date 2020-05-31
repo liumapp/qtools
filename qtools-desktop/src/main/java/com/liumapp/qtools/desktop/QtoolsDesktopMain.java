@@ -62,6 +62,7 @@ public class QtoolsDesktopMain {
                 SwingUtilities.updateComponentTreeUI(frame);
             }
         });
+
         JMenuItem jmarsDark = new JMenuItem();
         jmarsDark.setAction(new AbstractAction("Material JMars Dark"){
             @Override
