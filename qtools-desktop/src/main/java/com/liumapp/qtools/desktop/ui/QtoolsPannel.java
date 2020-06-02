@@ -10,9 +10,11 @@ import org.jdesktop.swingx.JXTaskPane;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 /**
  * file QtoolsPannel.java
@@ -30,17 +32,36 @@ public class QtoolsPannel {
 
     private int height;
 
+    private String font;
+
+    private int fontSize;
+
     public QtoolsPannel() {
     }
 
-    public QtoolsPannel(String title, int width, int height) {
+    public QtoolsPannel(String title, int width, int height, String font, int fontSize) {
         this.title = title;
         this.width = width;
         this.height = height;
+        this.font = font;
+        this.fontSize = fontSize;
     }
+
+    private static void InitGlobalFont(Font font) {
+        FontUIResource fontRes = new FontUIResource(font);
+        for (Enumeration<Object> keys = UIManager.getDefaults().keys(); keys.hasMoreElements();) {
+            Object key = keys.nextElement();
+            Object value = UIManager.get(key);
+            if (value instanceof FontUIResource) {
+                UIManager.put(key, fontRes);
+            }
+        }
+    }
+
 
     public void start () {
         try {
+            InitGlobalFont(new Font(font, Font.PLAIN, fontSize));
             JDialog.setDefaultLookAndFeelDecorated(true);
             UIManager.setLookAndFeel (new MaterialLookAndFeel(new JMarsDarkTheme()));
         }
@@ -50,15 +71,15 @@ public class QtoolsPannel {
 
         // basic instantiation of JFrame with various components, including a
         // JMenuBar with some menus and items, as well as a button
-        JFrame frame = new JFrame ("qtools-desktop");
-        frame.setMinimumSize (new Dimension(800, 600));
+        JFrame frame = new JFrame (title);
+        frame.setMinimumSize (new Dimension(width, height));
 
         //Test for fix the issue https://github.com/vincenzopalazzo/material-ui-swing/projects/1#card-21599924
         //frame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         // configuring the JMenuBar as well as its menus and items
         JMenuBar bar = new JMenuBar ();
-        JMenu menu1 = new JMenu ("基础");
-        JMenu menu2 = new JMenu ("中间件");
+        JMenu menu1 = new JMenu ("Basic");
+        JMenu menu2 = new JMenu ("MiddleWare");
         JMenu menuTheme = new JMenu("Themes");
 
         JMenuItem oceanic = new JMenuItem();
