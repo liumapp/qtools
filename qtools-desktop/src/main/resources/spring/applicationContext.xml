@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:util="http://www.springframework.org/schema/util"
+        xsi:schemaLocation="
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/util
+         http://www.springframework.org/schema/util/spring-util.xsd">
+
+        <context:annotation-config />
+
+        <context:component-scan base-package="com.liumapp.qtools.desktop" />
+        
+        <beans>
+        	<bean name="qtoolsPannel" class="com.liumapp.qtools.desktop.ui.QtoolsPannel">
+        		<constructor-arg name="title" type="java.lang.String" value="qtools-desktop"></constructor-arg>
+        		<constructor-arg name="width" type="int" value="800"></constructor-arg>
+				<constructor-arg name="height" type="int" value="600"></constructor-arg>
+        	</bean>
+        	<!--<bean name="wokerEar" class="com.liumapp.DNSQueen.worker.process.WokerEar">-->
+        		<!--<property name="startDelay" value="3000"></property>-->
+        	<!--</bean>-->
+        </beans>
+
+</beans>
+
