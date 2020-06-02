@@ -7,7 +7,6 @@ import mdlaf.themes.MaterialLiteTheme;
 import mdlaf.themes.MaterialOceanicTheme;
 import mdlaf.utils.MaterialColors;
 import org.jdesktop.swingx.JXTaskPane;
-import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
