@@ -22,7 +22,6 @@ import java.util.ArrayList;
  * homepage http://www.liumapp.com
  * date 2020/6/2
  */
-@Component
 public class QtoolsPannel {
 
     private String title;

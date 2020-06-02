@@ -11,7 +11,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
-    <spring-version>3.1.1.RELEASE</spring-version>
   </properties>
 
   <name>qtools-desktop</name>
@@ -32,30 +31,24 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <!--qtools core-->
     <dependency>
       <groupId>com.liumapp.qtools.core</groupId>
       <artifactId>qtools-core</artifactId>
       <version>v2.0.0</version>
     </dependency>
+    <!--ui-->
     <dependency>
       <groupId>io.github.vincenzopalazzo</groupId>
       <artifactId>material-ui-swing</artifactId>
       <version>1.1.1_pre-release_6.1</version>
     </dependency>
-
     <!--spring-->
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-aop</artifactId>
-      <version>${spring-version}</version>
+      <artifactId>spring-context</artifactId>
+      <version>5.2.6.RELEASE</version>
     </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-      <version>${spring-version}</version>
-    </dependency>
-
-
   </dependencies>
 
   <build>
