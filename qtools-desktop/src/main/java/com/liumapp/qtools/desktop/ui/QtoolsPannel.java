@@ -82,7 +82,7 @@ public class QtoolsPannel {
         JMenu menuTheme = new JMenu("Themes");
 
         JMenuItem oceanic = new JMenuItem();
-        oceanic.setAction(new AbstractAction("Material Oceanic"){
+        oceanic.setAction(new AbstractAction("Material Oceanic") {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("********");
