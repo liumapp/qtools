@@ -21,6 +21,5 @@
 
   <modules>
     <module>qtools-core</module>
-    <module>qtools-desktop</module>
   </modules>
 </project>
