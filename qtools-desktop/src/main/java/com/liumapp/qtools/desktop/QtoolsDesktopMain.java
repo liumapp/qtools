@@ -7,6 +7,7 @@ import mdlaf.themes.MaterialLiteTheme;
 import mdlaf.themes.MaterialOceanicTheme;
 import mdlaf.utils.MaterialColors;
 import org.jdesktop.swingx.JXTaskPane;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,8 +42,8 @@ public class QtoolsDesktopMain {
         //frame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         // configuring the JMenuBar as well as its menus and items
         JMenuBar bar = new JMenuBar ();
-        JMenu menu1 = new JMenu ("Option 1");
-        JMenu menu2 = new JMenu ("Option 2");
+        JMenu menu1 = new JMenu ("基础");
+        JMenu menu2 = new JMenu ("中间件");
         JMenu menuTheme = new JMenu("Themes");
 
         JMenuItem oceanic = new JMenuItem();
