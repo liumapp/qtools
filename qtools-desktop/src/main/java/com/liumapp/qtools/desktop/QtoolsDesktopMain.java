@@ -30,13 +30,6 @@ public class QtoolsDesktopMain {
         SpringLocator.applicationContext = new ClassPathXmlApplicationContext("classpath*:/spring/applicationContext*.xml");
         QtoolsPannel qtoolsPannel = SpringLocator.getBean(QtoolsPannel.class);
         qtoolsPannel.start();
-        while (!qtoolsPannel.isShutDown()) {
-            try {
-                Thread.sleep(10000000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
 }

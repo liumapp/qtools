@@ -31,8 +31,6 @@ public class QtoolsPannel {
 
     private int height;
 
-    private boolean isShutDown = false;
-
     public QtoolsPannel() {
     }
 
@@ -388,15 +386,6 @@ public class QtoolsPannel {
 
     public QtoolsPannel setHeight(int height) {
         this.height = height;
-        return this;
-    }
-
-    public boolean isShutDown() {
-        return isShutDown;
-    }
-
-    public QtoolsPannel setShutDown(boolean shutDown) {
-        isShutDown = shutDown;
         return this;
     }
 }
