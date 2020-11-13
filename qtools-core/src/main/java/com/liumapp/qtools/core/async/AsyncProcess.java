@@ -36,7 +36,7 @@ public class AsyncProcess <T> {
     }
 
     public static class Builder<T>{
-        private int maxProcessCount = 200;
+        private int maxProcessCount = 30;
         private int maxBufferSizePreProcess = 1000;
         private Function<T,Boolean> process;
         private Function<List<T>,Boolean> batchProcess;
