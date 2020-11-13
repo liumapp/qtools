@@ -2,6 +2,9 @@ package com.liumapp.qtools.core.async;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
+import com.liumapp.qtools.core.async.adder.Adder;
+import com.liumapp.qtools.core.async.adder.BlockingAdder;
+import com.liumapp.qtools.core.async.adder.DropOldestAdder;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
@@ -84,9 +87,9 @@ public class AsyncProcess <T> {
             AsyncProcess<T> AsyncProcess = new AsyncProcess<T> ();
             if(this.adder ==null){
                 if(timeout!= null && unit!=null){
-                    this.adder = AsyncProcess .new Blocking<>(timeout,unit);
+                    this.adder = new BlockingAdder<T>(timeout,unit);
                 }else{
-                    this.adder = AsyncProcess .new DropOldest<T>();
+                    this.adder = new DropOldestAdder<T>();
                 }
             }
 
@@ -105,56 +108,11 @@ public class AsyncProcess <T> {
 
     }
 
-
-    private interface Adder<T>{
-        void add(LinkedBlockingQueue queue,T t);
-    }
-
-    public class DropOldest<T> implements  Adder<T>{
-
-        private AtomicLong dropNumber = new AtomicLong();
-
-        @Override
-        public void add(LinkedBlockingQueue queue,T t) {
-            if (queue.size() >= maxBufferSizePreProcess) {
-                dropNumber.getAndIncrement();
-                if (dropNumber.get() % 100 == 0) {
-                    log.error("任务堆现已溢出100条指令，开始清空此任务堆积攒的任务");
-                    queue.clear();
-                }
-                queue.remove();
-            }
-            queue.add(t);
-        }
-    }
-
-    public class Blocking<T> implements Adder<T>{
-        private long timeout;
-        private TimeUnit unit;
-
-        public Blocking(long timeout, TimeUnit unit) {
-            this.timeout = timeout;
-            this.unit = unit;
-        }
-
-        @Override
-        public void add(LinkedBlockingQueue queue,T t) {
-            try {
-                queue.offer(t,timeout,unit);
-            } catch (InterruptedException e) {
-                log.error("",e);
-            }
-        }
-    }
-
-
     public void add(T t,Long channel){
         long m = Math.abs(channel%maxProcessCount);
         LinkedBlockingQueue queue = mapQueue.get(m);
         adder.add(queue,t);
     }
-
-
 
     private void start(){
         ExecutorService executorService = Executors.newFixedThreadPool(maxProcessCount);
