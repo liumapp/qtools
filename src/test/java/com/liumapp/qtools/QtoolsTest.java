@@ -2,6 +2,8 @@ package com.liumapp.qtools;
 
 import junit.framework.TestCase;
 
+import java.io.IOException;
+
 /**
  * file QtoolsTest.java
  * author liumapp
@@ -18,8 +20,10 @@ public class QtoolsTest extends TestCase {
      * 3. 如果磁盘目录不存在，则创建;
      * 4. 如果磁盘目录地址已有同名文件，则覆盖;
      */
-    public void testBase64() {
-
+    public void testBase64() throws IOException {
+        Qtools qtools = QtoolsFactory.getInstance();
+        byte[] b = qtools.getFileHelper().readyBytesByFilePath(this.getClass().getResource("/content.txt").getPath());
+        System.out.println(new String(b,0, b.length));
     }
 
 }

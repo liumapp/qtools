@@ -1,5 +1,8 @@
 package com.liumapp.qtools.file.core;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /**
  * file FileHelper.java
  * author liumapp
@@ -10,6 +13,13 @@ package com.liumapp.qtools.file.core;
  */
 public interface FileHelper {
 
+    /**
+     * read file content by nio
+     * @param filePath absolute file path
+     * @return
+     */
+    public byte[] readyBytesByFilePath(String filePath) throws IOException;
 
+//    public
 
 }
