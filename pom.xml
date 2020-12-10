@@ -9,7 +9,7 @@
 
   <name>qtools</name>
   <url>http://maven.apache.org</url>
-  <description>qtools core module</description>
+  <description>A Plug-and-play library project without any framework dependencies</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,7 +26,6 @@
   </developers>
 
   <dependencies>
-    <!-- todo should remove later -->
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
