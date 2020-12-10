@@ -84,12 +84,12 @@ public class AsyncProcess <T> {
         public AsyncProcess<T> build(){
             Preconditions.checkState(this.process != null || this.batchProcess != null,"process can not be null");
 
-            AsyncProcess<T> AsyncProcess = new AsyncProcess<T> ();
+            AsyncProcess<T> AsyncProcess = new AsyncProcess<> ();
             if(this.adder ==null){
                 if(timeout!= null && unit!=null){
-                    this.adder = new BlockingAdder<T>(timeout,unit);
+                    this.adder = new BlockingAdder<>(timeout,unit);
                 }else{
-                    this.adder = new DropOldestAdder<T>();
+                    this.adder = new DropOldestAdder<>();
                 }
             }
 
