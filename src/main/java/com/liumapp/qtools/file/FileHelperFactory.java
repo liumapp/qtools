@@ -1,5 +1,6 @@
 package com.liumapp.qtools.file;
 
+import com.liumapp.qtools.core.AbstractFactory;
 import com.liumapp.qtools.file.core.FileHelper;
 
 /**
@@ -10,9 +11,7 @@ import com.liumapp.qtools.file.core.FileHelper;
  * homepage http://www.liumapp.com
  * date 2020/12/10
  */
-public class FileHelperFactory {
-
-    private FileHelper fileHelper;
+public class FileHelperFactory extends AbstractFactory<FileHelper> {
 
     private static FileHelperFactory INSTANCE;
 
@@ -22,13 +21,13 @@ public class FileHelperFactory {
     public static synchronized FileHelper getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new FileHelperFactory();
-            building(INSTANCE);
         }
-        return INSTANCE.fileHelper;
+        return INSTANCE.createInstanceIfNotExists();
     }
 
-    private static void building (FileHelperFactory instance) {
-        instance.fileHelper = new SimpleFileHelper();
+    @Override
+    protected FileHelper createInstance() {
+        return new SimpleFileHelper();
     }
 
 

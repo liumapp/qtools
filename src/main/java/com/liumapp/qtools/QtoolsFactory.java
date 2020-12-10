@@ -1,5 +1,7 @@
 package com.liumapp.qtools;
 
+import com.liumapp.qtools.core.AbstractFactory;
+
 /**
  * file QtoolsFactory.java
  * author liumapp
@@ -8,10 +10,7 @@ package com.liumapp.qtools;
  * homepage http://www.liumapp.com
  * date 2020/12/10
  */
-public class QtoolsFactory {
-
-
-    private Qtools qtools;
+public class QtoolsFactory extends AbstractFactory<Qtools> {
 
     private static QtoolsFactory INSTANCE;
 
@@ -21,13 +20,14 @@ public class QtoolsFactory {
     public static synchronized Qtools getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new QtoolsFactory();
-            buildingQtools(INSTANCE);
         }
-        return INSTANCE.qtools;
+
+        return INSTANCE.createInstanceIfNotExists();
     }
 
-    private static void buildingQtools (QtoolsFactory instance) {
-        instance.qtools = new Qtools();
+    @Override
+    protected Qtools createInstance() {
+        return new Qtools();
     }
 
 
