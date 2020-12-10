@@ -1,4 +1,4 @@
-package com.liumapp.qtools.file;
+package com.liumapp.qtools.file.ignores;
 
 import org.apache.commons.io.IOUtils;
 

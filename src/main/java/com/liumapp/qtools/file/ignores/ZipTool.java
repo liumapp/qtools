@@ -1,4 +1,4 @@
-package com.liumapp.qtools.file;
+package com.liumapp.qtools.file.ignores;
 
 import com.liumapp.qtools.string.StrTool;
 import com.liumapp.qtools.string.SuffixTool;

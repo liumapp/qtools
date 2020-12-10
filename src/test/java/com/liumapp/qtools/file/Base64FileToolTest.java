@@ -1,5 +1,8 @@
 package com.liumapp.qtools.file;
 
+import com.liumapp.qtools.file.ignores.Base64FileTool;
+import com.liumapp.qtools.file.ignores.FileTool;
+import com.liumapp.qtools.file.ignores.LoadFileTool;
 import junit.framework.TestCase;
 import org.junit.Assert;
 

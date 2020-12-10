@@ -1,4 +1,4 @@
-package com.liumapp.qtools.file;
+package com.liumapp.qtools.file.ignores;
 
 import com.liumapp.qtools.array.ArrayTool;
 import com.liumapp.qtools.file.filter.SimpleFileFilterTool;

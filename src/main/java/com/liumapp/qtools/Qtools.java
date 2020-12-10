@@ -1,8 +1,9 @@
 package com.liumapp.qtools;
 
-import com.liumapp.qtools.file.string.StringFileFactory;
-import com.liumapp.qtools.file.string.core.StringFile;
-import com.liumapp.qtools.file.string.core.SupportStringFile;
+
+import com.liumapp.qtools.file.FileHelperFactory;
+import com.liumapp.qtools.file.core.FileHelper;
+import com.liumapp.qtools.file.core.SupportFileHelper;
 
 import java.io.Serializable;
 
@@ -14,7 +15,7 @@ import java.io.Serializable;
  * homepage http://www.liumapp.com
  * date 2020/12/10
  */
-public class Qtools implements Serializable, SupportStringFile {
+public class Qtools implements Serializable, SupportFileHelper {
 
 
     private static final long serialVersionUID = 5563619718620494936L;
@@ -23,9 +24,7 @@ public class Qtools implements Serializable, SupportStringFile {
     }
 
     @Override
-    public StringFile stringFile() {
-        return StringFileFactory.getInstance();
+    public FileHelper getFileHelper() {
+        return FileHelperFactory.getInstance();
     }
-
-
 }

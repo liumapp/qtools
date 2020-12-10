@@ -1,4 +1,4 @@
-package com.liumapp.qtools.file;
+package com.liumapp.qtools.file.ignores;
 
 import java.io.*;
 import java.util.Base64;

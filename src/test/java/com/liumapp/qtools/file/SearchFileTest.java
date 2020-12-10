@@ -1,5 +1,6 @@
 package com.liumapp.qtools.file;
 
+import com.liumapp.qtools.file.ignores.SearchFileTool;
 import junit.framework.Assert;
 import org.junit.Test;
 

@@ -1,5 +1,7 @@
 package com.liumapp.qtools.file;
 
+import com.liumapp.qtools.file.ignores.BigFileTool;
+import com.liumapp.qtools.file.ignores.FileTool;
 import junit.framework.TestCase;
 import org.junit.Test;
 

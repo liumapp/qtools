@@ -1,6 +1,6 @@
 package com.liumapp.qtools.download;
 
-import com.liumapp.qtools.file.FileTool;
+import com.liumapp.qtools.file.ignores.FileTool;
 
 import javax.naming.NoPermissionException;
 import java.io.BufferedInputStream;

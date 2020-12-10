@@ -1,5 +1,7 @@
 package com.liumapp.qtools.file;
 
+import com.liumapp.qtools.file.ignores.FileTool;
+import com.liumapp.qtools.file.ignores.ZipTool;
 import net.lingala.zip4j.exception.ZipException;
 import org.junit.Assert;
 import org.junit.Test;

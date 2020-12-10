@@ -1,6 +1,6 @@
 package com.liumapp.qtools.pic;
 
-import com.liumapp.qtools.file.FileTool;
+import com.liumapp.qtools.file.ignores.FileTool;
 import com.liumapp.qtools.string.SuffixTool;
 
 import javax.imageio.ImageIO;

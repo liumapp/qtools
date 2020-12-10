@@ -1,5 +1,7 @@
 package com.liumapp.qtools.file;
 
+import com.liumapp.qtools.file.ignores.Base64FileTool;
+import com.liumapp.qtools.file.ignores.BinaryFileTool;
 import org.junit.Test;
 
 import java.io.IOException;
