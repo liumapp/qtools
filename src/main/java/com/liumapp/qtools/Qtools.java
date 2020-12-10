@@ -1,5 +1,6 @@
 package com.liumapp.qtools;
 
+import com.liumapp.qtools.file.string.StringFileFactory;
 import com.liumapp.qtools.file.string.core.StringFile;
 import com.liumapp.qtools.file.string.core.SupportStringFile;
 
@@ -23,7 +24,7 @@ public class Qtools implements Serializable, SupportStringFile {
 
     @Override
     public StringFile stringFile() {
-        return null;
+        return StringFileFactory.getInstance();
     }
 
 

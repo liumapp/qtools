@@ -9,4 +9,8 @@ package com.liumapp.qtools.file.string.core;
  * date 2020/12/10
  */
 public interface StringFile {
+
+
+
+
 }
