@@ -21,4 +21,8 @@ public abstract class AbstractFactory <T>{
 
     protected abstract T createInstance ();
 
+    public abstract T build ();
+
+    public abstract T getInstance ();
+
 }

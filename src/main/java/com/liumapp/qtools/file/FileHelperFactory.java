@@ -2,6 +2,7 @@ package com.liumapp.qtools.file;
 
 import com.liumapp.qtools.core.AbstractFactory;
 import com.liumapp.qtools.file.core.FileHelper;
+import com.liumapp.qtools.file.enums.IOEnum;
 
 /**
  * file FileHelperFactory.java
@@ -15,19 +16,48 @@ public class FileHelperFactory extends AbstractFactory<FileHelper> {
 
     private static FileHelperFactory INSTANCE;
 
+    private FileHelperParam fileHelperParam;
+
     private FileHelperFactory() {
+        fileHelperParam = new FileHelperParam();
     }
 
-    public static synchronized FileHelper getInstance() {
+    public static synchronized FileHelperFactory getFactoryInstance() {
         if (INSTANCE == null) {
             INSTANCE = new FileHelperFactory();
         }
-        return INSTANCE.createInstanceIfNotExists();
+        return INSTANCE;
+    }
+
+    @Override
+    public FileHelper build() {
+        this.t = INSTANCE.createInstance();
+        return this.t;
+    }
+
+    @Override
+    public FileHelper getInstance() {
+        return this.createInstanceIfNotExists();
     }
 
     @Override
     protected FileHelper createInstance() {
-        return new SimpleFileHelper();
+        return new SimpleFileHelper(fileHelperParam);
+    }
+
+    public FileHelperFactory setIoType (IOEnum ioType) {
+        fileHelperParam.ioType = ioType;
+        return this;
+    }
+
+    public FileHelperFactory setSupportTransferTo (Boolean needSupportTransferTo) {
+        fileHelperParam.supportTransferTo = needSupportTransferTo;
+        return this;
+    }
+
+    public FileHelperFactory setAutoCreateFolder (Boolean needAutoCreateFolder) {
+        fileHelperParam.autoCreateFolder = needAutoCreateFolder;
+        return this;
     }
 
 

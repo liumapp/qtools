@@ -17,16 +17,21 @@ import java.io.Serializable;
  */
 public class Qtools implements Serializable, SupportFileHelper {
 
-
     private static final long serialVersionUID = 5563619718620494936L;
 
+    private FileHelperFactory fileHelperFactory;
+
     protected Qtools() {
+        this.fileHelperFactory = FileHelperFactory.getFactoryInstance();
     }
 
     @Override
-    public FileHelper getFileHelper() {
-        return FileHelperFactory.getInstance();
+    public FileHelper getSingleFileHelper() {
+        return fileHelperFactory.build();
     }
 
-
+    @Override
+    public FileHelperFactory newFileHelperBuild() {
+        return this.fileHelperFactory;
+    }
 }

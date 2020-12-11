@@ -1,5 +1,7 @@
 package com.liumapp.qtools.file.core;
 
+import com.liumapp.qtools.file.FileHelperParam;
+
 /**
  * file AbstractFileHelper.java
  * author liumapp
@@ -10,7 +12,14 @@ package com.liumapp.qtools.file.core;
  */
 public abstract class AbstractFileHelper {
 
+    protected FileHelperParam fileHelperParam;
 
+    public FileHelperParam getFileHelperParam() {
+        return fileHelperParam;
+    }
 
-
+    public AbstractFileHelper setFileHelperParam(FileHelperParam fileHelperParam) {
+        this.fileHelperParam = fileHelperParam;
+        return this;
+    }
 }

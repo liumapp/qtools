@@ -17,12 +17,22 @@ public class QtoolsFactory extends AbstractFactory<Qtools> {
     private QtoolsFactory() {
     }
 
-    public static synchronized Qtools getInstance() {
+    public static synchronized QtoolsFactory getFactoryInstance() {
         if (INSTANCE == null) {
             INSTANCE = new QtoolsFactory();
         }
+        return INSTANCE;
+    }
 
-        return INSTANCE.createInstanceIfNotExists();
+    @Override
+    public Qtools getInstance() {
+        return this.createInstanceIfNotExists();
+    }
+
+    @Override
+    public Qtools build() {
+        this.t = INSTANCE.createInstance();
+        return this.t;
     }
 
     @Override

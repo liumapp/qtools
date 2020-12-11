@@ -1,5 +1,6 @@
 package com.liumapp.qtools.file;
 
+import com.liumapp.qtools.file.core.AbstractFileHelper;
 import com.liumapp.qtools.file.core.FileHelper;
 
 import java.io.*;
@@ -15,12 +16,17 @@ import java.util.HashMap;
  * homepage http://www.liumapp.com
  * date 2020/12/10
  */
-public class SimpleFileHelper implements Serializable, FileHelper {
+public class SimpleFileHelper extends AbstractFileHelper implements Serializable, FileHelper {
 
 
     private static final long serialVersionUID = -7265612281189715204L;
 
     protected SimpleFileHelper() {
+        throw new UnsupportedOperationException("Initialize Simple File Helper not allowed here...");
+    }
+
+    protected SimpleFileHelper(FileHelperParam param) {
+        this.fileHelperParam = param;
     }
 
     @Override
@@ -29,7 +35,6 @@ public class SimpleFileHelper implements Serializable, FileHelper {
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         byte[] oldBytes = new byte[0];
         try {
-
             while (channel.read(byteBuffer) != -1) {
                 Integer readLength = byteBuffer.position();
                 byteBuffer.rewind();
