@@ -1,6 +1,6 @@
 package com.liumapp.qtools;
 
-import com.liumapp.qtools.file.enums.IOEnum;
+import com.liumapp.qtools.file.core.enums.IOEnum;
 import junit.framework.TestCase;
 
 import java.io.IOException;

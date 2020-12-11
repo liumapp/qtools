@@ -1,4 +1,4 @@
-package com.liumapp.qtools.file.enums;
+package com.liumapp.qtools.file.core.enums;
 
 /**
  * file IOEnum.java

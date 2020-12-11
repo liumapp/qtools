@@ -1,6 +1,6 @@
 package com.liumapp.qtools.file;
 
-import com.liumapp.qtools.file.enums.IOEnum;
+import com.liumapp.qtools.file.core.enums.IOEnum;
 
 import java.io.Serializable;
 
