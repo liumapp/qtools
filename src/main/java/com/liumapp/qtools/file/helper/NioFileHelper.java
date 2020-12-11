@@ -10,7 +10,6 @@ import com.liumapp.qtools.file.core.exceptions.ReadBytesFaildException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.io.Serializable;
-import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
@@ -62,7 +61,22 @@ public class NioFileHelper extends AbstractFileHelper implements FileHelper, Ser
     }
 
     @Override
-    public void writeBytesToFile(byte[] bytes, String filePath) {
+    public Integer writeBytesToFile(byte[] bytes, String filePath) {
+        Integer length = 0;
+        try {
 
+            FileChannel channel = new RandomAccessFile(filePath, "rws").getChannel();
+            ByteBuffer content = ByteBuffer.wrap(bytes);
+            try {
+
+            } finally {
+                if (channel.isOpen()) {
+                    channel.close();
+                }
+            }
+        } catch (Exception e) {
+
+        }
+        return length;
     }
 }

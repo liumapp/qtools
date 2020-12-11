@@ -23,8 +23,9 @@ public interface FileHelper {
      * write bytes to file
      * @param bytes bytes array
      * @param filePath file URL
+     * @return write length
      */
-    public void writeBytesToFile (byte[] bytes, String filePath);
+    public Integer writeBytesToFile (byte[] bytes, String filePath);
 
 
 
