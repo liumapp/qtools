@@ -26,6 +26,21 @@
   </developers>
 
   <dependencies>
+    <!--needed begin-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.7</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.reflections</groupId>
+      <artifactId>reflections</artifactId>
+      <version>0.9.12</version>
+    </dependency>
+    <!--needed end-->
+
+    <!--to be removed-->
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
@@ -81,12 +96,6 @@
       <artifactId>lombok</artifactId>
       <version>1.18.12</version>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.7</version>
-      <scope>test</scope>
     </dependency>
   </dependencies>
 
