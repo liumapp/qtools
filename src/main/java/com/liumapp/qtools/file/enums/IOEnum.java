@@ -14,7 +14,9 @@ public enum IOEnum {
 
     NIO("nio"),
 
-    AIO("aio");
+    AIO("aio")
+
+    ;
 
     IOEnum(String ioTypeName) {
         this.ioTypeName = ioTypeName;

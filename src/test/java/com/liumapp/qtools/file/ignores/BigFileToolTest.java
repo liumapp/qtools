@@ -1,4 +1,4 @@
-package com.liumapp.qtools.file;
+package com.liumapp.qtools.file.ignores;
 
 import com.liumapp.qtools.file.ignores.BigFileTool;
 import com.liumapp.qtools.file.ignores.FileTool;
