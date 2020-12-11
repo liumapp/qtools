@@ -4,6 +4,7 @@ import com.liumapp.qtools.core.AbstractFactory;
 import com.liumapp.qtools.file.core.FileHelper;
 import com.liumapp.qtools.file.core.annotations.IOType;
 import com.liumapp.qtools.file.core.enums.IOEnum;
+import com.liumapp.qtools.file.core.exceptions.CreateFileHelperException;
 import org.reflections.Reflections;
 import org.reflections.scanners.MethodAnnotationsScanner;
 import org.reflections.scanners.SubTypesScanner;
@@ -13,7 +14,9 @@ import org.reflections.util.ConfigurationBuilder;
 
 import java.io.Serializable;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.file.Paths;
 import java.util.Set;
 
 /**
@@ -32,6 +35,11 @@ public class FileHelperFactory extends AbstractFactory<FileHelper> implements Se
 
     private FileHelperParam fileHelperParam;
 
+    private Reflections reflections = new Reflections(new ConfigurationBuilder()
+            .setUrls(ClasspathHelper.forPackage("com.liumapp.qtools.file"))
+            .setScanners(new SubTypesScanner(), new MethodAnnotationsScanner(), new TypeAnnotationsScanner())
+    );
+
     private FileHelperFactory() {
         fileHelperParam = new FileHelperParam();
     }
@@ -49,6 +57,11 @@ public class FileHelperFactory extends AbstractFactory<FileHelper> implements Se
         return this.t;
     }
 
+    /**
+     * 获取最近创建的一个实例
+     * 如果没有，则使用默认配置新建一个实例返回
+     * @return
+     */
     @Override
     public FileHelper getInstance() {
         return this.createInstanceIfNotExists();
@@ -56,8 +69,21 @@ public class FileHelperFactory extends AbstractFactory<FileHelper> implements Se
 
     @Override
     protected FileHelper createInstance() {
-
-        return new SimpleFileHelper(fileHelperParam);
+        Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(IOType.class);
+        FileHelper result = null;
+        for (Class<?> annotatedClass : annotated)
+        {
+            try {
+                IOType annotation = annotatedClass.getAnnotation(IOType.class);
+                if (annotation.value().equals(fileHelperParam.ioType)) {
+                    Constructor<?> cons = annotatedClass.getConstructor(FileHelperParam.class);
+                    result = (FileHelper) cons.newInstance(new FileHelperParam());
+                }
+            } catch (Exception e) {
+                throw new CreateFileHelperException("不支持的IOType类型: " + fileHelperParam.ioType.getIoTypeName());
+            }
+        }
+        return result;
     }
 
     public FileHelperFactory setIoType (IOEnum ioType) {

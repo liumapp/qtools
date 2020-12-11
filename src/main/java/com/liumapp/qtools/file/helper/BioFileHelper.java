@@ -24,6 +24,7 @@ public class BioFileHelper extends AbstractFileHelper implements FileHelper, Ser
 
     public BioFileHelper(FileHelperParam param) {
         this.fileHelperParam = param;
+        throw new UnsupportedOperationException();
     }
 
     @Override

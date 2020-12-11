@@ -24,6 +24,7 @@ public class AioFileHelper extends AbstractFileHelper implements FileHelper, Ser
 
     public AioFileHelper(FileHelperParam param) {
         this.fileHelperParam = param;
+        throw new UnsupportedOperationException();
     }
 
     @Override
