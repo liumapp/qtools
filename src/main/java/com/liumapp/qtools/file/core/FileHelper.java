@@ -21,6 +21,13 @@ public interface FileHelper {
      */
     public byte[] readyBytesByFilePath(String filePath);
 
-    public boolean saveFileByBytes(byte[] bytes, String fileName, URL filePath);
+    /**
+     *
+     * @param bytes
+     * @param filePath
+     */
+    public void writeBytesToFile (byte[] bytes, URL filePath);
+
+
 
 }

@@ -34,7 +34,7 @@ public class AioFileHelper extends AbstractFileHelper implements FileHelper, Ser
     }
 
     @Override
-    public boolean saveFileByBytes(byte[] bytes, String fileName, URL filePath) {
-        return false;
+    public void writeBytesToFile(byte[] bytes, URL filePath) {
+
     }
 }

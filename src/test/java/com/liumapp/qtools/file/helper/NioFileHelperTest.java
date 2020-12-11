@@ -2,11 +2,15 @@ package com.liumapp.qtools.file.helper;
 
 import com.liumapp.qtools.Qtools;
 import com.liumapp.qtools.QtoolsFactory;
+import com.liumapp.qtools.file.core.FileHelper;
 import com.liumapp.qtools.file.core.enums.IOEnum;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import static org.junit.Assert.*;
 
@@ -41,5 +45,18 @@ public class NioFileHelperTest {
      */
     public void testBase64() throws IOException {
 
+    }
+
+    @Test
+    public void saveFileByBytes() throws MalformedURLException {
+        Qtools qtools = QtoolsFactory.getFactoryInstance().getInstance();
+        byte[] b = qtools.newFileHelperBuilder()
+                .setAutoCreateFolder(true)
+                .setIoType(IOEnum.NIO)
+                .setSupportTransferTo(true)
+                .build()
+                .readyBytesByFilePath(this.getClass().getResource("/base64Content.txt").getPath());
+        URL saveUrl = new URL(this.getClass().getResource("generated.txt").getPath());
+        qtools.getSingleFileHelper().writeBytesToFile(b, saveUrl);
     }
 }
