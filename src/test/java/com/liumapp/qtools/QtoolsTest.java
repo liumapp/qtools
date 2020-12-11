@@ -1,9 +1,21 @@
 package com.liumapp.qtools;
 
+import com.liumapp.qtools.file.FileHelperParam;
+import com.liumapp.qtools.file.core.FileHelper;
+import com.liumapp.qtools.file.core.annotations.IOType;
 import com.liumapp.qtools.file.core.enums.IOEnum;
 import junit.framework.TestCase;
+import org.reflections.Reflections;
+import org.reflections.scanners.MethodAnnotationsScanner;
+import org.reflections.scanners.SubTypesScanner;
+import org.reflections.scanners.TypeAnnotationsScanner;
+import org.reflections.util.ClasspathHelper;
+import org.reflections.util.ConfigurationBuilder;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Set;
 
 /**
  * file QtoolsTest.java
@@ -30,6 +42,29 @@ public class QtoolsTest extends TestCase {
                 .build()
                 .readyBytesByFilePath(this.getClass().getResource("/content.txt").getPath());
         System.out.println(new String(b,0, b.length));
+    }
+
+    public void testReflection() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        //指定扫描的包名
+        Reflections reflections = new Reflections(new ConfigurationBuilder()
+                .setUrls(ClasspathHelper.forPackage("com.liumapp.qtools.file"))
+                .setScanners(new SubTypesScanner(), new MethodAnnotationsScanner(), new TypeAnnotationsScanner())
+        );
+
+        //Filter是个接口，获取在指定包扫描的目录所有的实现类
+        Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(IOType.class);
+        for (Class<?> annotatedClass : annotated)
+        {
+            System.out.println(annotatedClass.getName());
+            IOType annotation = annotatedClass.getAnnotation(IOType.class);
+
+            String value = annotation.value().getIoTypeName();
+            System.out.println(value);
+
+            Constructor<?> cons = annotatedClass.getConstructor(FileHelperParam.class);
+            FileHelper fileHelper = (FileHelper) cons.newInstance(new FileHelperParam());
+            System.out.println(fileHelper.toString());
+        }
     }
 
 }

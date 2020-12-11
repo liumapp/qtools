@@ -21,7 +21,7 @@ public class BioFileHelper extends AbstractFileHelper implements FileHelper, Ser
 
     private static final long serialVersionUID = -7187701923903043140L;
 
-    protected BioFileHelper(FileHelperParam param) {
+    public BioFileHelper(FileHelperParam param) {
         this.fileHelperParam = param;
     }
 

@@ -21,6 +21,10 @@ public class AioFileHelper extends AbstractFileHelper implements FileHelper, Ser
 
     private static final long serialVersionUID = 3093981275449260130L;
 
+    public AioFileHelper(FileHelperParam param) {
+        this.fileHelperParam = param;
+    }
+
     @Override
     public byte[] readyBytesByFilePath(String filePath) throws IOException {
         return new byte[0];
