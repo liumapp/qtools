@@ -4,6 +4,8 @@ import com.liumapp.qtools.core.AbstractFactory;
 import com.liumapp.qtools.file.core.FileHelper;
 import com.liumapp.qtools.file.enums.IOEnum;
 
+import java.io.Serializable;
+
 /**
  * file FileHelperFactory.java
  * author liumapp
@@ -12,7 +14,9 @@ import com.liumapp.qtools.file.enums.IOEnum;
  * homepage http://www.liumapp.com
  * date 2020/12/10
  */
-public class FileHelperFactory extends AbstractFactory<FileHelper> {
+public class FileHelperFactory extends AbstractFactory<FileHelper> implements Serializable {
+
+    private static final long serialVersionUID = 5046605863380012214L;
 
     private static FileHelperFactory INSTANCE;
 

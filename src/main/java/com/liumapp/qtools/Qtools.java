@@ -23,7 +23,7 @@ public class Qtools implements Serializable, SupportFileHelper {
 
     protected Qtools() {
         this.fileHelperFactory = FileHelperFactory.getFactoryInstance();
-}
+    }
 
     @Override
     public FileHelper getSingleFileHelper() {

@@ -2,6 +2,8 @@ package com.liumapp.qtools;
 
 import com.liumapp.qtools.core.AbstractFactory;
 
+import java.io.Serializable;
+
 /**
  * file QtoolsFactory.java
  * author liumapp
@@ -10,7 +12,9 @@ import com.liumapp.qtools.core.AbstractFactory;
  * homepage http://www.liumapp.com
  * date 2020/12/10
  */
-public class QtoolsFactory extends AbstractFactory<Qtools> {
+public class QtoolsFactory extends AbstractFactory<Qtools> implements Serializable {
+
+    private static final long serialVersionUID = -2600170885813027369L;
 
     private static QtoolsFactory INSTANCE;
 

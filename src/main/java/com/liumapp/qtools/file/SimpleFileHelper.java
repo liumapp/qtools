@@ -6,7 +6,6 @@ import com.liumapp.qtools.file.core.FileHelper;
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
-import java.util.HashMap;
 
 /**
  * file SimpleFileHelper.java
@@ -17,7 +16,6 @@ import java.util.HashMap;
  * date 2020/12/10
  */
 public class SimpleFileHelper extends AbstractFileHelper implements Serializable, FileHelper {
-
 
     private static final long serialVersionUID = -7265612281189715204L;
 
