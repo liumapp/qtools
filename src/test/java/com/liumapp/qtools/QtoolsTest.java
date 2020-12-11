@@ -45,13 +45,11 @@ public class QtoolsTest extends TestCase {
     }
 
     public void testReflection() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        //指定扫描的包名
         Reflections reflections = new Reflections(new ConfigurationBuilder()
                 .setUrls(ClasspathHelper.forPackage("com.liumapp.qtools.file"))
                 .setScanners(new SubTypesScanner(), new MethodAnnotationsScanner(), new TypeAnnotationsScanner())
         );
 
-        //Filter是个接口，获取在指定包扫描的目录所有的实现类
         Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(IOType.class);
         for (Class<?> annotatedClass : annotated)
         {
