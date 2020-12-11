@@ -22,8 +22,8 @@ public class QtoolsTest extends TestCase {
      * 4. 如果磁盘目录地址已有同名文件，则覆盖;
      */
     public void testBase64() throws IOException {
-        Qtools qtools = QtoolsFactory.getInstance();
-        byte[] b = qtools.newFileHelperBuild()
+        Qtools qtools = QtoolsFactory.getFactoryInstance().getInstance();
+        byte[] b = qtools.newFileHelperBuilder()
                 .setAutoCreateFolder(true)
                 .setIoType(IOEnum.NIO)
                 .setSupportTransferTo(true)

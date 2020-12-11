@@ -23,15 +23,16 @@ public class Qtools implements Serializable, SupportFileHelper {
 
     protected Qtools() {
         this.fileHelperFactory = FileHelperFactory.getFactoryInstance();
-    }
+}
 
     @Override
     public FileHelper getSingleFileHelper() {
-        return fileHelperFactory.build();
+        return fileHelperFactory.getInstance();
     }
 
     @Override
-    public FileHelperFactory newFileHelperBuild() {
+    public FileHelperFactory newFileHelperBuilder() {
         return this.fileHelperFactory;
     }
+
 }

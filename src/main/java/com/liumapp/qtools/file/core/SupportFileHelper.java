@@ -15,7 +15,7 @@ public interface SupportFileHelper {
 
     public FileHelper getSingleFileHelper();
 
-    public FileHelperFactory newFileHelperBuild();
+    public FileHelperFactory newFileHelperBuilder();
 
 
 }
