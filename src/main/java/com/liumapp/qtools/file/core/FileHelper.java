@@ -1,7 +1,5 @@
 package com.liumapp.qtools.file.core;
 
-import java.net.URL;
-
 /**
  * file FileHelper.java
  * author liumapp
@@ -27,6 +25,6 @@ public interface FileHelper {
      */
     public Integer writeBytesToFile (byte[] bytes, String filePath);
 
-
+//    public
 
 }

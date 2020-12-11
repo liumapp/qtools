@@ -24,6 +24,17 @@ import static org.junit.Assert.*;
  */
 public class NioFileHelperTest {
 
+    /**
+     * 1. 根据base64文本创建文件;
+     * 2. 通过零拷贝存储文件在系统磁盘;
+     * 3. 如果磁盘目录不存在，则创建;
+     * 4. 如果磁盘目录地址已有同名文件，则覆盖;
+     */
+    @Test
+    public void testBase64() throws IOException {
+
+    }
+
     @Test
     public void readyBytesByFilePath() {
         Qtools qtools = QtoolsFactory.getFactoryInstance().getInstance();
@@ -35,16 +46,6 @@ public class NioFileHelperTest {
                 .readyBytesByFilePath(this.getClass().getResource("/base64Content.txt").getPath());
         System.out.println(new String(b,0, b.length));
         assertEquals(5002, b.length);
-    }
-
-    /**
-     * 1. 根据base64文本创建文件;
-     * 2. 通过零拷贝存储文件在系统磁盘;
-     * 3. 如果磁盘目录不存在，则创建;
-     * 4. 如果磁盘目录地址已有同名文件，则覆盖;
-     */
-    public void testBase64() throws IOException {
-
     }
 
     @Test
