@@ -28,7 +28,7 @@ public class BioFileHelper extends AbstractFileHelper implements FileHelper, Ser
     }
 
     @Override
-    public byte[] readyBytesByFilePath(String filePath) throws IOException {
+    public byte[] readyBytesByFilePath(String filePath) {
         return new byte[0];
     }
 }

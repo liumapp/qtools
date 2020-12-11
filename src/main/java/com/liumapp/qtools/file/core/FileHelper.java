@@ -18,7 +18,7 @@ public interface FileHelper {
      * @param filePath absolute file path
      * @return
      */
-    public byte[] readyBytesByFilePath(String filePath) throws IOException;
+    public byte[] readyBytesByFilePath(String filePath);
 
 //    public
 

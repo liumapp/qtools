@@ -5,6 +5,7 @@ import com.liumapp.qtools.file.core.AbstractFileHelper;
 import com.liumapp.qtools.file.core.FileHelper;
 import com.liumapp.qtools.file.core.annotations.IOType;
 import com.liumapp.qtools.file.core.enums.IOEnum;
+import com.liumapp.qtools.file.core.exceptions.ReadBytesFaildException;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -30,28 +31,32 @@ public class NioFileHelper extends AbstractFileHelper implements FileHelper, Ser
     }
 
     @Override
-    public byte[] readyBytesByFilePath(String filePath) throws IOException {
-        FileChannel channel = new RandomAccessFile(filePath, "r").getChannel();
-        ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+    public byte[] readyBytesByFilePath(String filePath) {
         byte[] oldBytes = new byte[0];
         try {
-            while (channel.read(byteBuffer) != -1) {
-                Integer readLength = byteBuffer.position();
-                byteBuffer.rewind();
-                byte[] newBytes = new byte[readLength];
-                byteBuffer.get(newBytes);
-                byteBuffer.clear();
-                byte[] mergeBytes = new byte[oldBytes.length + newBytes.length];
-                System.arraycopy(oldBytes,0,mergeBytes,0,oldBytes.length);
-                System.arraycopy(newBytes,0,mergeBytes,oldBytes.length,newBytes.length);
-                oldBytes = mergeBytes;
-            }
-        } finally {
-            if (channel.isOpen()) {
-                channel.close();
-            }
-        }
+            FileChannel channel = new RandomAccessFile(filePath, "r").getChannel();
+            ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
 
+            try {
+                while (channel.read(byteBuffer) != -1) {
+                    Integer readLength = byteBuffer.position();
+                    byteBuffer.rewind();
+                    byte[] newBytes = new byte[readLength];
+                    byteBuffer.get(newBytes);
+                    byteBuffer.clear();
+                    byte[] mergeBytes = new byte[oldBytes.length + newBytes.length];
+                    System.arraycopy(oldBytes,0,mergeBytes,0,oldBytes.length);
+                    System.arraycopy(newBytes,0,mergeBytes,oldBytes.length,newBytes.length);
+                    oldBytes = mergeBytes;
+                }
+            } finally {
+                if (channel.isOpen()) {
+                    channel.close();
+                }
+            }
+        } catch (IOException e) {
+            throw new ReadBytesFaildException(e.getMessage());
+        }
         return oldBytes;
     }
 }
