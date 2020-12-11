@@ -64,11 +64,12 @@ public class NioFileHelper extends AbstractFileHelper implements FileHelper, Ser
     public Integer writeBytesToFile(byte[] bytes, String filePath) {
         Integer length = 0;
         try {
-
             FileChannel channel = new RandomAccessFile(filePath, "rws").getChannel();
             ByteBuffer content = ByteBuffer.wrap(bytes);
             try {
-
+                while ( (length = channel.write(content)) != 0) {
+                    // keep writing
+                }
             } finally {
                 if (channel.isOpen()) {
                     channel.close();
@@ -77,6 +78,6 @@ public class NioFileHelper extends AbstractFileHelper implements FileHelper, Ser
         } catch (Exception e) {
 
         }
-        return length;
+        return bytes.length;
     }
 }
