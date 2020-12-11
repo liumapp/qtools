@@ -1,6 +1,6 @@
 package com.liumapp.qtools.file.ignores;
 
-import com.liumapp.qtools.array.ArrayTool;
+import com.liumapp.qtools.ignores.array.ArrayTool;
 import com.liumapp.qtools.file.filter.SimpleFileFilterTool;
 
 import java.io.File;

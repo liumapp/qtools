@@ -1,7 +1,7 @@
 package com.liumapp.qtools.file.ignores;
 
-import com.liumapp.qtools.string.StrTool;
-import com.liumapp.qtools.string.SuffixTool;
+import com.liumapp.qtools.ignores.string.StrTool;
+import com.liumapp.qtools.ignores.string.SuffixTool;
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import net.lingala.zip4j.model.FileHeader;

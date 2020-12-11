@@ -1,6 +1,6 @@
 package com.liumapp.qtools.file.ignores;
 
-import com.liumapp.qtools.string.StrTool;
+import com.liumapp.qtools.ignores.string.StrTool;
 import java.io.*;
 import java.util.*;
 
