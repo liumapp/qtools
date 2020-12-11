@@ -62,7 +62,7 @@ public class NioFileHelper extends AbstractFileHelper implements FileHelper, Ser
     }
 
     @Override
-    public void writeBytesToFile(byte[] bytes, URL filePath) {
+    public void writeBytesToFile(byte[] bytes, String filePath) {
 
     }
 }

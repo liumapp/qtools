@@ -1,7 +1,5 @@
 package com.liumapp.qtools.file.core;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.URL;
 
 /**
@@ -17,16 +15,16 @@ public interface FileHelper {
     /**
      * read file content by nio
      * @param filePath absolute file path
-     * @return
+     * @return bytes array
      */
     public byte[] readyBytesByFilePath(String filePath);
 
     /**
-     *
-     * @param bytes
-     * @param filePath
+     * write bytes to file
+     * @param bytes bytes array
+     * @param filePath file URL
      */
-    public void writeBytesToFile (byte[] bytes, URL filePath);
+    public void writeBytesToFile (byte[] bytes, String filePath);
 
 
 

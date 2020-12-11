@@ -56,7 +56,8 @@ public class NioFileHelperTest {
                 .setSupportTransferTo(true)
                 .build()
                 .readyBytesByFilePath(this.getClass().getResource("/base64Content.txt").getPath());
-        URL saveUrl = new URL(this.getClass().getResource("generated.txt").getPath());
-        qtools.getSingleFileHelper().writeBytesToFile(b, saveUrl);
+        String filePath = this.getClass().getResource("/").getPath() + "generated.txt";
+        System.out.println("write file to " + filePath);
+        qtools.getSingleFileHelper().writeBytesToFile(b, filePath);
     }
 }
