@@ -19,17 +19,17 @@ public class FileHelperParam implements Serializable {
     /**
      * io type
      */
-    protected IOEnum ioType = IOEnum.BIO;
+    protected IOEnum ioType = IOEnum.NIO;
 
     /**
      * is need to support transferTo
      */
-    protected Boolean supportTransferTo = false;
+    protected Boolean supportTransferTo = true;
 
     /**
      * if folder not exists, should qtools auto create it
      */
-    protected Boolean autoCreateFolder = false;
+    protected Boolean autoCreateFolder = true;
 
     public FileHelperParam() {
     }

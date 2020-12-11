@@ -8,6 +8,7 @@ import com.liumapp.qtools.file.core.enums.IOEnum;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.net.URL;
 
 /**
  * file BioFileHelper.java
@@ -30,5 +31,10 @@ public class BioFileHelper extends AbstractFileHelper implements FileHelper, Ser
     @Override
     public byte[] readyBytesByFilePath(String filePath) {
         return new byte[0];
+    }
+
+    @Override
+    public boolean saveFileByBytes(byte[] bytes, String fileName, URL filePath) {
+        return false;
     }
 }

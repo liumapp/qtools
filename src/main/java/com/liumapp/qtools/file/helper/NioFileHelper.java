@@ -10,6 +10,7 @@ import com.liumapp.qtools.file.core.exceptions.ReadBytesFaildException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.io.Serializable;
+import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
@@ -58,5 +59,11 @@ public class NioFileHelper extends AbstractFileHelper implements FileHelper, Ser
             throw new ReadBytesFaildException(e.getMessage());
         }
         return oldBytes;
+    }
+
+    @Override
+    public boolean saveFileByBytes(byte[] bytes, String fileName, URL filePath) {
+        
+        return false;
     }
 }

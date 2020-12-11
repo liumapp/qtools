@@ -2,6 +2,7 @@ package com.liumapp.qtools.file.core;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * file FileHelper.java
@@ -20,6 +21,6 @@ public interface FileHelper {
      */
     public byte[] readyBytesByFilePath(String filePath);
 
-//    public
+    public boolean saveFileByBytes(byte[] bytes, String fileName, URL filePath);
 
 }
