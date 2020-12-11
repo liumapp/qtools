@@ -67,6 +67,10 @@ public class FileHelperFactory extends AbstractFactory<FileHelper> implements Se
         return this.createInstanceIfNotExists();
     }
 
+    /**
+     * 根据ioType动态创建需要的实例
+     * @return
+     */
     @Override
     protected FileHelper createInstance() {
         Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(IOType.class);

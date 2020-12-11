@@ -44,25 +44,4 @@ public class QtoolsTest extends TestCase {
         System.out.println(new String(b,0, b.length));
     }
 
-    public void testReflection() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        Reflections reflections = new Reflections(new ConfigurationBuilder()
-                .setUrls(ClasspathHelper.forPackage("com.liumapp.qtools.file"))
-                .setScanners(new SubTypesScanner(), new MethodAnnotationsScanner(), new TypeAnnotationsScanner())
-        );
-
-        Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(IOType.class);
-        for (Class<?> annotatedClass : annotated)
-        {
-            System.out.println(annotatedClass.getName());
-            IOType annotation = annotatedClass.getAnnotation(IOType.class);
-
-            String value = annotation.value().getIoTypeName();
-            System.out.println(value);
-
-            Constructor<?> cons = annotatedClass.getConstructor(FileHelperParam.class);
-            FileHelper fileHelper = (FileHelper) cons.newInstance(new FileHelperParam());
-            System.out.println(fileHelper.toString());
-        }
-    }
-
 }
