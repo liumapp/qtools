@@ -2,6 +2,7 @@ package com.liumapp.qtools.file.helper;
 
 import com.liumapp.qtools.file.FileHelperParam;
 import com.liumapp.qtools.file.core.AbstractFileHelper;
+import com.liumapp.qtools.file.core.Base64Helper;
 import com.liumapp.qtools.file.core.FileHelper;
 import com.liumapp.qtools.file.core.annotations.IOType;
 import com.liumapp.qtools.file.core.enums.IOEnum;
@@ -79,5 +80,10 @@ public class NioFileHelper extends AbstractFileHelper implements FileHelper, Ser
 
         }
         return bytes.length;
+    }
+
+    @Override
+    public Base64Helper base64() {
+        return null;
     }
 }

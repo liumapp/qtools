@@ -1,5 +1,6 @@
 package com.liumapp.qtools.file.core;
 
+import com.liumapp.qtools.core.Helper;
 import com.liumapp.qtools.file.FileHelperParam;
 
 /**
@@ -10,7 +11,7 @@ import com.liumapp.qtools.file.FileHelperParam;
  * homepage http://www.liumapp.com
  * date 2020/12/10
  */
-public abstract class AbstractFileHelper {
+public abstract class AbstractFileHelper implements Helper {
 
     protected FileHelperParam fileHelperParam;
 

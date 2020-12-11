@@ -14,9 +14,6 @@ import org.reflections.util.ConfigurationBuilder;
 
 import java.io.Serializable;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.nio.file.Paths;
 import java.util.Set;
 
 /**

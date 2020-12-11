@@ -1,5 +1,7 @@
 package com.liumapp.qtools.file.core;
 
+import com.liumapp.qtools.core.Helper;
+
 /**
  * file FileHelper.java
  * author liumapp
@@ -8,7 +10,7 @@ package com.liumapp.qtools.file.core;
  * homepage http://www.liumapp.com
  * date 2020/12/10
  */
-public interface FileHelper {
+public interface FileHelper extends Helper {
 
     /**
      * read file content by nio
@@ -25,6 +27,9 @@ public interface FileHelper {
      */
     public Integer writeBytesToFile (byte[] bytes, String filePath);
 
-//    public
+    /**
+     * @return Base64Helper to solve base64 problem
+     */
+    public Base64Helper base64();
 
 }
