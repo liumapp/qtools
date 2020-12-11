@@ -22,7 +22,8 @@ public class QtoolsTest extends TestCase {
      */
     public void testBase64() throws IOException {
         Qtools qtools = QtoolsFactory.getInstance();
-        byte[] b = qtools.getFileHelper().readyBytesByFilePath(this.getClass().getResource("/content.txt").getPath());
+        byte[] b = qtools
+                .getFileHelper().readyBytesByFilePath(this.getClass().getResource("/content.txt").getPath());
         System.out.println(new String(b,0, b.length));
     }
 

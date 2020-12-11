@@ -29,6 +29,7 @@ public class SimpleFileHelper implements Serializable, FileHelper {
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         byte[] oldBytes = new byte[0];
         try {
+
             while (channel.read(byteBuffer) != -1) {
                 Integer readLength = byteBuffer.position();
                 byteBuffer.rewind();
