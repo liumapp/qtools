@@ -30,7 +30,7 @@ public class NioFileHelperTest {
                 .build()
                 .readyBytesByFilePath(this.getClass().getResource("/base64Content.txt").getPath());
         System.out.println(new String(b,0, b.length));
-        Assert.assertEquals(5002, b.length);
+        assertEquals(5002, b.length);
     }
 
     /**

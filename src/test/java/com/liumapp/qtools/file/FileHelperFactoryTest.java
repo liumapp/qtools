@@ -1,8 +1,6 @@
 package com.liumapp.qtools.file;
 
-import com.liumapp.qtools.Qtools;
 import com.liumapp.qtools.QtoolsFactory;
-import com.liumapp.qtools.core.exceptions.QtoolsException;
 import com.liumapp.qtools.file.core.FileHelper;
 import com.liumapp.qtools.file.core.enums.IOEnum;
 import com.liumapp.qtools.file.core.exceptions.CreateFileHelperException;
@@ -34,7 +32,7 @@ public class FileHelperFactoryTest {
         FileHelper fileHelper = QtoolsFactory.getFactoryInstance().getInstance().newFileHelperBuilder()
                 .setIoType(IOEnum.NIO)
                 .build();
-        Assert.assertTrue(fileHelper instanceof NioFileHelper);
+        assertTrue(fileHelper instanceof NioFileHelper);
     }
 
 
