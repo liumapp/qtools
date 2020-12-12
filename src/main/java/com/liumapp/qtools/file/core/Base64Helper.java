@@ -3,6 +3,7 @@ package com.liumapp.qtools.file.core;
 import com.liumapp.qtools.core.Helper;
 
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
 /**
  * file Base64Helper.java
@@ -35,6 +36,8 @@ public interface Base64Helper extends Helper {
      */
     byte[] stringToBytes (String base64);
 
+    byte[] stringToBytes (String base64, Charset charset);
+
     /**
      * return the base64 header if exists
      * @param base64 string
@@ -49,6 +52,6 @@ public interface Base64Helper extends Helper {
      */
     String removeHeader (String base64);
 
-    
+
 
 }

@@ -2,6 +2,8 @@ package com.liumapp.qtools.file.helper;
 
 import com.liumapp.qtools.file.core.Base64Helper;
 
+import java.nio.charset.Charset;
+
 /**
  * file CommonBase64Helper.java
  * author liumapp
@@ -14,8 +16,13 @@ public class CommonBase64Helper implements Base64Helper {
 
     @Override
     public byte[] stringToBytes(String base64) {
-        
-        return new byte[0];
+        return stringToBytes(base64, Charset.forName("UTF-8"));
+    }
+
+    @Override
+    public byte[] stringToBytes(String base64, Charset charset) {
+        String content = removeHeader(base64);
+        return content.getBytes(charset);
     }
 
     @Override
