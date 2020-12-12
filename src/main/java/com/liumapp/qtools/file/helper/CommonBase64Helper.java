@@ -14,16 +14,25 @@ public class CommonBase64Helper implements Base64Helper {
 
     @Override
     public byte[] stringToBytes(String base64) {
+
         return new byte[0];
     }
 
     @Override
     public String header(String base64) {
+        String[] baseStr = base64.split(";base64,");
+        if (baseStr.length == 2) {
+            return baseStr[0];
+        }
         return null;
     }
 
     @Override
     public String removeHeader(String base64) {
-        return null;
+        String[] baseStr = base64.split(";base64,");
+        if (baseStr.length == 2) {
+            return baseStr[1];
+        }
+        return base64;
     }
 }
