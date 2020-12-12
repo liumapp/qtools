@@ -1,10 +1,12 @@
 package com.liumapp.qtools.file;
 
 import com.liumapp.qtools.core.AbstractFactory;
+import com.liumapp.qtools.file.core.Base64Helper;
 import com.liumapp.qtools.file.core.FileHelper;
 import com.liumapp.qtools.file.core.annotations.IOType;
 import com.liumapp.qtools.file.core.enums.IOEnum;
 import com.liumapp.qtools.file.core.exceptions.CreateFileHelperException;
+import com.liumapp.qtools.file.helper.CommonBase64Helper;
 import org.reflections.Reflections;
 import org.reflections.scanners.MethodAnnotationsScanner;
 import org.reflections.scanners.SubTypesScanner;
@@ -77,8 +79,9 @@ public class FileHelperFactory extends AbstractFactory<FileHelper> implements Se
             try {
                 IOType annotation = annotatedClass.getAnnotation(IOType.class);
                 if (annotation.value().equals(fileHelperParam.ioType)) {
-                    Constructor<?> cons = annotatedClass.getConstructor(FileHelperParam.class);
-                    result = (FileHelper) cons.newInstance(new FileHelperParam());
+                    Constructor<?> cons = annotatedClass.getConstructor(FileHelperParam.class, Base64Helper.class);
+                    result = (FileHelper) cons.newInstance(new FileHelperParam(), new CommonBase64Helper());
+//                    result
                 }
             } catch (Exception e) {
                 throw new CreateFileHelperException("不支持的IOType类型: " + fileHelperParam.ioType.getIoTypeName());

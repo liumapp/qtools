@@ -11,16 +11,19 @@ import com.liumapp.qtools.file.FileHelperParam;
  * homepage http://www.liumapp.com
  * date 2020/12/10
  */
-public abstract class AbstractFileHelper implements Helper {
+public abstract class AbstractFileHelper implements FileHelper {
 
     protected FileHelperParam fileHelperParam;
 
-    public FileHelperParam getFileHelperParam() {
-        return fileHelperParam;
+    protected Base64Helper base64Helper;
+
+    public AbstractFileHelper(FileHelperParam fileHelperParam, Base64Helper base64Helper) {
+        this.fileHelperParam = fileHelperParam;
+        this.base64Helper = base64Helper;
     }
 
-    public AbstractFileHelper setFileHelperParam(FileHelperParam fileHelperParam) {
-        this.fileHelperParam = fileHelperParam;
-        return this;
+    @Override
+    public Base64Helper base64() {
+        return this.base64Helper;
     }
 }

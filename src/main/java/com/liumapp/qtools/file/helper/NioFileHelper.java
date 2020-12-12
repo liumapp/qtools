@@ -27,8 +27,8 @@ public class NioFileHelper extends AbstractFileHelper implements FileHelper, Ser
 
     private static final long serialVersionUID = -1274329871698769820L;
 
-    public NioFileHelper(FileHelperParam param) {
-        this.fileHelperParam = param;
+    public NioFileHelper(FileHelperParam fileHelperParam, Base64Helper base64Helper) {
+        super(fileHelperParam, base64Helper);
     }
 
     @Override
@@ -80,10 +80,5 @@ public class NioFileHelper extends AbstractFileHelper implements FileHelper, Ser
 
         }
         return bytes.length;
-    }
-
-    @Override
-    public Base64Helper base64() {
-        return null;
     }
 }
