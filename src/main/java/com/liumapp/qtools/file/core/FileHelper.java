@@ -32,4 +32,6 @@ public interface FileHelper extends Helper {
      */
     public Base64Helper base64();
 
+
+
 }
