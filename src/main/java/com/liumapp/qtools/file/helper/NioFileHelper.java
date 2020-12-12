@@ -8,11 +8,13 @@ import com.liumapp.qtools.file.core.annotations.IOType;
 import com.liumapp.qtools.file.core.enums.IOEnum;
 import com.liumapp.qtools.file.core.exceptions.ReadBytesFaildException;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.io.Serializable;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.Random;
 
 /**
  * file NioFileHelper.java
@@ -80,5 +82,10 @@ public class NioFileHelper extends AbstractFileHelper implements FileHelper, Ser
 
         }
         return bytes.length;
+    }
+
+    @Override
+    public void createFile(byte[] bytes, String filePath) {
+        return ;
     }
 }

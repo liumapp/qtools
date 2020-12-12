@@ -27,10 +27,19 @@ public interface FileHelper extends Helper {
      */
     public Integer writeBytesToFile (byte[] bytes, String filePath);
 
+//    public Integer appendBytesToFile (byte[] bytes, String filePath);
+
     /**
      * @return Base64Helper to solve base64 problem
      */
     public Base64Helper base64();
+
+    /**
+     * create file by bytes, if file exists, replace it
+     * @param bytes byte array
+     * @param filePath string , file path
+     */
+    public void createFile (byte[] bytes, String filePath);
 
 
 

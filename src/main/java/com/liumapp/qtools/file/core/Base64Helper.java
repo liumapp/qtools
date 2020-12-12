@@ -34,9 +34,16 @@ public interface Base64Helper extends Helper {
      * @param base64 string
      * @return
      */
-    byte[] stringToBytes (String base64);
+    byte[] decodeString (String base64);
 
-    byte[] stringToBytes (String base64, Charset charset);
+    byte[] decodeBytes (byte[] base64);
+
+    /**
+     * encode bytes to base64 bytes
+     * @param bytes array
+     * @return
+     */
+    byte[] encodeBytes (byte[] bytes);
 
     /**
      * return the base64 header if exists
