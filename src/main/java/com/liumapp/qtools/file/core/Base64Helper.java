@@ -19,15 +19,36 @@ public interface Base64Helper extends Helper {
      * @param base64Bytes base64 content bytes
      * @return
      */
-    ByteBuffer bytesToByteBuffer (byte[] base64Bytes);
+//    ByteBuffer bytesToByteBuffer (byte[] base64Bytes);
 
     /**
      * convert base64 content string to a new ByteBuffer
      * @param base64 base64 content string
      * @return
      */
-    ByteBuffer stringToByteBuffer (String base64);
+//    ByteBuffer stringToByteBuffer (String base64);
 
+    /**
+     * convert base64 content string to byte array
+     * @param base64 string
+     * @return
+     */
+    byte[] stringToBytes (String base64);
 
+    /**
+     * return the base64 header if exists
+     * @param base64 string
+     * @return
+     */
+    String header (String base64);
+
+    /**
+     * remove the base64 header if exists
+     * @param base64 string
+     * @return base64 content without header
+     */
+    String removeHeader (String base64);
+
+    
 
 }
