@@ -14,7 +14,7 @@ public class CommonBase64Helper implements Base64Helper {
 
     @Override
     public byte[] stringToBytes(String base64) {
-
+        
         return new byte[0];
     }
 
