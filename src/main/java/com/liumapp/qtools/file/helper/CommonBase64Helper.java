@@ -15,13 +15,12 @@ import org.apache.commons.codec.binary.Base64;
 public class CommonBase64Helper implements Base64Helper {
     @Override
     public byte[] decodeString(String base64) {
-        String content = removeHeader(base64);
-        return Base64.decodeBase64(content);
+        return Base64.decodeBase64(base64);
     }
 
     @Override
     public byte[] decodeBytes(byte[] base64) {
-        return decodeString(new String(base64));
+        return Base64.decodeBase64(base64);
     }
 
     @Override

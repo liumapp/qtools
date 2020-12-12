@@ -36,11 +36,11 @@ public class CommonBase64HelperTest {
 
     @Test
     public void saveFile() {
-        byte[] contents = fileHelper.readyBytesByFilePath(
+        byte[] base64Content = fileHelper.readyBytesByFilePath(
                 this.getClass().getResource("/base64Content.txt").getPath()
         );
-        fileHelper.writeBytesToFile(fileHelper.base64().decodeBytes(contents),
-                this.getClass().getResource("/").getPath() + "2.mp3");
+        fileHelper.writeBytesToFile(fileHelper.base64().decodeBytes(base64Content),
+                this.getClass().getResource("/").getPath() + "4.mp3");
     }
 
     @Test
@@ -48,10 +48,8 @@ public class CommonBase64HelperTest {
         byte[] content = fileHelper.readyBytesByFilePath(
                 this.getClass().getResource("/1.mp3").getPath()
         );
-        String base64String = new String(fileHelper.base64().encodeBytes(content));
-        System.out.println(base64String);
-        fileHelper.writeBytesToFile(fileHelper.base64().decodeString(base64String),
-                this.getClass().getResource("/").getPath() + "3.mp3");
+        fileHelper.writeBytesToFile(fileHelper.base64().encodeBytes(content),
+                this.getClass().getResource("/").getPath() + "base64Content.txt");
     }
 
     @Test
