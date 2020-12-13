@@ -46,10 +46,10 @@ public class CommonBase64HelperTest {
     @Test
     public void encodeBytes() {
         byte[] content = fileHelper.readyBytesByFilePath(
-                this.getClass().getResource("/1.mp3").getPath()
+                this.getClass().getResource("/content.txt").getPath()
         );
         fileHelper.writeBytesToFile(fileHelper.base64().encodeBytes(content),
-                this.getClass().getResource("/").getPath() + "base64Content.txt");
+                this.getClass().getResource("/").getPath() + "contentBase64.txt");
     }
 
     @Test
