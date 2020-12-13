@@ -5,7 +5,7 @@
 
   <groupId>com.liumapp.qtools</groupId>
   <artifactId>qtools</artifactId>
-  <version>v2.0.1</version>
+  <version>v2.0.2</version>
 
   <name>qtools</name>
   <url>http://maven.apache.org</url>
@@ -178,11 +178,11 @@
             <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>
           <!-- MainClass in mainfest make a executable jar -->
-          <!--<archive>-->
-            <!--<manifest>-->
-              <!--<mainClass>com.liumapp.workable.converter.Console</mainClass>-->
-            <!--</manifest>-->
-          <!--</archive>-->
+          <archive>
+            <manifest>
+              <mainClass>com.liumapp.qtools.Qtools</mainClass>
+            </manifest>
+          </archive>
 
         </configuration>
         <executions>

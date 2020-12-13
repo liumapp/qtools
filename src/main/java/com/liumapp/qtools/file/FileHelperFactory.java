@@ -81,7 +81,6 @@ public class FileHelperFactory extends AbstractFactory<FileHelper> implements Se
                 if (annotation.value().equals(fileHelperParam.ioType)) {
                     Constructor<?> cons = annotatedClass.getConstructor(FileHelperParam.class, Base64Helper.class);
                     result = (FileHelper) cons.newInstance(new FileHelperParam(), new CommonBase64Helper());
-//                    result
                 }
             } catch (Exception e) {
                 throw new CreateFileHelperException("不支持的IOType类型: " + fileHelperParam.ioType.getIoTypeName());
