@@ -5,7 +5,7 @@
 
   <groupId>com.liumapp.qtools</groupId>
   <artifactId>qtools</artifactId>
-  <version>v2.0.3</version>
+  <version>v2.0.4</version>
 
   <name>qtools</name>
   <url>http://maven.apache.org</url>

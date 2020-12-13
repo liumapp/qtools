@@ -27,9 +27,14 @@ public class FileHelperParam implements Serializable {
     protected Boolean supportTransferTo = true;
 
     /**
-     * if folder not exists, should qtools auto create it
+     * if folder not exists, should qtools auto create it or just throw new qtoolsException
      */
     protected Boolean autoCreateFolder = true;
+
+    /**
+     * if false, and old file exists , replace will throw new qtoolsException
+     */
+    protected Boolean autoReplaceOldFile = true;
 
     public FileHelperParam() {
     }
