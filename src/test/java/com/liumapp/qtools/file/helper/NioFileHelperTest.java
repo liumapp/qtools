@@ -45,11 +45,11 @@ public class NioFileHelperTest {
                 .build()
                 .readyBytesByFilePath(this.getClass().getResource("/base64Content.txt").getPath());
         System.out.println(new String(b,0, b.length));
-        assertEquals(5002, b.length);
+        assertEquals(8872841, b.length);
     }
 
     @Test
-    public void saveFileByBytes() throws MalformedURLException {
+    public void saveFileByBytes() {
         Qtools qtools = QtoolsFactory.getFactoryInstance().getInstance();
         byte[] b = qtools.newFileHelperBuilder()
                 .setAutoCreateFolder(true)
@@ -57,7 +57,7 @@ public class NioFileHelperTest {
                 .setSupportTransferTo(true)
                 .build()
                 .readyBytesByFilePath(this.getClass().getResource("/base64Content.txt").getPath());
-        String filePath = this.getClass().getResource("/").getPath() + "generated.txt";
+        String filePath = this.getClass().getResource("/").getPath() + "data/2/generated.txt";
         System.out.println("write file to " + filePath);
         qtools.getSingleFileHelper().writeBytesToFile(b, filePath);
     }

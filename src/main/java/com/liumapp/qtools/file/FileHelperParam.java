@@ -39,4 +39,16 @@ public class FileHelperParam implements Serializable {
         this.supportTransferTo = supportTransferTo;
         this.autoCreateFolder = autoCreateFolder;
     }
+
+    public IOEnum getIoType() {
+        return ioType;
+    }
+
+    public Boolean getSupportTransferTo() {
+        return supportTransferTo;
+    }
+
+    public Boolean getAutoCreateFolder() {
+        return autoCreateFolder;
+    }
 }

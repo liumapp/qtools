@@ -67,7 +67,9 @@ public class NioFileHelper extends AbstractFileHelper implements FileHelper, Ser
     public Integer writeBytesToFile(byte[] bytes, String filePath) {
         Integer length = 0;
         try {
-            FileChannel channel = new RandomAccessFile(filePath, "rws").getChannel();
+            if (this.fileHelperParam.getAutoCreateFolder()) createFileFolder(filePath);
+            RandomAccessFile accessFile = new RandomAccessFile(filePath, "rws");
+            FileChannel channel = accessFile.getChannel();
             ByteBuffer content = ByteBuffer.wrap(bytes);
             try {
                 while ( (length = channel.write(content)) != 0) {
@@ -85,7 +87,8 @@ public class NioFileHelper extends AbstractFileHelper implements FileHelper, Ser
     }
 
     @Override
-    public void createFile(byte[] bytes, String filePath) {
-        return ;
+    public void createFileFolder(String filePath) {
+        File file = new File(filePath);
+        if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
     }
 }

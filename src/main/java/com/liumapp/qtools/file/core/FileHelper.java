@@ -35,11 +35,10 @@ public interface FileHelper extends Helper {
     public Base64Helper base64();
 
     /**
-     * create file by bytes, if file exists, replace it
-     * @param bytes byte array
+     * create file folder if not exists
      * @param filePath string , file path
      */
-    public void createFile (byte[] bytes, String filePath);
+    public void createFileFolder (String filePath);
 
 
 
