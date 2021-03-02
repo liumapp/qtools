@@ -34,41 +34,11 @@ public class ApplicationModel {
         }
     }
 
-    public static Collection<ConsumerModel> allConsumerModels() {
-        return getServiceRepository().getReferredServices();
-    }
-
-    public static Collection<ProviderModel> allProviderModels() {
-        return getServiceRepository().getExportedServices();
-    }
-
-    public static ProviderModel getProviderModel(String serviceKey) {
-        return getServiceRepository().lookupExportedService(serviceKey);
-    }
-
-    public static ConsumerModel getConsumerModel(String serviceKey) {
-        return getServiceRepository().lookupReferredService(serviceKey);
-    }
-
     private static final ExtensionLoader<FrameworkExt> LOADER = ExtensionLoader.getExtensionLoader(FrameworkExt.class);
 
-    public static void initFrameworkExts() {
-        Set<FrameworkExt> exts = ExtensionLoader.getExtensionLoader(FrameworkExt.class).getSupportedExtensionInstances();
-        for (FrameworkExt ext : exts) {
-            ext.initialize();
-        }
-    }
-
-    public static Environment getEnvironment() {
-        return (Environment) LOADER.getExtension(Environment.NAME);
-    }
 
     public static ConfigManager getConfigManager() {
         return (ConfigManager) LOADER.getExtension(ConfigManager.NAME);
-    }
-
-    public static ServiceRepository getServiceRepository() {
-        return (ServiceRepository) LOADER.getExtension(ServiceRepository.NAME);
     }
 
     public static ApplicationConfig getApplicationConfig() {
@@ -93,11 +63,5 @@ public class ApplicationModel {
         ApplicationModel.application = application;
     }
 
-    // only for unit test
-    public static void reset() {
-        getServiceRepository().destroy();
-        getConfigManager().destroy();
-        getEnvironment().destroy();
-    }
 
 }
