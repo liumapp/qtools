@@ -67,7 +67,20 @@ public class ToolsLoader<T> {
     }
 
     private Map<String, Class<?>> loadToolClasses () {
+
         return null;
+    }
+
+    private void cachedDefaultToolName () {
+        final SPI defaultAnnotation = type.getAnnotation(SPI.class);
+        if (defaultAnnotation == null) {
+            return ;
+        }
+
+        String value = defaultAnnotation.value();
+        if ((value = value.trim()).length() > 0) {
+            
+        }
     }
 
 //    public T getTool(Class<?> clazz) {

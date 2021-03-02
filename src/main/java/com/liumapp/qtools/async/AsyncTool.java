@@ -9,7 +9,7 @@ import com.liumapp.qtools.core.annotations.SPI;
  * @homepage http://www.liumapp.com
  * @date 2021/3/2 09:46
  */
-@SPI
+@SPI("default")
 public interface AsyncTool {
 
     public String sayHello ();
