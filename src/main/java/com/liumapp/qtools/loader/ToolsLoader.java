@@ -71,7 +71,7 @@ public class ToolsLoader<T> {
         if (!type.isInterface()) {
             throw new IllegalArgumentException("Tools type (" + type + ") is not an interface");
         }
-        if (type.isAnnotationPresent(SPI.class)) {
+        if (!type.isAnnotationPresent(SPI.class)) {
             throw new IllegalArgumentException("Tools type (" + type + ") is not an extension, because it is not anootatino with @" + SPI.class.getSimpleName() + "!");
         }
         ToolsLoader<T> loader = (ToolsLoader<T>) TOOLS_LOADERS.get(type);

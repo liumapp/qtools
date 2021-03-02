@@ -43,8 +43,6 @@ public interface CommonConstants {
 
     String PROTOCOL_SEPARATOR = "://";
 
-    String PROTOCOL_SEPARATOR_ENCODED = URL.encode(PROTOCOL_SEPARATOR);
-
     String REGISTRY_SEPARATOR = "|";
 
     Pattern REGISTRY_SPLIT_PATTERN = Pattern.compile("\\s*[|;]+\\s*");

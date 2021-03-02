@@ -193,14 +193,6 @@ public class NetUtils {
         return host;
     }
 
-    public static String getIpByConfig() {
-        String configIp = ConfigurationUtils.getProperty(DUBBO_IP_TO_BIND);
-        if (configIp != null) {
-            return configIp;
-        }
-
-        return getIpByHost(getLocalAddress().getHostName());
-    }
 
     /**
      * Find first valid IP from local network card
@@ -249,7 +241,7 @@ public class NetUtils {
                 }
             }
         } catch (Throwable e) {
-            logger.warn(e);
+            logger.warn(e.getMessage());
         }
 
         try {
@@ -259,7 +251,7 @@ public class NetUtils {
                 return addressOp.get();
             }
         } catch (Throwable e) {
-            logger.warn(e);
+            logger.warn(e.getMessage());
         }
 
 
@@ -299,14 +291,6 @@ public class NetUtils {
         return validNetworkInterfaces;
     }
 
-    /**
-     * Is preferred {@link NetworkInterface} or not
-     *
-     * @param networkInterface {@link NetworkInterface}
-     * @return if the name of the specified {@link NetworkInterface} matches
-     * the property value from {@link CommonConstants#DUBBO_PREFERRED_NETWORK_INTERFACE}, return <code>true</code>,
-     * or <code>false</code>
-     */
     public static boolean isPreferredNetworkInterface(NetworkInterface networkInterface) {
         String preferredNetworkInterface = System.getProperty(DUBBO_PREFERRED_NETWORK_INTERFACE);
         return Objects.equals(networkInterface.getDisplayName(), preferredNetworkInterface);
@@ -324,7 +308,7 @@ public class NetUtils {
         try {
             validNetworkInterfaces = getValidNetworkInterfaces();
         } catch (Throwable e) {
-            logger.warn(e);
+            logger.warn(e.getMessage());
         }
 
         NetworkInterface result = null;
@@ -467,18 +451,6 @@ public class NetUtils {
                 break;
             }
         }
-    }
-
-    public static boolean matchIpExpression(String pattern, String host, int port) throws UnknownHostException {
-
-        // if the pattern is subnet format, it will not be allowed to config port param in pattern.
-        if (pattern.contains("/")) {
-            CIDRUtils utils = new CIDRUtils(pattern);
-            return utils.isInRange(host);
-        }
-
-
-        return matchIpRange(pattern, host, port);
     }
 
     /**

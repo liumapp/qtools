@@ -443,34 +443,6 @@ public class URL implements Serializable {
         return new URL(protocol, username, password, host, port, path, getParameters());
     }
 
-    public String getBackupAddress() {
-        return getBackupAddress(0);
-    }
-
-    public String getBackupAddress(int defaultPort) {
-        StringBuilder address = new StringBuilder(appendDefaultPort(getAddress(), defaultPort));
-        String[] backups = getParameter(RemotingConstants.BACKUP_KEY, new String[0]);
-        if (ArrayUtils.isNotEmpty(backups)) {
-            for (String backup : backups) {
-                address.append(',');
-                address.append(appendDefaultPort(backup, defaultPort));
-            }
-        }
-        return address.toString();
-    }
-
-    public List<URL> getBackupUrls() {
-        List<URL> urls = new ArrayList<>();
-        urls.add(this);
-        String[] backups = getParameter(RemotingConstants.BACKUP_KEY, new String[0]);
-        if (backups != null && backups.length > 0) {
-            for (String backup : backups) {
-                urls.add(this.setAddress(backup));
-            }
-        }
-        return urls;
-    }
-
     public String getPath() {
         return path;
     }
@@ -1419,30 +1391,12 @@ public class URL implements Serializable {
         return serviceKey;
     }
 
-    /**
-     * The format of return value is '{group}/{path/interfaceName}:{version}'
-     *
-     * @return
-     */
-    public String getPathKey() {
-        String inf = StringUtils.isNotEmpty(path) ? path : getServiceInterface();
-        if (inf == null) {
-            return null;
-        }
-        return buildKey(inf, getParameter(GROUP_KEY), getParameter(VERSION_KEY));
-    }
 
     public static String buildKey(String path, String group, String version) {
-        return BaseServiceMetadata.buildServiceKey(path, group, version);
+//        return BaseServiceMetadata.buildServiceKey(path, group, version);
+        return "";
     }
 
-    public String toServiceStringWithoutResolving() {
-        return buildString(true, false, false, true);
-    }
-
-    public String toServiceString() {
-        return buildString(true, false, true, true);
-    }
 
     @Deprecated
     public String getServiceName() {
@@ -1545,12 +1499,6 @@ public class URL implements Serializable {
     @Deprecated
     public boolean getMethodBooleanParameter(String method, String key, boolean defaultValue) {
         return getMethodParameter(method, key, defaultValue);
-    }
-
-    public Configuration toConfiguration() {
-        InmemoryConfiguration configuration = new InmemoryConfiguration();
-        configuration.addProperties(parameters);
-        return configuration;
     }
 
     @Override
