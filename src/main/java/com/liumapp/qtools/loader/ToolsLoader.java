@@ -3,9 +3,11 @@ package com.liumapp.qtools.loader;
 import com.liumapp.qtools.container.Holder;
 import com.liumapp.qtools.core.annotations.SPI;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.regex.Pattern;
 
 /**
  * @file ToolsLoader.java
@@ -18,11 +20,15 @@ public class ToolsLoader<T> {
 
     private final Class<?> type;
 
+    private static final Pattern NAME_SEPARATOR = Pattern.compile("\\s*[,]+\\s*");
+
     private static final ConcurrentMap<Class<?>, ToolsLoader<?>> TOOLS_LOADERS = new ConcurrentHashMap<>(64);
 
     private static final ConcurrentMap<Class<?>, Object> TOOLS_INSTANCES = new ConcurrentHashMap<>(64);
 
     private final Holder<Map<String, Class<?>>> cachedClasses = new Holder<>();
+
+    private String cachedDefaultName;
 
     private ToolsLoader(Class<?> type) {
         this.type = type;
@@ -67,6 +73,7 @@ public class ToolsLoader<T> {
     }
 
     private Map<String, Class<?>> loadToolClasses () {
+        cachedDefaultToolName();
 
         return null;
     }
@@ -79,7 +86,13 @@ public class ToolsLoader<T> {
 
         String value = defaultAnnotation.value();
         if ((value = value.trim()).length() > 0) {
-            
+            String[] names = NAME_SEPARATOR.split(value);
+            if (names.length > 1) {
+                throw new IllegalStateException("more than 1 default tools name on tool " + type.getName() + ": " + Arrays.toString(names));
+            }
+            if (names.length == 1) {
+                cachedDefaultName = names[0];
+            }
         }
     }
 
