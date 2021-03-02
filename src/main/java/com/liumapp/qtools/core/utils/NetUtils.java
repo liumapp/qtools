@@ -10,6 +10,8 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Pattern;
 
 import static java.util.Collections.emptyList;
+import static com.liumapp.qtools.core.constants.CommonConstants.*;
+import static com.liumapp.qtools.core.utils.CollectionUtils.*;
 
 /**
  * @file NetUtils.java
