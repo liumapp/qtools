@@ -48,6 +48,8 @@ public class ToolsLoader<T> {
 
     private Map<String, IllegalStateException> exceptions = new ConcurrentHashMap<>();
 
+    private final ConcurrentMap<Class<?>, String> cachedNames = new ConcurrentHashMap<>();
+
     private String cachedDefaultName;
 
     private static volatile LoadingStrategy[] strategies = loadLoadingStrategies();
@@ -87,11 +89,12 @@ public class ToolsLoader<T> {
             synchronized (cachedClasses) {
                 classes = cachedClasses.get();
                 if (classes == null) {
-//                    classes =
+                    classes = loadToolClasses();
+                    cachedClasses.set(classes);
                 }
             }
         }
-        return null;
+        return classes;
     }
 
     private Map<String, Class<?>> loadToolClasses () {
@@ -99,9 +102,9 @@ public class ToolsLoader<T> {
         Map<String, Class<?>> toolClasses = new HashMap<>();
 
         for (LoadingStrategy strategy : strategies) {
-
+            loadDirectory(toolClasses, strategy.directory(), type.getName(), strategy.preferExtensionClassLoader(), strategy.overridden(), strategy.excludedPackages());
         }
-        return null;
+        return toolClasses;
     }
 
     private void cachedDefaultToolName () {
@@ -242,9 +245,9 @@ public class ToolsLoader<T> {
     }
 
     private String findAnnotationName(Class<?> clazz) {
-        org.apache.dubbo.common.Extension extension = clazz.getAnnotation(org.apache.dubbo.common.Extension.class);
-        if (extension != null) {
-            return extension.value();
+        SPI spi = clazz.getAnnotation(SPI.class);
+        if (spi != null) {
+            return spi.value();
         }
 
         String name = clazz.getSimpleName();
@@ -252,6 +255,23 @@ public class ToolsLoader<T> {
             name = name.substring(0, name.length() - type.getSimpleName().length());
         }
         return name.toLowerCase();
+    }
+
+    private void saveInExtensionClass(Map<String, Class<?>> extensionClasses, Class<?> clazz, String name, boolean overridden) {
+        Class<?> c = extensionClasses.get(name);
+        if (c == null || overridden) {
+            extensionClasses.put(name, clazz);
+        } else if (c != clazz) {
+            String duplicateMsg = "Duplicate extension " + type.getName() + " name " + name + " on " + c.getName() + " and " + clazz.getName();
+            logger.error(duplicateMsg);
+            throw new IllegalStateException(duplicateMsg);
+        }
+    }
+
+    private void cacheName(Class<?> clazz, String name) {
+        if (!cachedNames.containsKey(clazz)) {
+            cachedNames.put(clazz, name);
+        }
     }
 
 }
