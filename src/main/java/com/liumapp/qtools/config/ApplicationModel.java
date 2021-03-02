@@ -1,10 +1,12 @@
 package com.liumapp.qtools.config;
 
+import com.liumapp.qtools.core.annotations.ApplicationInitListener;
 import com.liumapp.qtools.loader.ToolsLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -22,11 +24,12 @@ public class ApplicationModel {
     private static AtomicBoolean INIT_FLAG = new AtomicBoolean(false);
 
     public static void init() {
+//        List<Integer>
         if (INIT_FLAG.compareAndSet(false, true)) {
             ToolsLoader<ApplicationInitListener> extensionLoader = ToolsLoader.getToolsLoader(ApplicationInitListener.class);
             Set<String> listenerNames = extensionLoader.getSupportedExtensions();
             for (String listenerName : listenerNames) {
-                extensionLoader.getExtension(listenerName).init();
+                extensionLoader.getTool(listenerName).init();
             }
         }
     }
