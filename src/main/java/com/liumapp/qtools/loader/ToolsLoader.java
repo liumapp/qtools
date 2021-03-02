@@ -54,7 +54,7 @@ public class ToolsLoader<T> {
 
     private String cachedDefaultName;
 
-    private final ExtensionFactory objectFactory;
+//    private final ExtensionFactory objectFactory;
 
     private static volatile LoadingStrategy[] strategies = loadLoadingStrategies();
 
@@ -62,7 +62,7 @@ public class ToolsLoader<T> {
 
     private ToolsLoader(Class<?> type) {
         this.type = type;
-        objectFactory = (type == ExtensionFactory.class ? null : ToolsLoader.getToolsLoader(ExtensionFactory.class).getAdaptiveExtension());
+//        objectFactory = (type == ExtensionFactory.class ? null : ToolsLoader.getToolsLoader(ExtensionFactory.class).getAdaptiveExtension());
     }
 
     public static <T> ToolsLoader<T> getToolsLoader(Class<T> type) {
@@ -95,9 +95,11 @@ public class ToolsLoader<T> {
                 instance = holder.get();
                 if (instance == null) {
                     instance = createTool(name);
+                    holder.set(instance);
                 }
             }
         }
+        return (T) instance;
     }
 
     private T createTool (String name) {
@@ -112,52 +114,52 @@ public class ToolsLoader<T> {
                 TOOLS_INSTANCES.putIfAbsent(clazz, clazz.newInstance());
                 instance = (T) TOOLS_INSTANCES.get(clazz);
             }
-
+            return instance;
         } catch (Throwable t) {
             throw new IllegalStateException("Extension instance (name: " + name + ", class: " +
                     type + ") couldn't be instantiated: " + t.getMessage(), t);
         }
     }
 
-    private T injectExtension(T instance) {
-
-        if (objectFactory == null) {
-            return instance;
-        }
-
-        try {
-            for (Method method : instance.getClass().getMethods()) {
-                if (!isSetter(method)) {
-                    continue;
-                }
-                /**
-                 * Check {@link DisableInject} to see if we need auto injection for this property
-                 */
-                if (method.getAnnotation(DisableInject.class) != null) {
-                    continue;
-                }
-                Class<?> pt = method.getParameterTypes()[0];
-                if (ReflectUtils.isPrimitives(pt)) {
-                    continue;
-                }
-
-                try {
-                    String property = getSetterProperty(method);
-                    Object object = objectFactory.getExtension(pt, property);
-                    if (object != null) {
-                        method.invoke(instance, object);
-                    }
-                } catch (Exception e) {
-                    logger.error("Failed to inject via method " + method.getName()
-                            + " of interface " + type.getName() + ": " + e.getMessage(), e);
-                }
-
-            }
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-        }
-        return instance;
-    }
+//    private T injectExtension(T instance) {
+//
+//        if (objectFactory == null) {
+//            return instance;
+//        }
+//
+//        try {
+//            for (Method method : instance.getClass().getMethods()) {
+//                if (!isSetter(method)) {
+//                    continue;
+//                }
+//                /**
+//                 * Check {@link DisableInject} to see if we need auto injection for this property
+//                 */
+//                if (method.getAnnotation(DisableInject.class) != null) {
+//                    continue;
+//                }
+//                Class<?> pt = method.getParameterTypes()[0];
+//                if (ReflectUtils.isPrimitives(pt)) {
+//                    continue;
+//                }
+//
+//                try {
+//                    String property = getSetterProperty(method);
+//                    Object object = objectFactory.getExtension(pt, property);
+//                    if (object != null) {
+//                        method.invoke(instance, object);
+//                    }
+//                } catch (Exception e) {
+//                    logger.error("Failed to inject via method " + method.getName()
+//                            + " of interface " + type.getName() + ": " + e.getMessage(), e);
+//                }
+//
+//            }
+//        } catch (Exception e) {
+//            logger.error(e.getMessage(), e);
+//        }
+//        return instance;
+//    }
 
     private Holder<Object> getOrCreateHolder(String name) {
         Holder<Object> holder = cachedInstances.get(name);
@@ -374,32 +376,32 @@ public class ToolsLoader<T> {
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public T getAdaptiveExtension() {
-        Object instance = cachedAdaptiveInstance.get();
-        if (instance == null) {
-            if (createAdaptiveInstanceError != null) {
-                throw new IllegalStateException("Failed to create adaptive instance: " +
-                        createAdaptiveInstanceError.toString(),
-                        createAdaptiveInstanceError);
-            }
-
-            synchronized (cachedAdaptiveInstance) {
-                instance = cachedAdaptiveInstance.get();
-                if (instance == null) {
-                    try {
-                        instance = createAdaptiveExtension();
-                        cachedAdaptiveInstance.set(instance);
-                    } catch (Throwable t) {
-                        createAdaptiveInstanceError = t;
-                        throw new IllegalStateException("Failed to create adaptive instance: " + t.toString(), t);
-                    }
-                }
-            }
-        }
-
-        return (T) instance;
-    }
+//    @SuppressWarnings("unchecked")
+//    public T getAdaptiveExtension() {
+//        Object instance = cachedAdaptiveInstance.get();
+//        if (instance == null) {
+//            if (createAdaptiveInstanceError != null) {
+//                throw new IllegalStateException("Failed to create adaptive instance: " +
+//                        createAdaptiveInstanceError.toString(),
+//                        createAdaptiveInstanceError);
+//            }
+//
+//            synchronized (cachedAdaptiveInstance) {
+//                instance = cachedAdaptiveInstance.get();
+//                if (instance == null) {
+//                    try {
+//                        instance = createAdaptiveExtension();
+//                        cachedAdaptiveInstance.set(instance);
+//                    } catch (Throwable t) {
+//                        createAdaptiveInstanceError = t;
+//                        throw new IllegalStateException("Failed to create adaptive instance: " + t.toString(), t);
+//                    }
+//                }
+//            }
+//        }
+//
+//        return (T) instance;
+//    }
 
     private IllegalStateException findException(String name) {
         for (Map.Entry<String, IllegalStateException> entry : exceptions.entrySet()) {
