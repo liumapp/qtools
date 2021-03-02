@@ -2,6 +2,7 @@ package com.liumapp.qtools.loader;
 
 import com.liumapp.qtools.classloader.ClassUtils;
 import com.liumapp.qtools.container.Holder;
+import com.liumapp.qtools.core.annotations.ExtensionFactory;
 import com.liumapp.qtools.core.annotations.SPI;
 import com.liumapp.qtools.core.utils.ArrayUtils;
 import com.liumapp.qtools.core.utils.StringUtils;
@@ -11,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
@@ -52,10 +54,15 @@ public class ToolsLoader<T> {
 
     private String cachedDefaultName;
 
+    private final ExtensionFactory objectFactory;
+
     private static volatile LoadingStrategy[] strategies = loadLoadingStrategies();
+
+    private final ConcurrentMap<String, Holder<Object>> cachedInstances = new ConcurrentHashMap<>();
 
     private ToolsLoader(Class<?> type) {
         this.type = type;
+        objectFactory = (type == ExtensionFactory.class ? null : ToolsLoader.getToolsLoader(ExtensionFactory.class).getAdaptiveExtension());
     }
 
     public static <T> ToolsLoader<T> getToolsLoader(Class<T> type) {
@@ -74,6 +81,99 @@ public class ToolsLoader<T> {
             loader = (ToolsLoader<T>) TOOLS_LOADERS.get(type);
         }
         return loader;
+    }
+
+    public T getTool(String name) {
+        if ("true".equals(name) || StringUtils.isEmpty(name)) {
+            return getDefaultTool();
+        }
+
+        final Holder<Object> holder = getOrCreateHolder(name);
+        Object instance = holder.get();
+        if (instance == null) {
+            synchronized (holder) {
+                instance = holder.get();
+                if (instance == null) {
+                    instance = createTool(name);
+                }
+            }
+        }
+    }
+
+    private T createTool (String name) {
+        Class<?> clazz = getToolClasses().get(name);
+        if (clazz == null) {
+            throw findException(name);
+        }
+
+        try {
+            T instance = (T) TOOLS_INSTANCES.get(clazz);
+            if (instance == null) {
+                TOOLS_INSTANCES.putIfAbsent(clazz, clazz.newInstance());
+                instance = (T) TOOLS_INSTANCES.get(clazz);
+            }
+
+        } catch (Throwable t) {
+            throw new IllegalStateException("Extension instance (name: " + name + ", class: " +
+                    type + ") couldn't be instantiated: " + t.getMessage(), t);
+        }
+    }
+
+    private T injectExtension(T instance) {
+
+        if (objectFactory == null) {
+            return instance;
+        }
+
+        try {
+            for (Method method : instance.getClass().getMethods()) {
+                if (!isSetter(method)) {
+                    continue;
+                }
+                /**
+                 * Check {@link DisableInject} to see if we need auto injection for this property
+                 */
+                if (method.getAnnotation(DisableInject.class) != null) {
+                    continue;
+                }
+                Class<?> pt = method.getParameterTypes()[0];
+                if (ReflectUtils.isPrimitives(pt)) {
+                    continue;
+                }
+
+                try {
+                    String property = getSetterProperty(method);
+                    Object object = objectFactory.getExtension(pt, property);
+                    if (object != null) {
+                        method.invoke(instance, object);
+                    }
+                } catch (Exception e) {
+                    logger.error("Failed to inject via method " + method.getName()
+                            + " of interface " + type.getName() + ": " + e.getMessage(), e);
+                }
+
+            }
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return instance;
+    }
+
+    private Holder<Object> getOrCreateHolder(String name) {
+        Holder<Object> holder = cachedInstances.get(name);
+        if (holder == null) {
+            cachedInstances.putIfAbsent(name, new Holder<>());
+            holder = cachedInstances.get(name);
+        }
+        return holder;
+    }
+
+    public T getDefaultTool() {
+        getToolClasses();
+        if (StringUtils.isBlank(cachedDefaultName) || "true".equals(cachedDefaultName)) {
+            return null;
+        }
+        return getTool(cachedDefaultName);
     }
 
     public Class<?> getToolClass (String name) {
@@ -272,6 +372,58 @@ public class ToolsLoader<T> {
         if (!cachedNames.containsKey(clazz)) {
             cachedNames.put(clazz, name);
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    public T getAdaptiveExtension() {
+        Object instance = cachedAdaptiveInstance.get();
+        if (instance == null) {
+            if (createAdaptiveInstanceError != null) {
+                throw new IllegalStateException("Failed to create adaptive instance: " +
+                        createAdaptiveInstanceError.toString(),
+                        createAdaptiveInstanceError);
+            }
+
+            synchronized (cachedAdaptiveInstance) {
+                instance = cachedAdaptiveInstance.get();
+                if (instance == null) {
+                    try {
+                        instance = createAdaptiveExtension();
+                        cachedAdaptiveInstance.set(instance);
+                    } catch (Throwable t) {
+                        createAdaptiveInstanceError = t;
+                        throw new IllegalStateException("Failed to create adaptive instance: " + t.toString(), t);
+                    }
+                }
+            }
+        }
+
+        return (T) instance;
+    }
+
+    private IllegalStateException findException(String name) {
+        for (Map.Entry<String, IllegalStateException> entry : exceptions.entrySet()) {
+            if (entry.getKey().toLowerCase().contains(name.toLowerCase())) {
+                return entry.getValue();
+            }
+        }
+        StringBuilder buf = new StringBuilder("No such extension " + type.getName() + " by name " + name);
+
+
+        int i = 1;
+        for (Map.Entry<String, IllegalStateException> entry : exceptions.entrySet()) {
+            if (i == 1) {
+                buf.append(", possible causes: ");
+            }
+
+            buf.append("\r\n(");
+            buf.append(i++);
+            buf.append(") ");
+            buf.append(entry.getKey());
+            buf.append(":\r\n");
+            buf.append(StringUtils.toString(entry.getValue()));
+        }
+        return new IllegalStateException(buf.toString());
     }
 
 }
