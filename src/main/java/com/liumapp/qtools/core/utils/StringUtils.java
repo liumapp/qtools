@@ -4,10 +4,15 @@ import java.io.PrintWriter;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import com.liumapp.qtools.core.io.UnsafeStringWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.alibaba.fastjson.JSON;
 
 import static java.lang.String.valueOf;
 import static java.util.Collections.emptySet;
 import static java.util.Collections.unmodifiableSet;
+import static com.liumapp.qtools.core.constants.CommonConstants.*;
 
 /**
  * @file StringUtils.java
@@ -30,7 +35,6 @@ public class StringUtils {
     private static final Pattern PAIR_PARAMETERS_PATTERN = Pattern.compile("^\\{\\s*([\\w-_\\.]+)\\s*:\\s*(.+)\\s*\\}$");
     private static final int PAD_LIMIT = 8192;
     private static final byte[] HEX2B;
-
 
     /**
      * @since 2.7.5
@@ -1070,5 +1074,5 @@ public class StringUtils {
         String another = arrayToDelimitedString(others, COMMA_SEPARATOR);
         return isEmpty(another) ? one : one + COMMA_SEPARATOR + another;
     }
-    
+
 }

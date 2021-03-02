@@ -5,8 +5,10 @@ import com.liumapp.qtools.container.Holder;
 import com.liumapp.qtools.core.annotations.ExtensionFactory;
 import com.liumapp.qtools.core.annotations.SPI;
 import com.liumapp.qtools.core.utils.ArrayUtils;
+import com.liumapp.qtools.core.utils.CollectionUtils;
 import com.liumapp.qtools.core.utils.StringUtils;
 import com.liumapp.qtools.loading.LoadingStrategy;
+import com.liumapp.qtools.sort.Prioritized;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,10 +17,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.regex.Pattern;
@@ -119,6 +118,24 @@ public class ToolsLoader<T> {
             throw new IllegalStateException("Extension instance (name: " + name + ", class: " +
                     type + ") couldn't be instantiated: " + t.getMessage(), t);
         }
+    }
+
+    public Set<T> getSupportedExtensionInstances() {
+        List<T> instances = new LinkedList<>();
+        Set<String> supportedExtensions = getSupportedExtensions();
+        if (CollectionUtils.isNotEmpty(supportedExtensions)) {
+            for (String name : supportedExtensions) {
+                instances.add(getTool(name));
+            }
+        }
+        // sort the Prioritized instances
+        sort(instances, Prioritized.COMPARATOR);
+        return new LinkedHashSet<>(instances);
+    }
+
+    public Set<String> getSupportedExtensions() {
+        Map<String, Class<?>> clazzes = getToolClasses();
+        return Collections.unmodifiableSet(new TreeSet<>(clazzes.keySet()));
     }
 
 //    private T injectExtension(T instance) {
