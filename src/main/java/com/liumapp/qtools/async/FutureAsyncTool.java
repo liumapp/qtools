@@ -5,7 +5,7 @@ package com.liumapp.qtools.async;
  * @author liumapp
  * @email liumapp.com@gmail.com
  * @homepage http://www.liumapp.com
- * @date 2021/3/2 10:16
+ * @date 2021/3/2 10:17
  */
 public class FutureAsyncTool implements AsyncTool {
 

@@ -1,7 +1,9 @@
 package com.liumapp.qtools.loader;
 
+import com.liumapp.qtools.container.Holder;
 import com.liumapp.qtools.core.annotations.SPI;
 
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -19,6 +21,8 @@ public class ToolsLoader<T> {
     private static final ConcurrentMap<Class<?>, ToolsLoader<?>> TOOLS_LOADERS = new ConcurrentHashMap<>(64);
 
     private static final ConcurrentMap<Class<?>, Object> TOOLS_INSTANCES = new ConcurrentHashMap<>(64);
+
+    private final Holder<Map<String, Class<?>>> cachedClasses = new Holder<>();
 
     private ToolsLoader(Class<?> type) {
         this.type = type;
@@ -40,6 +44,30 @@ public class ToolsLoader<T> {
             loader = (ToolsLoader<T>) TOOLS_LOADERS.get(type);
         }
         return loader;
+    }
+
+    public Class<?> getToolClass (String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("tool name == null");
+        }
+        return getToolClasses().get(name);
+    }
+
+    private Map<String, Class<?>> getToolClasses () {
+        Map<String, Class<?>> classes = cachedClasses.get();
+        if (classes == null) {
+            synchronized (cachedClasses) {
+                classes = cachedClasses.get();
+                if (classes == null) {
+//                    classes =
+                }
+            }
+        }
+        return null;
+    }
+
+    private Map<String, Class<?>> loadToolClasses () {
+        return null;
     }
 
 //    public T getTool(Class<?> clazz) {
