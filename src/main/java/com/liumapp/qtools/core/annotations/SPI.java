@@ -1,5 +1,7 @@
 package com.liumapp.qtools.core.annotations;
 
+import java.lang.annotation.*;
+
 /**
  * @file SPI.java
  * @author liumapp
@@ -7,5 +9,11 @@ package com.liumapp.qtools.core.annotations;
  * @homepage http://www.liumapp.com
  * @date 2021/3/2 09:35
  */
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE})
 public @interface SPI {
+
+    String value() default "";
+
 }
