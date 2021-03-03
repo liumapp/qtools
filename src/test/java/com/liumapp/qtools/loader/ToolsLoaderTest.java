@@ -13,8 +13,7 @@ import org.junit.Test;
  * @date 2021/3/2 13:44
  */
 public class ToolsLoaderTest extends TestCase {
-    
-    
+
     @Test
     public void testLoading () {
         ToolsLoader<AsyncTool> toolsLoader = ToolsLoader.getToolsLoader(AsyncTool.class);
