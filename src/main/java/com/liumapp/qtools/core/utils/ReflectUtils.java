@@ -1,6 +1,6 @@
 package com.liumapp.qtools.core.utils;
 
-import com.liumapp.qtools.classloader.ClassUtils;
+import com.liumapp.qtools.core.classloader.ClassUtils;
 import javassist.CtClass;
 import javassist.CtConstructor;
 import javassist.CtMethod;

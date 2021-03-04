@@ -1,20 +1,17 @@
-package com.liumapp.qtools.loader;
+package com.liumapp.qtools.core.loader;
 
-import com.liumapp.qtools.classloader.ClassUtils;
-import com.liumapp.qtools.container.Holder;
-import com.liumapp.qtools.core.annotations.ExtensionFactory;
+import com.liumapp.qtools.core.classloader.ClassUtils;
+import com.liumapp.qtools.core.loading.LoadingStrategy;
+import com.liumapp.qtools.core.container.Holder;
 import com.liumapp.qtools.core.annotations.SPI;
 import com.liumapp.qtools.core.utils.ArrayUtils;
 import com.liumapp.qtools.core.utils.CollectionUtils;
 import com.liumapp.qtools.core.utils.StringUtils;
-import com.liumapp.qtools.loading.LoadingStrategy;
-import com.liumapp.qtools.sort.Prioritized;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.lang.reflect.Method;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -23,7 +20,6 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.regex.Pattern;
 
 import static java.util.stream.StreamSupport.stream;
-import static java.util.Arrays.asList;
 import static java.util.Collections.sort;
 import static java.util.ServiceLoader.load;
 /**

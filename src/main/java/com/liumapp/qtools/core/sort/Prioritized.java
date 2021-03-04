@@ -1,4 +1,4 @@
-package com.liumapp.qtools.sort;
+package com.liumapp.qtools.core.sort;
 
 import java.util.Comparator;
 
@@ -12,7 +12,6 @@ import static java.lang.Integer.compare;
  * @date 2021/3/2 10:51
  */
 public interface Prioritized extends Comparable<Prioritized> {
-
 
     /**
      * The {@link Comparator} of {@link Prioritized}

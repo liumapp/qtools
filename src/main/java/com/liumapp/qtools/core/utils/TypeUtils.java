@@ -12,7 +12,7 @@ import static java.util.Collections.unmodifiableList;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 import static java.util.stream.StreamSupport.stream;
-import static com.liumapp.qtools.classloader.ClassUtils.*;
+import static com.liumapp.qtools.core.classloader.ClassUtils.*;
 import static com.liumapp.qtools.core.functions.Streams.*;
 import static com.liumapp.qtools.core.utils.Predicates.*;
 

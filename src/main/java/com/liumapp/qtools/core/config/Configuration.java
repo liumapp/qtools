@@ -1,4 +1,4 @@
-package com.liumapp.qtools.config;
+package com.liumapp.qtools.core.config;
 
 import java.util.NoSuchElementException;
 

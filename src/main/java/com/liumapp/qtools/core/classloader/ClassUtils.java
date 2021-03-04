@@ -1,4 +1,4 @@
-package com.liumapp.qtools.classloader;
+package com.liumapp.qtools.core.classloader;
 
 import com.liumapp.qtools.core.utils.ArrayUtils;
 import com.liumapp.qtools.core.utils.CollectionUtils;

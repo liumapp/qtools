@@ -1,4 +1,5 @@
-package com.liumapp.qtools.loading;
+package com.liumapp.qtools.core.loading;
+
 
 /**
  * @file QtoolsLoadingStrategy.java

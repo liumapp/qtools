@@ -1,4 +1,4 @@
-package com.liumapp.qtools.loader;
+package com.liumapp.qtools.core.loader;
 
 import com.liumapp.qtools.async.AsyncTool;
 import junit.framework.Assert;

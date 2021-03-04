@@ -1,6 +1,6 @@
-package com.liumapp.qtools.loading;
+package com.liumapp.qtools.core.loading;
 
-import com.liumapp.qtools.sort.Prioritized;
+import com.liumapp.qtools.core.sort.Prioritized;
 
 /**
  * @file LoadingStrategy.java
@@ -9,7 +9,7 @@ import com.liumapp.qtools.sort.Prioritized;
  * @homepage http://www.liumapp.com
  * @date 2021/3/2 10:52
  */
-public interface LoadingStrategy  extends Prioritized {
+public interface LoadingStrategy extends Prioritized {
 
     String directory();
 

@@ -1,11 +1,11 @@
 package com.liumapp.qtools.core.utils;
 
 import com.liumapp.qtools.core.annotations.SPI;
-import com.liumapp.qtools.loader.ToolsLoader;
-import com.liumapp.qtools.sort.Prioritized;
+import com.liumapp.qtools.core.loader.ToolsLoader;
+import com.liumapp.qtools.core.sort.Prioritized;
 
 
-import static com.liumapp.qtools.classloader.ClassUtils.*;
+import static com.liumapp.qtools.core.classloader.ClassUtils.*;
 import static com.liumapp.qtools.core.utils.TypeUtils.*;
 /**
  * @file Converter.java
