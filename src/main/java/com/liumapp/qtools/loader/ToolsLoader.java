@@ -74,11 +74,13 @@ public class ToolsLoader<T> {
      */
     private static volatile LoadingStrategy[] strategies = loadLoadingStrategies();
 
+    /**
+     * The container for tool extension name.
+     */
     private final ConcurrentMap<String, Holder<Object>> cachedInstances = new ConcurrentHashMap<>();
 
     private ToolsLoader(Class<?> type) {
         this.type = type;
-//        objectFactory = (type == ExtensionFactory.class ? null : ToolsLoader.getToolsLoader(ExtensionFactory.class).getAdaptiveExtension());
     }
 
     public static <T> ToolsLoader<T> getToolsLoader(Class<T> type) {
@@ -260,13 +262,8 @@ public class ToolsLoader<T> {
             }
         }
     }
-
-//    public T getTool(Class<?> clazz) {
-//
-//    }
-
     /**
-     *
+     * Load all {@link Prioritized} and {@link LoadingStrategy}
      * @return non-null
      * @since 2.0.5
      */
