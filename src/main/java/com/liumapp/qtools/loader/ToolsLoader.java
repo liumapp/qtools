@@ -47,8 +47,14 @@ public class ToolsLoader<T> {
 
     private static final Pattern NAME_SEPARATOR = Pattern.compile("\\s*[,]+\\s*");
 
+    /**
+     * container for tools loader instance
+     */
     private static final ConcurrentMap<Class<?>, ToolsLoader<?>> TOOLS_LOADERS = new ConcurrentHashMap<>(64);
 
+    /**
+     * container for tools instance
+     */
     private static final ConcurrentMap<Class<?>, Object> TOOLS_INSTANCES = new ConcurrentHashMap<>(64);
 
     private final Holder<Map<String, Class<?>>> cachedClasses = new Holder<>();
@@ -259,6 +265,11 @@ public class ToolsLoader<T> {
 //
 //    }
 
+    /**
+     *
+     * @return non-null
+     * @since 2.0.5
+     */
     private static LoadingStrategy[] loadLoadingStrategies() {
         return stream(load(LoadingStrategy.class).spliterator(), false)
                 .sorted()
