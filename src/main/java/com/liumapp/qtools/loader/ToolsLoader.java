@@ -27,6 +27,12 @@ import static java.util.Arrays.asList;
 import static java.util.Collections.sort;
 import static java.util.ServiceLoader.load;
 /**
+ * This class are at preset designed to be singleton or static .
+ * So the instances returned from them are of process or classloader scope.
+ * <p>
+ *     Load tool extensions
+ * </p>
+ *
  * @file ToolsLoader.java
  * @author liumapp
  * @email liumapp.com@gmail.com
@@ -55,6 +61,11 @@ public class ToolsLoader<T> {
 
 //    private final ExtensionFactory objectFactory;
 
+    /**
+     * <p> spi loading strategy </p>
+     * <p> now support META-INF/services and META-INF/qtools </p>
+     * @See LoadingStrategy
+     */
     private static volatile LoadingStrategy[] strategies = loadLoadingStrategies();
 
     private final ConcurrentMap<String, Holder<Object>> cachedInstances = new ConcurrentHashMap<>();

@@ -105,6 +105,18 @@
     </dependency>
   </dependencies>
 
+  <profiles>
+    <profile>
+      <id>javadoc-lint</id>
+      <activation>
+        <jdk>[1.8,)</jdk>
+      </activation>
+      <properties>
+        <doclint>none</doclint>
+      </properties>
+    </profile>
+  </profiles>
+
   <build>
     <plugins>
       <plugin>
