@@ -4,6 +4,7 @@ import com.liumapp.qtools.core.classloader.ClassUtils;
 import com.liumapp.qtools.core.loading.LoadingStrategy;
 import com.liumapp.qtools.core.container.Holder;
 import com.liumapp.qtools.core.annotations.SPI;
+import com.liumapp.qtools.core.sort.Prioritized;
 import com.liumapp.qtools.core.utils.ArrayUtils;
 import com.liumapp.qtools.core.utils.CollectionUtils;
 import com.liumapp.qtools.core.utils.StringUtils;
