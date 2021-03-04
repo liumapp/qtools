@@ -57,10 +57,24 @@ public class ToolsLoader<T> {
      */
     private static final ConcurrentMap<Class<?>, Object> TOOLS_INSTANCES = new ConcurrentHashMap<>(64);
 
+    /**
+     * container for extension name and class
+     * <p>
+     *     key = extension name
+     *     value = class
+     * </p>
+     */
     private final Holder<Map<String, Class<?>>> cachedClasses = new Holder<>();
 
     private Map<String, IllegalStateException> exceptions = new ConcurrentHashMap<>();
 
+    /**
+     * container for class and extension name
+     * <p>
+     *     key = class detail
+     *     value = extension name
+     * </p>
+     */
     private final ConcurrentMap<Class<?>, String> cachedNames = new ConcurrentHashMap<>();
 
     private String cachedDefaultName;
@@ -76,6 +90,10 @@ public class ToolsLoader<T> {
 
     /**
      * The container for tool extension name.
+     * <p>
+     *     key = tool extension name
+     *     value = the Holder {@link Holder} for detail impl class
+     * </p>
      */
     private final ConcurrentMap<String, Holder<Object>> cachedInstances = new ConcurrentHashMap<>();
 
@@ -120,6 +138,11 @@ public class ToolsLoader<T> {
         return (T) instance;
     }
 
+    /**
+     * create the detail tool class for extension name
+     * @param name the extension name
+     * @return <E> non-null
+     */
     private T createTool (String name) {
         Class<?> clazz = getToolClasses().get(name);
         if (clazz == null) {
@@ -235,6 +258,10 @@ public class ToolsLoader<T> {
         return classes;
     }
 
+    /**
+     * load interface class by META-INF config
+     * @return <code>Map<String, Class<?>></code>
+     */
     private Map<String, Class<?>> loadToolClasses () {
         cachedDefaultToolName();
         Map<String, Class<?>> toolClasses = new HashMap<>();
@@ -273,6 +300,15 @@ public class ToolsLoader<T> {
                 .toArray(LoadingStrategy[]::new);
     }
 
+    /**
+     * read META-INF/qtools and META-INF/services
+     * @param extensionClasses class impl
+     * @param dir directory
+     * @param type class type
+     * @param extensionLoaderClassLoaderFirst extensionLoaderClassLoaderFirst
+     * @param overridden overridden
+     * @param excludedPackages excludedPackages
+     */
     private void loadDirectory(Map<String, Class<?>> extensionClasses, String dir, String type,
                                boolean extensionLoaderClassLoaderFirst, boolean overridden, String... excludedPackages) {
         String fileName = dir + type;
@@ -358,8 +394,8 @@ public class ToolsLoader<T> {
                            boolean overridden) throws NoSuchMethodException {
         if (!type.isAssignableFrom(clazz)) {
             throw new IllegalStateException("Error occurred when loading extension class (interface: " +
-                    type + ", class line: " + clazz.getName() + "), class "
-                    + clazz.getName() + " is not subtype of interface.");
+                    type + ", class line: " + clazz.getName() + "), class " +
+                    clazz.getName() + " is not subtype of interface.");
         }
         clazz.getConstructor();
         if (StringUtils.isEmpty(name)) {
