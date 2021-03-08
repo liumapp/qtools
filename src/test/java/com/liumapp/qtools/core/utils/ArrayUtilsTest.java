@@ -8,10 +8,7 @@ import lombok.NoArgsConstructor;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -58,9 +55,22 @@ public class ArrayUtilsTest extends TestCase {
     }
 
     @Test
-    public void testStream () {
+    public void testListToMap () {
         Map<Long, Foo> fooMap = sourceList.stream().collect(Collectors.toMap(Foo::getId, Function.identity(), (k1 , k2) -> k2));
         Assert.assertEquals(3, fooMap.size());
+    }
+
+    @Test
+    public void testMapToList () {
+        this.init();
+        Map<Long, List<Foo>> fooMap = sourceList.stream().collect(Collectors.groupingBy(Foo::getId));
+        Assert.assertEquals(3, fooMap.size());
+        Assert.assertEquals(2, fooMap.get(2L).size());
+        List<Foo> result = new ArrayList<>();
+        fooMap.forEach((x, y) -> {
+            result.addAll(y);
+        });
+        Assert.assertEquals(4, result.size());
     }
 
 
