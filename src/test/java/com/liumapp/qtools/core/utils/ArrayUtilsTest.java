@@ -5,6 +5,7 @@ import junit.framework.TestCase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -23,6 +24,12 @@ import java.util.stream.Collectors;
  */
 public class ArrayUtilsTest extends TestCase {
 
+    private List<Foo> sourceList;
+
+    private List<Foo> lessTargetList;
+
+    private List<Foo> moreTargetList;
+
     @NoArgsConstructor
     @AllArgsConstructor
     @Data
@@ -31,14 +38,28 @@ public class ArrayUtilsTest extends TestCase {
         private String name;
     }
 
+    @Before
+    public void init() {
+        sourceList = new ArrayList<>();
+        sourceList.add(new Foo(1L, "aa"));
+        sourceList.add(new Foo(2L, "bb"));
+        sourceList.add(new Foo(3L, "cc"));
+        sourceList.add(new Foo(2L, "dd"));
+
+        lessTargetList = new ArrayList<>();
+        lessTargetList.add(new Foo(3L, "gg"));
+
+        moreTargetList = new ArrayList<>();
+        moreTargetList.add(new Foo(1L, "aa"));
+        moreTargetList.add(new Foo(2L, "bb"));
+        moreTargetList.add(new Foo(3L, "cc"));
+        moreTargetList.add(new Foo(2L, "dd"));
+        moreTargetList.add(new Foo(4L, "ee"));
+    }
+
     @Test
     public void testStream () {
-        List<Foo> fooList = new ArrayList<>();
-        fooList.add(new Foo(1L, "aa"));
-        fooList.add(new Foo(2L, "bb"));
-        fooList.add(new Foo(3L, "cc"));
-        fooList.add(new Foo(2L, "dd"));
-        Map<Long, Foo> fooMap = fooList.stream().collect(Collectors.toMap(Foo::getId, Function.identity(), (k1 , k2) -> k2));
+        Map<Long, Foo> fooMap = sourceList.stream().collect(Collectors.toMap(Foo::getId, Function.identity(), (k1 , k2) -> k2));
         Assert.assertEquals(3, fooMap.size());
     }
 
