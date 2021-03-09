@@ -16,12 +16,13 @@ public class ConsoleUtilsTest extends TestCase {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("print something...");
-        while (true) {
-            String line = scanner.nextLine();
-            if (line.equals("exit")) break;
-            System.out.println(">>>> " + line);
+        int lineNumber = scanner.nextInt();
+        String[] strs = new String[lineNumber];
+        for (int i = 0; i < lineNumber; i++) {
+            strs[i] = scanner.nextLine();
         }
+
+
     }
 
 
