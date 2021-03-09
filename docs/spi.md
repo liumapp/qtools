@@ -81,7 +81,7 @@
         };
     }
 
-系统第一次加载LoadingStrategy类的时候，肯定是没有缓存的，所以需要调用之前谈到LazyIterator下的hasNext()方法
+系统第一次加载LoadingStrategy类的时候，肯定是没有缓存的，所以需要调用之前谈到LazyIterator下的hasNext()方法来获取具体的实现类类名。
 
     public boolean hasNext() {
         if (acc == null) {
@@ -100,6 +100,7 @@
         }
         if (configs == null) {
             try {
+                //获取META-INF/service下以类名开头的文件全路径
                 String fullName = PREFIX + service.getName();
                 if (loader == null)
                     configs = ClassLoader.getSystemResources(fullName);
@@ -109,50 +110,19 @@
                 fail(service, "Error locating configuration files", x);
             }
         }
+        //META-INF/service/LoadingStrategy的实现可能为复数个，所以用一个名为pending的iterator存放具体类名
         while ((pending == null) || !pending.hasNext()) {
             if (!configs.hasMoreElements()) {
                 return false;
             }
+            //按行解析META-INF/service/LoadingStrategy文件内容，并确保做为内容的类名是合法的java类名
             pending = parse(service, configs.nextElement());
         }
         nextName = pending.next();
         return true;
     }
 
-
-
-
-
-SPI(Service Provider Interface)它约定在 Classpath 下的 META-INF/services/ 目录里创建一个以服务接口命名的文件，然后文件里面记录的是此 jar 包提供的具体实现类的全限定名。
-
-这样当我们引用了某个 jar 包的时候就可以去找这个 jar 包的 META-INF/services/ 目录，再根据接口名找到文件，然后读取文件里面的内容去进行实现类的加载与实例化。
-
-Java SPI的源代码实现：
-
-ServiceLoader.load(${className})是Java SPI的入口
-
-    public boolean hasNext() {
-        if (acc == null) {
-            return hasNextService();
-        } else {
-            PrivilegedAction<Boolean> action = new PrivilegedAction<Boolean>() {
-                public Boolean run() { return hasNextService(); }
-            };
-            return AccessController.doPrivileged(action, acc);
-        }
-    }
-
-    public S next() {
-        if (acc == null) {
-            return nextService();
-        } else {
-            PrivilegedAction<S> action = new PrivilegedAction<S>() {
-                public S run() { return nextService(); }
-            };
-            return AccessController.doPrivileged(action, acc);
-        }
-    }
-
+获取实现类的类名之后，通过LazyIterator下的nextService()来实例话这些类
 
     private S nextService() {
         if (!hasNextService())
@@ -164,20 +134,31 @@ ServiceLoader.load(${className})是Java SPI的入口
             c = Class.forName(cn, false, loader);
         } catch (ClassNotFoundException x) {
             fail(service,
-                 "Provider " + cn + " not found");
+                    "Provider " + cn + " not found");
         }
+        //要求找到的实现类必须是接口类的子类
         if (!service.isAssignableFrom(c)) {
             fail(service,
-                 "Provider " + cn  + " not a subtype");
+                    "Provider " + cn  + " not a subtype");
         }
         try {
+            //实例化实现类，并类型转换为接口类
             S p = service.cast(c.newInstance());
+            //将具体的实现类放入缓存中，下次调用不用重复解析META-INF下面的service文件内容
             providers.put(cn, p);
             return p;
         } catch (Throwable x) {
             fail(service,
-                 "Provider " + cn + " could not be instantiated",
-                 x);
+                    "Provider " + cn + " could not be instantiated",
+                    x);
         }
         throw new Error();          // This cannot happen
     }
+
+到这里为止，qtools利用Java SPI加载的扩展已经基本结束，其他的类扩展，都属于基于LoadingStrategy策略下的加载 why?
+
+因为Java SPI的实现逻辑存在一个很大的不足：无法按需加载实现类，而是在查找扩展实现类的时候遍历SPI的配置文件并且将实现类全部实例化，假设一个实现类初始化过程比较消耗资源且耗时，但是你的代码里面又用不上它，这就产生了资源的浪费
+
+
+
+
