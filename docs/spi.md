@@ -38,7 +38,7 @@
         //把已经加载过的实现类清除缓存
         providers.clear();
         //重新创建一个新的LazyIterator，之后返回ServiceLoader实例
-        //遍历读取实现类，使用的就是这个LazyIterator
+        //当没有实现类缓存时，则使用这个LazyIterator加载实现类
         lookupIterator = new LazyIterator(service, loader);
     }
 
@@ -70,7 +70,7 @@
                 //有缓存就不读META-INF/service
                 if (knownProviders.hasNext())
                     return true;
-                //真正执行加载SPI的地方
+                //真正通过service配置文件加载SPI的地方
                 return lookupIterator.hasNext();
             }
             public S next() {
@@ -122,7 +122,7 @@
         return true;
     }
 
-获取实现类的类名之后，通过LazyIterator下的nextService()来实例话这些类
+获取实现类的类名之后，通过LazyIterator下的nextService()来实例化这些类
 
     private S nextService() {
         if (!hasNextService())
@@ -155,9 +155,11 @@
         throw new Error();          // This cannot happen
     }
 
-到这里为止，qtools利用Java SPI加载的扩展已经基本结束，其他的类扩展，都属于基于LoadingStrategy策略下的加载 why?
+到这里为止，qtools利用Java SPI加载的扩展已经基本结束，其他的类扩展，都属于LoadingStrategy策略下的加载 why?
 
 因为Java SPI的实现逻辑存在一个很大的不足：无法按需加载实现类，而是在查找扩展实现类的时候遍历SPI的配置文件并且将实现类全部实例化，假设一个实现类初始化过程比较消耗资源且耗时，但是你的代码里面又用不上它，这就产生了资源的浪费
+
+
 
 
 
