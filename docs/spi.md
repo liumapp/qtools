@@ -159,6 +159,13 @@
 
 因为Java SPI的实现逻辑存在一个很大的不足：无法按需加载实现类，而是在查找扩展实现类的时候遍历SPI的配置文件并且将实现类全部实例化，假设一个实现类初始化过程比较消耗资源且耗时，但是你的代码里面又用不上它，这就产生了资源的浪费
 
+LoaddingStrategy策略下的加载扩展实现策略，也很简单，就是定义了META-INF/qtools/目录，放置要扩展的接口类文件，其内容为"扩展名 = 具体实现类" 在需要获取实现类时，通过指定扩展名即可。
+
+    ToolsLoader<AsyncTool> toolsLoader = ToolsLoader.getToolsLoader(AsyncTool.class);
+    AsyncTool asyncTool = toolsLoader.getTool("default");
+
+    
+
 
 
 
